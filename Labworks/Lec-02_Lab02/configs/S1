@@ -1,0 +1,97 @@
+S1#sh run
+Building configuration...
+
+Current configuration : 1074 bytes
+!
+! Last configuration change at 17:39:32 EET Wed Apr 22 2020
+!
+version 15.2
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+service compress-config
+!
+hostname S1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+clock timezone EET 2 0
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Ethernet0/0
+!
+interface Ethernet0/1
+ switchport trunk encapsulation dot1q
+ switchport mode dynamic desirable
+!
+interface Ethernet0/2
+!
+interface Ethernet0/3
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface Ethernet1/0
+!
+interface Ethernet1/1
+ switchport access vlan 10
+ switchport mode access
+!
+interface Ethernet1/2
+!
+interface Ethernet1/3
+!
+interface Vlan99
+ ip address 192.168.99.1 255.255.255.0
+!
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+!
+!
+control-plane
+!
+!
+line con 0
+ logging synchronous
+line aux 0
+line vty 0 4
+ login
+!
+!
+end
