@@ -1,7 +1,7 @@
 #  Лабораторная работа. Настройка расширенных сетей VLAN, VTP и DTP
 	
 	Топология
-![](/img/scheme.jpg "Топология")
+![](/NetEngineer/Labworks/Lec-02_Lab02/img/scheme.jpg "Топология")
 
 
 
