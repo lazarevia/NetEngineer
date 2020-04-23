@@ -1,7 +1,7 @@
 #  Лабораторная работа. Настройка расширенных сетей VLAN, VTP и DTP
 	
 	Топология
-![](NetEngineer/Labworks/Lec-02_Lab02/img/scheme.jpg "Топология")
+![](/NetEngineer/Labworks/Lec-02_Lab02/img/scheme.jpg "Топология")
 
 
 
@@ -150,7 +150,7 @@ d.	Отправьте ping-запрос с коммутатора S2 на ком
 
 Ответ:
 Удачно. 
-![ping_PCA-PCC](/img/pic4.jpg "ping-запрос с компьютера PC-A на PC-C")
+![ping_PCA-PCC](/NetEngineer/Labworks/Lec-02_Lab02/img/pic4.jpg "ping-запрос с компьютера PC-A на PC-C")
 
 IP-адреса SVI интерфейсов коммутаторов настроены на одну подсеть.
 
