@@ -1,6 +1,6 @@
 # Развертывание коммутируемой сети с резервными каналами
 	Топология
- ![](/Labworks/Lec-03/img/scheme.jpg "Топология")
+ ![](/Labworks/Lec-03_Lab03/img/scheme.jpg "Топология")
 
 Таблица адресации
 	
@@ -16,6 +16,15 @@
 2. Выбор корневого моста
 3. Наблюдение за процессом выбора протоколом STP порта, исходя из стоимости портов
 4. Наблюдение за процессом выбора протоколом STP порта, исходя из приоритета портов
+
+Соответсвие портов схемы и стенда
+
+|Порт схемы|Порт EVE-NG|
+|----------|-----------|
+|F0/1|e0/0|
+|F0/2|e0/1|
+|F0/3|e0/2|
+|F0/4|e0/3|
 
 
 ----
@@ -69,7 +78,7 @@ S1(config)# banner motd #
 Enter Text message. End with the character ‘#’.
 Unauthorized access is strictly prohibited. #
 ```
-![](/Labworks/Lec-03/img/pic1.jpg "Результат выполенения")
+![](/Labworks/Lec-03_Lab03/img/pic1.jpg "Результат выполенения")
 
 g.	Задайте IP-адрес, указанный в таблице адресации для VLAN 1 на всех коммутаторах.
 ```
@@ -89,7 +98,7 @@ S1(config-if)#exit
 S1(config)#
 ```
 
-![](/Labworks/Lec-03/img/pic4.jpg "")
+![](/Labworks/Lec-03_Lab03/img/pic4.jpg "")
 
 h.	Скопируйте текущую конфигурацию в файл загрузочной конфигурации.
 Командами `write memory` или `copy running-config startup-config`
@@ -103,13 +112,13 @@ h.	Скопируйте текущую конфигурацию в файл за
 
 Ответ:
 Успешно
-![](/Labworks/Lec-03/img/pic4_S1.jpg "")
+![](/Labworks/Lec-03_Lab03/img/pic4_S1.jpg "")
 
 Успешно ли выполняется эхо-запрос от коммутатора S2 на коммутатор S3?
 
 Ответ:
 Успешно
-![](/Labworks/Lec-03/img/pic4_S2.jpg "")
+![](/Labworks/Lec-03_Lab03/img/pic4_S2.jpg "")
 
 Выполняйте отладку до тех пор, пока ответы на все вопросы не будут положительными.
 
@@ -119,9 +128,40 @@ h.	Скопируйте текущую конфигурацию в файл за
 
 #### 2.1:	Отключите все порты на коммутаторах.
 
+```
+S1#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+S1(config)#int range e0/0-3
+S1(config-if-range)#shutdown
+S1(config-if-range)#end
+S1#
+```
+
+
 #### 2.2:	Настройте подключенные порты в качестве транковых.
 
-#### 2.3:	Включите порты F0/2 и F0/4 на всех коммутаторах.
+```
+S1#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+S1(config)#int range e0/0-3
+S1(config-if-range)#switchport trunk encapsulation dot1q
+S1(config-if-range)#switchport mode trunk
+S1(config-if-range)#end
+S1#
+
+```
+
+#### 2.3:	Включите порты F0/2 и F0/4(e0/1 и e0/3) на всех коммутаторах.
+
+```
+S3(config)#int e0/1
+S3(config-if)#no shutdown
+S3(config-if)#
+*Apr 27 16:05:18.045: %LINK-3-UPDOWN: Interface Ethernet0/1, changed state to up
+*Apr 27 16:05:19.048: %LINEPROTO-5-UPDOWN: Line protocol on Interface Ethernet0/1, changed state to up
+S3(config-if)#exit
+S3(config)#
+```
 
 #### 2.4:	Отобразите данные протокола spanning-tree.
 
