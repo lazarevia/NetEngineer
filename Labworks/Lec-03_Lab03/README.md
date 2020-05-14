@@ -260,7 +260,7 @@ Interface           Role Sts Cost      Prio.Nbr Type
 Et0/1               Altn BLK 100       128.2    P2p
 Et0/3               Root FWD 100       128.4    P2p
 ```
-![](/Labworks/Lec-03_Lab03/img/pic7_S3.jpg "S3#sh spanning-tree")
+![](/Labworks/Lec-03_Lab03/img/pic6_S3.jpg "S3#sh spanning-tree")
 
 #### 3.2:	Измените стоимость порта.
 Помимо заблокированного порта, единственным активным портом на этом коммутаторе является порт, 
