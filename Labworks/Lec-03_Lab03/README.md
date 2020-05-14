@@ -271,7 +271,7 @@ S3(config)#int e0/3
 S3(config-if)#spanning-tree cost 18
 ```
 
-#### Шаг 3:	Просмотрите изменения протокола spanning-tree.
+#### 3.3:	Просмотрите изменения протокола spanning-tree.
 
 **коммутатор S2**
 ```
@@ -322,7 +322,7 @@ Et0/1               Desg FWD 100       128.2    P2p
 Et0/3               Root FWD 18        128.4    P2p
 ```
 
-![](/Labworks/Lec-03_Lab03/img/pic6_S3.jpg "S3#sh spanning-tree")
+![](/Labworks/Lec-03_Lab03/img/pic7_S3.jpg "S3#sh spanning-tree")
 
 **Вопрос:** Почему протокол spanning-tree заменяет ранее заблокированный порт на назначенный порт и блокирует порт, 
 который был назначенным портом на другом коммутаторе?
