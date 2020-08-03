@@ -1,6 +1,6 @@
-# Развертывание коммутируемой сети с резервными каналами
-	Топология
- ![](/Labworks/Lec-03_Lab03/img/scheme.jpg "Топология")
+# Implement DHCPv4
+	Topology
+ ![](/Labworks/Z5/img/scheme.jpg "Топология")
 
 Таблица адресации
 	
@@ -11,31 +11,67 @@
 |S3		|VLAN 1		|192.168.1.3	|255.255.255.0	|
 
 
+|Устройство		|Интерфейс		|IP-адрес		|Маска подсети		|Шлюз
+|:--------------|:--------------|:--------------|:------------------|:------------------|
+|R1				|G0/0/0			|10.0.0.1		|255.255.255.252	|N/A
+|				|G0/0/1			|N/A			|N/A				|N/A
+
+
+G0/0/1	N/A	N/A	N/A
+G0/0/1.100	blank	blank	N/A
+G0/0/1.200	blank	blank	N/A
+
+
+
+
 ## Задачи
-1. Создание сети и настройка основных параметров устройства
-2. Выбор корневого моста
-3. Наблюдение за процессом выбора протоколом STP порта, исходя из стоимости портов
-4. Наблюдение за процессом выбора протоколом STP порта, исходя из приоритета портов
+Part 1: Build the Network and Configure Basic Device Settings
+Part 2: Configure and verify two DHCPv4 Servers on R1
+Part 3: Configure and verify a DHCP Relay on R2
 
-Соответсвие портов задачи и стенда (схемы)
 
-|Порт задачи|Порт решения|
-|----------|-----------|
-|F0/1|e0/0|
-|F0/2|e0/1|
-|F0/3|e0/2|
-|F0/4|e0/3|
 
 
 ----
-### 1:	Создание сети и настройка основных параметров устройства
-В части 1 вам предстоит настроить топологию сети и основные параметры маршрутизаторов.
-#### 1.1:	Создайте сеть согласно топологии.
-Подключите устройства, как показано в топологии, и подсоедините необходимые кабели.
+### 1:	Part 1: Build the Network and Configure Basic Device Settings
+In Part 1, you will set up the network topology and configure basic settings on the PC hosts and switches.
 
-#### 1.2:	Выполните инициализацию и перезагрузку коммутаторов.
+#### 1.1: Establish an addressing scheme
+Subnet the network 192.168.1.0/24 to meet the following requirements:
+a.	One subnet, “Subnet A”, supporting 58 hosts (the client VLAN at R1).
+Subnet A:
 
-#### 1.3:	Настройте базовые параметры каждого коммутатора.
+Record the first IP address in the Addressing Table for R1 G0/0/1.100. Record the second IP address in the Address Table for S1 VLAN 200 and enter the associated default gateway.
+b.	One subnet, “Subnet B”, supporting 28 hosts (the management VLAN at R1). 
+Subnet B:
+
+Record the first IP address in the Addressing Table for R1 G0/0/1.200. Record the second IP address in the Address Table for S1 VLAN 1 and enter the associated default gateway.
+c.	One subnet, “Subnet C”, supporting 12 hosts (the client network at R2).
+Subnet C:
+
+Record the first IP address in the Addressing Table for R2 G0/0/1
+
+
+#### 1.2:	Step 2: Cable the network as shown in the topology.
+Attach the devices as shown in the topology diagram, and cable as necessary.
+
+#### 1.3:	Step 3: Configure basic settings for each router.
+a.	Assign a device name to the router.
+Open configuration window
+b.	Disable DNS lookup to prevent the router from attempting to translate incorrectly entered commands as though they were host names.
+c.	Assign class as the privileged EXEC encrypted password.
+d.	Assign cisco as the console password and enable login.
+e.	Assign cisco as the VTY password and enable login.
+f.	Encrypt the plaintext passwords.
+g.	Create a banner that warns anyone accessing the device that unauthorized access is prohibited.
+h.	Save the running configuration to the startup configuration file.
+i.	Set the clock on the router to today’s time and date.
+Note: Use the question mark (?) to help with the correct sequence of parameters needed to execute this command.
+
+
+
+
+
 a.	Отключите поиск DNS.
 ```
 Switch(config)# no ip domain-lookup
@@ -103,24 +139,35 @@ S1(config)#
 h.	Скопируйте текущую конфигурацию в файл загрузочной конфигурации.
 Командами `write memory` или `copy running-config startup-config`
 
-#### 1.4:	Проверьте связь.
+#### 1.4:	Step 4: Configure Inter-VLAN Routing on R1
+a.	Activate interface G0/0/1 on the router.
+b.	Configure sub-interfaces for each VLAN as required by the IP addressing table. All sub-interfaces use 802.1Q encapsulation and are assigned the first usable address from the IP address pool you have calculated. Ensure the sub-interface for the native VLAN does not have an IP address assigned. Include a description for each sub-interface.
+c.	Verify the sub-interfaces are operational.
 
-Проверьте способность компьютеров обмениваться эхо-запросами.
+#### 1.5 Step 5: Configure G0/0/1 on R2, then G0/0/0 and static routing for both routers
+a.	Configure G0/0/1 on R2 with the first IP address of Subnet C you calculated earlier.
+b.	Configure interface G0/0/0 for each router based on the IP Addressing table above.
+c.	Configure a default route on each router pointed to the IP address of G0/0/0 on the other router.
+d.	Verify static routing is working by pinging R2’s G0/0/1 address from R1.
+e.	Save the running configuration to the startup configuration file
 
-Успешно ли выполняется эхо-запрос от коммутатора S1 на коммутатор S2?	
-Успешно ли выполняется эхо-запрос от коммутатора S1 на коммутатор S3?
+#### 1.6 Step 6: Configure basic settings for each switch.
+a.	Assign a device name to the switch.
+Open configuration window
+b.	Disable DNS lookup to prevent the router from attempting to translate incorrectly entered commands as though they were host names.
+c.	Assign class as the privileged EXEC encrypted password.
+d.	Assign cisco as the console password and enable login.
+e.	Assign cisco as the VTY password and enable login.
+f.	Encrypt the plaintext passwords.
+g.	Create a banner that warns anyone accessing the device that unauthorized access is prohibited.
+h.	Save the running configuration to the startup configuration file.
+i.	Set the clock on the switch to today’s time and date.
+Note: Use the question mark (?) to help with the correct sequence of parameters needed to execute this command.
+j.	Copy the running configuration to the startup configuration.
 
-Ответ:
-Успешно
-![](/Labworks/Lec-03_Lab03/img/pic4_S1.jpg "")
 
-Успешно ли выполняется эхо-запрос от коммутатора S2 на коммутатор S3?
 
-Ответ:
-Успешно
-![](/Labworks/Lec-03_Lab03/img/pic4_S2.jpg "")
 
-Выполняйте отладку до тех пор, пока ответы на все вопросы не будут положительными.
 
 ----
 
