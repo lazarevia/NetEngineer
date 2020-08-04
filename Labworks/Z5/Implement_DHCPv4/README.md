@@ -1,4 +1,4 @@
-# Implement DHCPv4
+#|| Implement DHCPv4
 	Topology
  ![](/Labworks/Z5/img/scheme.jpg "Топология")
 
@@ -15,11 +15,9 @@
 |:--------------|:--------------|:--------------|:------------------|:------------------|
 |R1				|G0/0/0			|10.0.0.1		|255.255.255.252	|N/A
 |				|G0/0/1			|N/A			|N/A				|N/A
-
-
-G0/0/1	N/A	N/A	N/A
-G0/0/1.100	blank	blank	N/A
-G0/0/1.200	blank	blank	N/A
+|				|G0/0/1			|N/A			|N/A				|N/A
+|				|G0/0/1.100		|blank			|blank				|N/A
+|				|G0/0/1.200		|blank			|blank				|N/A
 
 
 
