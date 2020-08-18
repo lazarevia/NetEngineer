@@ -60,17 +60,17 @@ In Part 1, you will set up the network topology and configure basic settings on 
 Attach the devices as shown in the topology diagram, and cable as necessary.
 #### 1.2. Configure basic settings for the router.
 	Open configuration window
-	a. Console into the router and enable privileged EXEC mode.  
-	b. Enter configuration mode.  
-	c. Assign a device name to the router.
-	d. Disable DNS lookup to prevent the router from attempting to translate incorrectly entered commands as though they were host names.
-	e. Assign class as the privileged EXEC encrypted password.
-	f. Assign cisco as the console password and enable login.
-	g. Assign cisco as the VTY password and enable login.
-	h. Encrypt the plaintext passwords.
-	i. Create a banner that warns anyone accessing the device that unauthorized access is prohibited.
-	j. Save the running configuration to the startup configuration file.
-	k. Set the clock on the router.
+a. Console into the router and enable privileged EXEC mode.  
+b. Enter configuration mode.  
+c. Assign a device name to the router.
+d. Disable DNS lookup to prevent the router from attempting to translate incorrectly entered commands as though they were host names.
+e. Assign class as the privileged EXEC encrypted password.
+f. Assign cisco as the console password and enable login.
+g. Assign cisco as the VTY password and enable login.
+h. Encrypt the plaintext passwords.
+i. Create a banner that warns anyone accessing the device that unauthorized access is prohibited.
+j. Save the running configuration to the startup configuration file.
+k. Set the clock on the router.
 
 Note: Use the question mark (?) to help with the correct sequence of parameters needed to execute this command.
 	Close configuration window
