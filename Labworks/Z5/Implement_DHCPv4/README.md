@@ -1,15 +1,8 @@
-#|| Implement DHCPv4
-	Topology
- ![](/Labworks/Z5/img/scheme.jpg "Топология")
+# Implement DHCPv4
+	Топология
+ ![](/Labworks/Z5/pics/scheme.jpg "Топология")
 
 Таблица адресации
-	
-|Устройство		|Интерфейс	|IP-адрес	|Маска подсети	|
-|:--------------|:--------------|:--------------|:------------------|
-|S1		|VLAN 1		|192.168.1.1	|255.255.255.0	|
-|S2		|VLAN 1		|192.168.1.2	|255.255.255.0	|
-|S3		|VLAN 1		|192.168.1.3	|255.255.255.0	|
-
 
 |Устройство		|Интерфейс		|IP-адрес		|Маска подсети		|Шлюз
 |:--------------|:--------------|:--------------|:------------------|:------------------|
@@ -18,74 +11,87 @@
 |				|G0/0/1			|N/A			|N/A				|N/A
 |				|G0/0/1.100		|blank			|blank				|N/A
 |				|G0/0/1.200		|blank			|blank				|N/A
+|:--------------|:--------------|:--------------|:------------------|:------------------|
+|R2				|G0/0/0			|10.0.0.2		|255.255.255.252	|N/A
+|				|G0/0/1			|blank			|blank				|N/A
+|:--------------|:--------------|:--------------|:------------------|:------------------|
+|S1				|VLAN 200		|blank			|blank				|N/A
+|S2				|VLAN 1			|blank			|blank				|N/A
+|PC-A			|NIC			|DHCP			|DHCP				|DHCP
+|PC-B 			|NIC			|DHCP			|DHCP				|DHCP
 
 
+Таблица VLAN
+
+|VLAN 			|Name			|Интерфейс
+|:--------------|:--------------|:--------------|
+|1				|N/A			|S2: F0/18
+|100			|Клиенты		|S1: F0/6
+|200			|Управление 	|S1: VLAN 200
+|999			|Parking_Lot	|S1: F0/1-4, F0/7-24, G0/1-2
+|1000			|Native 		|N/A
 
 
 ## Задачи
-Part 1: Build the Network and Configure Basic Device Settings
-Part 2: Configure and verify two DHCPv4 Servers on R1
-Part 3: Configure and verify a DHCP Relay on R2
-
-
-
+Часть 1: Построить Сеть и произвести базовую настроеку устройств
+Часть 2: Произвести конфигурацию и проверку двух серверов DHCPv4 на R1
+Часть 3: Произвести конфигурацию и проверку предачи DHCP на R2
 
 ----
-### 1:	Part 1: Build the Network and Configure Basic Device Settings
-In Part 1, you will set up the network topology and configure basic settings on the PC hosts and switches.
+### 1:	Построить Сеть и произвести базовую настроеку устройств
+В части 1 вам предстоит настроить топологию сети и настроить основные параметры сетевых устройств.
 
 #### 1.1: Establish an addressing scheme
-Subnet the network 192.168.1.0/24 to meet the following requirements:
-a.	One subnet, “Subnet A”, supporting 58 hosts (the client VLAN at R1).
+Разделить сеть 192.168.1.0/24 на подсети по следующим требованиям:
+а. Одна подсеть "Subnet A" поддерживает 58 хостов (клиентский VLAN на R1)
 Subnet A:
 
 Record the first IP address in the Addressing Table for R1 G0/0/1.100. Record the second IP address in the Address Table for S1 VLAN 200 and enter the associated default gateway.
-b.	One subnet, “Subnet B”, supporting 28 hosts (the management VLAN at R1). 
+
+б. Одна подсеть "Subnet B" поддерживает 28 хостов.(VLAN управления на R1)
 Subnet B:
 
 Record the first IP address in the Addressing Table for R1 G0/0/1.200. Record the second IP address in the Address Table for S1 VLAN 1 and enter the associated default gateway.
-c.	One subnet, “Subnet C”, supporting 12 hosts (the client network at R2).
+
+c.	Одна подсеть “Subnet C” поддерживает 12 хостов (клиентский VLAN на R2).
 Subnet C:
 
 Record the first IP address in the Addressing Table for R2 G0/0/1
+Запишите первый IP-адрес в таблицу адресации для R2 G0/0/1
 
 
-#### 1.2:	Step 2: Cable the network as shown in the topology.
-Attach the devices as shown in the topology diagram, and cable as necessary.
+#### 1.2: Создайте сеть согласно топологии.
+Подключите устройства, как показано в топологии, и подсоедините необходимые кабели.
 
-#### 1.3:	Step 3: Configure basic settings for each router.
-a.	Assign a device name to the router.
-Open configuration window
-b.	Disable DNS lookup to prevent the router from attempting to translate incorrectly entered commands as though they were host names.
-c.	Assign class as the privileged EXEC encrypted password.
-d.	Assign cisco as the console password and enable login.
-e.	Assign cisco as the VTY password and enable login.
+#### 1.3: Произведите настройку базовых параметров для каждого маршрутизатора.
+a.	Присвойте имя устройства
+b.	Отключите поиск DNS.
+c.	Назначьте "class" в качестве зашифрованного пароля доступа к привилегированному режиму.
+d.	Назначьте "cisco" в качестве пароля консоли и активируйте логин.
+e.	Назначьте "cisco" в качестве пароля VTY и активируйте логин.
 f.	Encrypt the plaintext passwords.
-g.	Create a banner that warns anyone accessing the device that unauthorized access is prohibited.
-h.	Save the running configuration to the startup configuration file.
-i.	Set the clock on the router to today’s time and date.
-Note: Use the question mark (?) to help with the correct sequence of parameters needed to execute this command.
+g.	Настройте баннерное сообщение дня (MOTD) для предупреждения пользователей о запрете несанкционированного доступа.
+h.	Сохраните текущую конфигурацию в файл загрузочной конфигурации.
+i.	Установите часы роутера на текущие дату и время.
 
+a.	Присвойте имена устройствам в соответствии с топологией.
+```
+Switch(config)# hostname R1
+S1(config)#
+```
 
-
-
-
-a.	Отключите поиск DNS.
+b.	Отключите поиск DNS.
 ```
 Switch(config)# no ip domain-lookup
 Switch(config)#
 ```
-b.	Присвойте имена устройствам в соответствии с топологией.
-```
-Switch(config)# hostname S1
-S1(config)#
-```
+
 c.	Назначьте ___class___ в качестве зашифрованного пароля доступа к привилегированному режиму.
 ```
-S1(config)# service password-encryption
-S1(config)#
-S1(config)# enable secret class
-S1(config)#
+R1(config)# service password-encryption
+R1(config)#
+R1(config)# enable secret class
+R1(config)#
 ```
 
 d.	Назначьте ___cisco___ в качестве паролей консоли и VTY и активируйте вход для консоли и VTY каналов.
