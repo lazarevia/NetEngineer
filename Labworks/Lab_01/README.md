@@ -45,6 +45,7 @@ VLAN trunks are used to span VLANs across multiple devices. Trunks allow the tra
 In this lab, you will create VLANs on both switches in the topology, assign VLANs to switch access ports, verify that VLANs are working as expected, create VLAN trunks between the two switches and between S1 and R1, and configure Inter-VLAN routing on R1 to allow hosts in different VLANs to communicate, regardless of which subnet the host resides. 
 Note: The routers used with CCNA hands-on labs are Cisco 4221 with Cisco IOS XE Release 16.9.4 (universalk9 image). The switches used in the labs are Cisco Catalyst 2960s with Cisco IOS Release 15.2(2) (lanbasek9 image). Other routers, switches, and Cisco IOS versions can be used. Depending on the model and Cisco IOS version, the commands available and the output produced might vary from what is shown in the labs.Refer to the Router Interface Summary Table at the end of the lab for the correct interface identifiers.
 Note:Ensure that the routers and switches have been erased and have no startup configurations. If you are unsure, contact your instructor.
+
 Required Resources
 •	1 Router (Cisco 4221 with Cisco IOS XE Release 16.9.4 universal image or comparable)
 •	2 Switches (Cisco 2960 with Cisco IOS Release 15.2(2) lanbasek9 image or comparable)
@@ -62,15 +63,15 @@ Attach the devices as shown in the topology diagram, and cable as necessary.
 Open configuration window
 a. 	Console into the router and enable privileged EXEC mode.  
 b.	Enter configuration mode.  
-c.	Assign a device name to the router.
-d.	Disable DNS lookup to prevent the router from attempting to translate incorrectly entered commands as though they were host names.
-e.	Assign class as the privileged EXEC encrypted password.
-f.	Assign cisco as the console password and enable login.
-g.	Assign cisco as the VTY password and enable login.
-h.	Encrypt the plaintext passwords.
-i.	Create a banner that warns anyone accessing the device that unauthorized access is prohibited.
-j.	Save the running configuration to the startup configuration file.
-k.	Set the clock on the router.
+c.	Assign a device name to the router.  
+d.	Disable DNS lookup to prevent the router from attempting to translate incorrectly entered commands as though they were host names.  
+e.	Assign class as the privileged EXEC encrypted password.  
+f.	Assign cisco as the console password and enable login.  
+g.	Assign cisco as the VTY password and enable login.  
+h.	Encrypt the plaintext passwords.  
+i.	Create a banner that warns anyone accessing the device that unauthorized access is prohibited.  
+j.	Save the running configuration to the startup configuration file.  
+k.	Set the clock on the router.  
 
 Note: Use the question mark (?) to help with the correct sequence of parameters needed to execute this command.
 	Close configuration window
