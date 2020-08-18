@@ -1,5 +1,7 @@
 # Lab 1 - Configure Router-on-a-Stick Inter-VLAN Routing
 
+[TOC]
+	
 	Topology
 
  ![](/Labworks/Lab_01/img/scheme.JPG "Topology")
@@ -89,39 +91,43 @@ Close configuration window
 Step 4: Configure PC hosts.
 Refer to the Addressing Table for PC host address information.
 
-## Part 2: Create VLANs and Assign Switch Ports
+## 2: Create VLANs and Assign Switch Ports
 In Part 2, you will create VLANs, as specified in the table above, on both switches. You will then assign the VLANs to the appropriate interface. The show vlan command is used to verify your configuration settings. Complete the following tasks on each switch.
 
-### 1: Create VLANs on both switches.
+### 2.1: Create VLANs on both switches.
 Open configuration window
 a.	Create and name the required VLANs on each switch from the table above.
 b.	Configure the management interface and default gateway on each switch using the IP address information in the Addressing Table. 
 c.	Assign all unused ports on both switches to the ParkingLot VLAN, configure them for static access mode, and administratively deactivate them.
 Note: The interface range command is helpful to accomplish this task with as few commands as necessary.
-Step 2: Assign VLANs to the correct switch interfaces.
+
+#### 2.2: Assign VLANs to the correct switch interfaces.
 a.	Assign used ports to the appropriate VLAN (specified in the VLAN table above) and configure them for static access mode. Be sure to do this on both switches
 b.	Issue the show vlanbrief command and verify that the VLANs are assigned to the correct interfaces.
 Close configuration window
 
 ### 3: Configure an 802.1Q Trunk Between the Switches
 In Part 3, you will manually configure interface F0/1 as a trunk.
-Step 1: Manually configure trunk interface F0/1.
+
+#### 3.1: Manually configure trunk interface F0/1.
 Open configuration window
 a.	Change the switchport mode on interface F0/1 to force trunking. Make sure to do this on both switches.
 b.	As a part of the trunk configuration, set the native VLAN to 8 on both switches. You may see error messages temporarily while the two interfaces are configured for different native VLANs.
 c.	As another part of trunk configuration, specify that VLANs 3, 4, and 8 are only allowed to cross the trunk.
 d.	Issue the show interfaces trunk command to verify trunking ports, the Native VLAN and allowed VLANs across the trunk.
-Step 2: Manually configure S1’s trunk interface F0/5
+
+#### 3.2: Manually configure S1’s trunk interface F0/5
 a.	Configure the F0/5 on S1 with the same trunk parameters as F0/1. This is the trunk to the router.
 b.	Save the running configuration to the startup configuration file on S1 and S2.
 c.	Issue the show interfaces trunk command to verify trunking.
-Question:
-Why does F0/5 not appear in the list of trunks?
+
+	Question
+:	Why does F0/5 not appear in the list of trunks?
 Type your answers here.
 Close configuration window
 
 
-### 4: Configure Inter-VLAN Routing on the Router
+#### 4: Configure Inter-VLAN Routing on the Router
 Open configuration window
 a.	Activate interface G0/0/1 on the router.
 b.	Configure sub-interfaces for each VLAN as specified in the IP addressing table. All sub-interfaces use 802.1Q encapsulation. Ensure the sub-interface for the native VLAN does not have an IP address assigned. Include a description for each sub-interface.
@@ -129,22 +135,24 @@ c.	Use the show ip interface brief command to verify the sub-interfaces are oper
 Close configuration window
 
 ### 5: Verify Inter-VLAN Routing is Working
-Step 1: Complete the following tests from PC-A. All should be successful.
+#### 5.1: Complete the following tests from PC-A. All should be successful.
 Note: You may have to disable the PC firewall for pings to be successful.
 a.	Ping from PC-A to its default gateway.
 b.	Ping from PC-A to PC-B
 c.	Ping from PC-A to S2
-Step 2: Complete the following test from PC-B.
+#### 5.2: Complete the following test from PC-B.
 From the command prompt on PC-B, issue the tracert command to the address of PC-A.
 
-Question:
-What intermediate IP addresses are shown in the results?
+	Question
+:	What intermediate IP addresses are shown in the results?
 Type your answers here.
+
 Router Interface Summary Table
-Router Model	Ethernet Interface #1	Ethernet Interface #2	Serial Interface #1	Serial Interface #2
-1800	Fast Ethernet 0/0 (F0/0)	Fast Ethernet 0/1 (F0/1)	Serial 0/0/0 (S0/0/0)	Serial 0/0/1 (S0/0/1)
-1900	Gigabit Ethernet 0/0 (G0/0)	Gigabit Ethernet 0/1 (G0/1)	Serial 0/0/0 (S0/0/0)	Serial 0/0/1 (S0/0/1)
-2801	Fast Ethernet 0/0 (F0/0)	Fast Ethernet 0/1 (F0/1)	Serial 0/1/0 (S0/1/0)	Serial 0/1/1 (S0/1/1)
+|Router Model	|Ethernet Interface #1		|Ethernet Interface #2		|Serial Interface #1	|Serial Interface #2
+|:				|:							|:							|:						|:
+|1800			|Fast Ethernet 0/0 (F0/0) 	|Fast Ethernet 0/1 (F0/1) 	|Serial 0/0/0 (S0/0/0)	|Serial 0/0/1 (S0/0/1)
+|1900			|Gigabit Ethernet 0/0 (G0/0)|Gigabit Ethernet 0/1 (G0/1)|Serial 0/0/0 (S0/0/0)	|Serial 0/0/1 (S0/0/1)
+|2801			|Fast Ethernet 0/0 (F0/0)	|Fast Ethernet 0/1 (F0/1)	|Serial 0/1/0 (S0/1/0)	|Serial 0/1/1 (S0/1/1)
 2811	Fast Ethernet 0/0 (F0/0)	Fast Ethernet 0/1 (F0/1)	Serial 0/0/0 (S0/0/0)	Serial 0/0/1 (S0/0/1)
 2900	Gigabit Ethernet 0/0 (G0/0)	Gigabit Ethernet 0/1 (G0/1)	Serial 0/0/0 (S0/0/0)	Serial 0/0/1 (S0/0/1)
 4221	Gigabit Ethernet 0/0/0 (G0/0/0)	Gigabit Ethernet 0/0/1 (G0/0/1)	Serial 0/1/0 (S0/1/0)	Serial 0/1/1 (S0/1/1)
