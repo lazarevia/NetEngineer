@@ -32,19 +32,19 @@
 
 
 ## Objectives
-1. Build the Network and Configure Basic Device Settings
-2. Create VLANs and Assign Switch Ports
-3. Configure an 802.1Q Trunk between the Switches
-4. Configure Inter-VLAN Routing on the Router
-5. Verify Inter-VLAN Routing is working
+1. Build the Network and Configure Basic Device Settings.
+2. Create VLANs and Assign Switch Ports.
+3. Configure an 802.1Q Trunk between the Switches.
+4. Configure Inter-VLAN Routing on the Router.
+5. Verify Inter-VLAN Routing is working.
 
 
 #### Background / Scenario
-Modern switches use virtual local-area networks (VLANs) to provide segmentation services traditionally provided by routers in LAN configurations. VLANs address scalability, security, and network management. In general, VLANs make it easier to design a network to support the goals of an organization. Communication between VLANs requires a device operating at Layer 3 of the OSI model. Routers in VLAN topologies provide additional security and traffic flow management.
-VLAN trunks are used to span VLANs across multiple devices. Trunks allow the traffic from multiple VLANS to travel over a single link, while keeping the VLAN identification and segmentation intact. A particular kind of inter-VLAN routing, called “Router-On-A-Stick”, uses a trunk from the router to the switch to enable all VLANs to pass to the router.
-In this lab, you will create VLANs on both switches in the topology, assign VLANs to switch access ports, verify that VLANs are working as expected, create VLAN trunks between the two switches and between S1 and R1, and configure Inter-VLAN routing on R1 to allow hosts in different VLANs to communicate, regardless of which subnet the host resides. 
-Note: The routers used with CCNA hands-on labs are Cisco 4221 with Cisco IOS XE Release 16.9.4 (universalk9 image). The switches used in the labs are Cisco Catalyst 2960s with Cisco IOS Release 15.2(2) (lanbasek9 image). Other routers, switches, and Cisco IOS versions can be used. Depending on the model and Cisco IOS version, the commands available and the output produced might vary from what is shown in the labs.Refer to the Router Interface Summary Table at the end of the lab for the correct interface identifiers.
-Note:Ensure that the routers and switches have been erased and have no startup configurations. If you are unsure, contact your instructor.
+Modern switches use virtual local-area networks (VLANs) to provide segmentation services traditionally provided by routers in LAN configurations. VLANs address scalability, security, and network management. In general, VLANs make it easier to design a network to support the goals of an organization. Communication between VLANs requires a device operating at Layer 3 of the OSI model. Routers in VLAN topologies provide additional security and traffic flow management.  
+VLAN trunks are used to span VLANs across multiple devices. Trunks allow the traffic from multiple VLANS to travel over a single link, while keeping the VLAN identification and segmentation intact. A particular kind of inter-VLAN routing, called “Router-On-A-Stick”, uses a trunk from the router to the switch to enable all VLANs to pass to the router.  
+In this lab, you will create VLANs on both switches in the topology, assign VLANs to switch access ports, verify that VLANs are working as expected, create VLAN trunks between the two switches and between S1 and R1, and configure Inter-VLAN routing on R1 to allow hosts in different VLANs to communicate, regardless of which subnet the host resides.   
+Note: The routers used with CCNA hands-on labs are Cisco 4221 with Cisco IOS XE Release 16.9.4 (universalk9 image). The switches used in the labs are Cisco Catalyst 2960s with Cisco IOS Release 15.2(2) (lanbasek9 image). Other routers, switches, and Cisco IOS versions can be used. Depending on the model and Cisco IOS version, the commands available and the output produced might vary from what is shown in the labs.Refer to the Router Interface Summary Table at the end of the lab for the correct interface identifiers.  
+Note:Ensure that the routers and switches have been erased and have no startup configurations. If you are unsure, contact your instructor.  
 
 Required Resources
 •	1 Router (Cisco 4221 with Cisco IOS XE Release 16.9.4 universal image or comparable)
@@ -64,14 +64,48 @@ Open configuration window
 a. 	Console into the router and enable privileged EXEC mode.  
 b.	Enter configuration mode.  
 c.	Assign a device name to the router.  
+```
+Switch(config)# hostname R1
+R1(config)#
+```
 d.	Disable DNS lookup to prevent the router from attempting to translate incorrectly entered commands as though they were host names.  
+```
+R1(config)# no ip domain-lookup
+R1(config)#
+```
 e.	Assign class as the privileged EXEC encrypted password.  
+```
+R1(config)# service password-encryption
+R1(config)#
+R1(config)# enable secret class
+R1(config)#
+```
 f.	Assign cisco as the console password and enable login.  
+```
+R1(config)# line con 0
+R1(config-line)# password cisco
+R1(config-line)# login
+R1(config-line)# logging synchronous
+R1(config-line)# exit
+R1(config)#
+```
 g.	Assign cisco as the VTY password and enable login.  
+```
+R1(config)# line vty 0 4
+R1(config-line)# password cisco
+R1(config-line)# login
+R1(config-line)# end
+```
 h.	Encrypt the plaintext passwords.  
 i.	Create a banner that warns anyone accessing the device that unauthorized access is prohibited.  
+```
+R1(config)# banner motd #
+Enter Text message. End with the character ‘#’.
+Unauthorized access is strictly prohibited. #
+```
 j.	Save the running configuration to the startup configuration file.  
 k.	Set the clock on the router.  
+
 
 Note: Use the question mark (?) to help with the correct sequence of parameters needed to execute this command.
 	Close configuration window
@@ -81,12 +115,45 @@ Open configuration window
 a.	Console into the switch and enable privileged EXEC mode.
 b.	Enter configuration mode.
 c.	Assign a device name to the switch.
+```
+Switch(config)# hostname S1
+S1(config)#
+```
 d.	Disable DNS lookup to prevent the router from attempting to translate incorrectly entered commands as though they were host names.
+```
+S1(config)# no ip domain-lookup
+S1(config)#
+```
 e.	Assign class as the privileged EXEC encrypted password.
+```
+S1(config)# service password-encryption
+S1(config)#
+S1(config)# enable secret class
+S1(config)#
+```
 f.	Assign cisco as the console password and enable login.
+```
+S1(config)# line con 0
+S1(config-line)# password cisco
+S1(config-line)# login
+S1(config-line)# logging synchronous
+S1(config-line)# exit
+S1(config)#
+```
 g.	Assign cisco as the vty password and enable login.
+```
+S1(config)# line vty 0 4
+S1(config-line)# password cisco
+S1(config-line)# login
+S1(config-line)# end
+```
 h.	Encrypt the plaintext passwords.
 i.	Create a banner that warns anyone accessing the device that unauthorized access is prohibited.
+```
+S1(config)# banner motd #
+Enter Text message. End with the character ‘#’.
+Unauthorized access is strictly prohibited. #
+```
 j.	Set the clock on the switch.
 Note: Use the question mark (?) to help with the correct sequence of parameters needed to execute this command.
 k.	Copy the running configuration to the startup configuration.
@@ -98,11 +165,11 @@ Refer to the Addressing Table for PC host address information.
 In Part 2, you will create VLANs, as specified in the table above, on both switches. You will then assign the VLANs to the appropriate interface. The show vlan command is used to verify your configuration settings. Complete the following tasks on each switch.
 
 ### 2.1: Create VLANs on both switches.
-Open configuration window
-a.	Create and name the required VLANs on each switch from the table above.
-b.	Configure the management interface and default gateway on each switch using the IP address information in the Addressing Table. 
-c.	Assign all unused ports on both switches to the ParkingLot VLAN, configure them for static access mode, and administratively deactivate them.
-Note: The interface range command is helpful to accomplish this task with as few commands as necessary.
+Open configuration window  
+a.	Create and name the required VLANs on each switch from the table above.  
+b.	Configure the management interface and default gateway on each switch using the IP address information in the Addressing Table.   
+c.	Assign all unused ports on both switches to the ParkingLot VLAN, configure them for static access mode, and administratively deactivate them.  
+Note: The interface range command is helpful to accomplish this task with as few commands as necessary.  
 
 #### 2.2: Assign VLANs to the correct switch interfaces.
 a.	Assign used ports to the appropriate VLAN (specified in the VLAN table above) and configure them for static access mode. Be sure to do this on both switches
