@@ -96,7 +96,10 @@ R1(config-line)# password cisco
 R1(config-line)# login
 R1(config-line)# end
 ```
-h.	Encrypt the plaintext passwords.  
+h.	Encrypt the plaintext passwords. 
+```
+R1(config)# service password-encryption
+```
 i.	Create a banner that warns anyone accessing the device that unauthorized access is prohibited.  
 ```
 R1(config)# banner motd #
@@ -104,7 +107,9 @@ Enter Text message. End with the character ‘#’.
 Unauthorized access is strictly prohibited. #
 ```
 j.	Save the running configuration to the startup configuration file.  
+![](/Labworks/Lab_01/img/pic01.JPG "Basic settings")
 k.	Set the clock on the router.  
+![](/Labworks/Lab_01/img/pic02.JPG "Set clock")
 
 
 Note: Use the question mark (?) to help with the correct sequence of parameters needed to execute this command.
