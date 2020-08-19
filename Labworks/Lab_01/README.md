@@ -59,6 +59,7 @@ In Part 1, you will set up the network topology and configure basic settings on 
 
 #### 1.1. Cable the network as shown in the topology.
 Attach the devices as shown in the topology diagram, and cable as necessary.
+
 #### 1.2. Configure basic settings for the router.
 Open configuration window
 a. 	Console into the router and enable privileged EXEC mode.  
@@ -108,6 +109,7 @@ Unauthorized access is strictly prohibited. #
 ```
 j.	Save the running configuration to the startup configuration file.  
 ![](/Labworks/Lab_01/img/pic01.JPG "Basic settings")
+
 k.	Set the clock on the router.  
 ![](/Labworks/Lab_01/img/pic02.JPG "Set clock")
 
@@ -131,8 +133,6 @@ S1(config)#
 ```
 e.	Assign class as the privileged EXEC encrypted password.
 ```
-S1(config)# service password-encryption
-S1(config)#
 S1(config)# enable secret class
 S1(config)#
 ```
@@ -150,20 +150,31 @@ g.	Assign cisco as the vty password and enable login.
 S1(config)# line vty 0 4
 S1(config-line)# password cisco
 S1(config-line)# login
-S1(config-line)# end
+S1(config-line)# exit
 ```
 h.	Encrypt the plaintext passwords.
+```
+S1(config)# service password-encryption
+
+```
+
 i.	Create a banner that warns anyone accessing the device that unauthorized access is prohibited.
 ```
 S1(config)# banner motd #
 Enter Text message. End with the character ‘#’.
 Unauthorized access is strictly prohibited. #
+S1(config)# end
 ```
 j.	Set the clock on the switch.
-Note: Use the question mark (?) to help with the correct sequence of parameters needed to execute this command.
+```
+S1#clock set 15:48:00 19 aug 2020
+S1#
+```
+Note: Use the question mark (?) to help with the correct sequence of parameters needed to execute this command.  
 k.	Copy the running configuration to the startup configuration.
 Close configuration window
-Step 4: Configure PC hosts.
+
+#### 1.4: Configure PC hosts.
 Refer to the Addressing Table for PC host address information.
 
 ## 2: Create VLANs and Assign Switch Ports
