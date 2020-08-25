@@ -30,7 +30,7 @@
 |		|				|S2: F0/2-17, F0/19-24, G0/1-2 
 |8		|Native			|N/A
 
-Table of compliance of ports of the task and virtual environment
+	Table of compliance of ports of the task and virtual environment
 
 |Device	|Task Interface	|Lab Interface	|
 |:------|:--------------|:--------------|
