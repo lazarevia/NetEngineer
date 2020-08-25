@@ -30,6 +30,18 @@
 |		|				|S2: F0/2-17, F0/19-24, G0/1-2 
 |8		|Native			|N/A
 
+Table of compliance of ports of the task and virtual environment
+
+|Device	|Task Interface	|Lab Interface	|
+|:------|:--------------|:--------------|
+|R1		|G0/0/1			|e0/0			|
+|S1		|F0/1			|e0/1|
+|		|F0/5			|e0/3|
+|		|F0/6			|e1/3|
+|S2		|F0/1			|e0/1|
+|		|F0/18			|e1/3|
+
+
 
 ## Objectives
 1. Build the Network and Configure Basic Device Settings.
@@ -40,11 +52,7 @@
 
 
 #### Background / Scenario
-Modern switches use virtual local-area networks (VLANs) to provide segmentation services traditionally provided by routers in LAN configurations. VLANs address scalability, security, and network management. In general, VLANs make it easier to design a network to support the goals of an organization. Communication between VLANs requires a device operating at Layer 3 of the OSI model. Routers in VLAN topologies provide additional security and traffic flow management.  
-VLAN trunks are used to span VLANs across multiple devices. Trunks allow the traffic from multiple VLANS to travel over a single link, while keeping the VLAN identification and segmentation intact. A particular kind of inter-VLAN routing, called “Router-On-A-Stick”, uses a trunk from the router to the switch to enable all VLANs to pass to the router.  
-In this lab, you will create VLANs on both switches in the topology, assign VLANs to switch access ports, verify that VLANs are working as expected, create VLAN trunks between the two switches and between S1 and R1, and configure Inter-VLAN routing on R1 to allow hosts in different VLANs to communicate, regardless of which subnet the host resides.   
-Note: The routers used with CCNA hands-on labs are Cisco 4221 with Cisco IOS XE Release 16.9.4 (universalk9 image). The switches used in the labs are Cisco Catalyst 2960s with Cisco IOS Release 15.2(2) (lanbasek9 image). Other routers, switches, and Cisco IOS versions can be used. Depending on the model and Cisco IOS version, the commands available and the output produced might vary from what is shown in the labs.Refer to the Router Interface Summary Table at the end of the lab for the correct interface identifiers.  
-Note:Ensure that the routers and switches have been erased and have no startup configurations. If you are unsure, contact your instructor.  
+
 
 Required Resources
 •	1 Router (Cisco 4221 with Cisco IOS XE Release 16.9.4 universal image or comparable)
