@@ -174,6 +174,8 @@ Note: Use the question mark (?) to help with the correct sequence of parameters 
 k.	Copy the running configuration to the startup configuration.
 Close configuration window
 
+![](/Labworks/Lab_01/img/pic03.JPG "Basic settings for S2")
+
 #### 1.4: Configure PC hosts.
 Refer to the Addressing Table for PC host address information.
 
