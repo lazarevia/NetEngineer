@@ -51,16 +51,6 @@
 5. Verify Inter-VLAN Routing is working.
 
 
-#### Background / Scenario
-
-
-Required Resources
-•	1 Router (Cisco 4221 with Cisco IOS XE Release 16.9.4 universal image or comparable)
-•	2 Switches (Cisco 2960 with Cisco IOS Release 15.2(2) lanbasek9 image or comparable)
-•	2 PCs (Windows with a terminal emulation program, such as Tera Term)
-•	Console cables to configure the Cisco IOS devices via the console ports
-•	Ethernet cables as shown in the topology
-
 ## Instructions
 ### 1. Build the Network and Configure Basic Device Settings
 In Part 1, you will set up the network topology and configure basic settings on the PC hosts and switches.
@@ -130,56 +120,15 @@ Open configuration window
 a.	Console into the switch and enable privileged EXEC mode.
 b.	Enter configuration mode.
 c.	Assign a device name to the switch.
-```
-Switch(config)# hostname S1
-S1(config)#
-```
 d.	Disable DNS lookup to prevent the router from attempting to translate incorrectly entered commands as though they were host names.
-```
-S1(config)# no ip domain-lookup
-S1(config)#
-```
 e.	Assign class as the privileged EXEC encrypted password.
-```
-S1(config)# enable secret class
-S1(config)#
-```
 f.	Assign cisco as the console password and enable login.
-```
-S1(config)# line con 0
-S1(config-line)# password cisco
-S1(config-line)# login
-S1(config-line)# logging synchronous
-S1(config-line)# exit
-S1(config)#
-```
 g.	Assign cisco as the vty password and enable login.
-```
-S1(config)# line vty 0 4
-S1(config-line)# password cisco
-S1(config-line)# login
-S1(config-line)# exit
-```
 h.	Encrypt the plaintext passwords.
-```
-S1(config)# service password-encryption
-
-```
-
 i.	Create a banner that warns anyone accessing the device that unauthorized access is prohibited.
-```
-S1(config)# banner motd #
-Enter Text message. End with the character ‘#’.
-Unauthorized access is strictly prohibited. #
-S1(config)# end
-```
 j.	Set the clock on the switch.
-```
-S1#clock set 15:48:00 19 aug 2020
-S1#
-```
-Note: Use the question mark (?) to help with the correct sequence of parameters needed to execute this command.  
-k.	Copy the running configuration to the startup configuration.
+k.	Copy the running configuration to the startup configuration.  
+
 Close configuration window
 
 ![](/Labworks/Lab_01/img/pic03.JPG "Basic settings for S2")
