@@ -35,24 +35,28 @@
 |Device	|Task Interface	|Lab Interface	|
 |:------|:--------------|:--------------|
 |R1		|G0/0/1			|e0/0			|
+|----|----|----
 |S1		|F0/1			|e0/1|
 |		|F0/5			|e0/3|
 |		|F0/6			|e1/3|
+|----|----|----
 |S2		|F0/1			|e0/1|
 |		|F0/18			|e1/3|
 
 
 
 ## Objectives
-1. Build the Network and Configure Basic Device Settings.
-2. Create VLANs and Assign Switch Ports.
+[1: Build the Network and Configure Basic Device Settings]
+
+[2: Create VLANs and Assign Switch Ports]
+
 3. Configure an 802.1Q Trunk between the Switches.
 4. Configure Inter-VLAN Routing on the Router.
 5. Verify Inter-VLAN Routing is working.
 
 
 ## Instructions
-### 1. Build the Network and Configure Basic Device Settings
+### 1: Build the Network and Configure Basic Device Settings
 In Part 1, you will set up the network topology and configure basic settings on the PC hosts and switches.
 
 #### 1.1. Cable the network as shown in the topology.
@@ -144,11 +148,11 @@ Open configuration window
 a.	Create and name the required VLANs on each switch from the table above.  
 b.	Configure the management interface and default gateway on each switch using the IP address information in the Addressing Table.   
 c.	Assign all unused ports on both switches to the ParkingLot VLAN, configure them for static access mode, and administratively deactivate them.  
-Note: The interface range command is helpful to accomplish this task with as few commands as necessary.  
+***Note:*** The interface range command is helpful to accomplish this task with as few commands as necessary.  
 
 #### 2.2: Assign VLANs to the correct switch interfaces.
 a.	Assign used ports to the appropriate VLAN (specified in the VLAN table above) and configure them for static access mode. Be sure to do this on both switches
-b.	Issue the show vlanbrief command and verify that the VLANs are assigned to the correct interfaces.
+b.	Issue the show __vlanbrief__ command and verify that the VLANs are assigned to the correct interfaces.
 Close configuration window
 
 ### 3: Configure an 802.1Q Trunk Between the Switches
