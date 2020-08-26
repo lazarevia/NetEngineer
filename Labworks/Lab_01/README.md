@@ -46,17 +46,15 @@
 
 
 ## Objectives
-[1: Build the Network and Configure Basic Device Settings]
-
-[2: Create VLANs and Assign Switch Ports]
-
+1. Build the Network and Configure Basic Device Settings.
+2. Create VLANs and Assign Switch Ports.
 3. Configure an 802.1Q Trunk between the Switches.
 4. Configure Inter-VLAN Routing on the Router.
 5. Verify Inter-VLAN Routing is working.
 
 
 ## Instructions
-### 1: Build the Network and Configure Basic Device Settings
+### 1. Build the Network and Configure Basic Device Settings
 In Part 1, you will set up the network topology and configure basic settings on the PC hosts and switches.
 
 #### 1.1. Cable the network as shown in the topology.
@@ -76,14 +74,14 @@ d.	Disable DNS lookup to prevent the router from attempting to translate incorre
 R1(config)# no ip domain-lookup
 R1(config)#
 ```
-e.	Assign class as the privileged EXEC encrypted password.  
+e.	Assign ___class___ as the privileged EXEC encrypted password.  
 ```
 R1(config)# service password-encryption
 R1(config)#
 R1(config)# enable secret class
 R1(config)#
 ```
-f.	Assign cisco as the console password and enable login.  
+f.	Assign ___cisco___ as the console password and enable login.  
 ```
 R1(config)# line con 0
 R1(config-line)# password cisco
@@ -146,17 +144,38 @@ In Part 2, you will create VLANs, as specified in the table above, on both switc
 ### 2.1: Create VLANs on both switches.
 Open configuration window  
 a.	Create and name the required VLANs on each switch from the table above.  
+![](/Labworks/Lab_01/img/pic04.JPG "Creating and naming VLANs")
 b.	Configure the management interface and default gateway on each switch using the IP address information in the Addressing Table.   
+```
+S1(config)# interface vlan 99
+S1(config-if)# ip address 192.168.99.1 255.255.255.0
+S1(config-if)# no shutdown
+```
+Default gateway
+```
+S1(config)# ip route default 192.168.3.1
+```
 c.	Assign all unused ports on both switches to the ParkingLot VLAN, configure them for static access mode, and administratively deactivate them.  
 ***Note:*** The interface range command is helpful to accomplish this task with as few commands as necessary.  
 
 #### 2.2: Assign VLANs to the correct switch interfaces.
 a.	Assign used ports to the appropriate VLAN (specified in the VLAN table above) and configure them for static access mode. Be sure to do this on both switches
+
+```
+S1(config)# interface f0/6
+S1(config-if)# switchport mode access
+S1(config-if)# switchport access vlan 10
+```
 b.	Issue the show __vlanbrief__ command and verify that the VLANs are assigned to the correct interfaces.
 Close configuration window
 
 ### 3: Configure an 802.1Q Trunk Between the Switches
 In Part 3, you will manually configure interface F0/1 as a trunk.
+```
+S1(config)# interface f0/1
+S1(config-if)# switchport mode trunk
+S1(config-if)# switchport access vlan 3
+```
 
 #### 3.1: Manually configure trunk interface F0/1.
 Open configuration window
