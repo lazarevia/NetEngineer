@@ -147,14 +147,15 @@ a.	Create and name the required VLANs on each switch from the table above.
 ![](/Labworks/Lab_01/img/pic04.JPG "Creating and naming VLANs")
 b.	Configure the management interface and default gateway on each switch using the IP address information in the Addressing Table.   
 ```
-S1(config)# interface vlan 99
-S1(config-if)# ip address 192.168.99.1 255.255.255.0
+S1(config)# interface vlan 3
+S1(config-if)# ip address 192.168.3.11 255.255.255.0
 S1(config-if)# no shutdown
 ```
 Default gateway
 ```
-S1(config)# ip route default 192.168.3.1
+S1(config)# ip default-gateway  192.168.3.1
 ```
+![](/Labworks/Lab_01/img/pic05.JPG "IP address and default gateway")
 c.	Assign all unused ports on both switches to the ParkingLot VLAN, configure them for static access mode, and administratively deactivate them.  
 ***Note:*** The interface range command is helpful to accomplish this task with as few commands as necessary.  
 
@@ -166,7 +167,7 @@ S1(config)# interface f0/6
 S1(config-if)# switchport mode access
 S1(config-if)# switchport access vlan 10
 ```
-b.	Issue the show __vlanbrief__ command and verify that the VLANs are assigned to the correct interfaces.
+b.	Issue the __show vlan brief__ command and verify that the VLANs are assigned to the correct interfaces.
 Close configuration window
 
 ### 3: Configure an 802.1Q Trunk Between the Switches
