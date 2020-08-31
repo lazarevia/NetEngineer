@@ -20,6 +20,7 @@
 
 	VLAN Table
 	
+
 |VLAN 	|Name 			|Interface Assigned
 |:------|:--------------|:-----------------
 |3 		|Management		|S1: VLAN 3
@@ -165,23 +166,18 @@ c.	Assign all unused ports on both switches to the ParkingLot VLAN, configure th
 |Device	|Interface	|
 |:------|:--------------|
 |S1		|e0/0|
-|		|e0/1|
 |		|e0/2|
-|		|e0/3|
 |		|e1/0|
 |		|e1/1|
 |		|e1/2|
-|		|e1/3|
-|------|--------------|
 |S2		|e0/0|
-|		|e0/1|
 |		|e0/2|
 |		|e0/3|
 |		|e1/0|
 |		|e1/1|
 |		|e1/2|
-|		|e1/3|
 
+![](/Labworks/Lab_01/img/pic06.jpg "S1 unused ports")
 
 ***Note:*** The interface range command is helpful to accomplish this task with as few commands as necessary.  
 
