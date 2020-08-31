@@ -36,11 +36,9 @@
 |Device	|Task Interface	|Lab Interface	|
 |:------|:--------------|:--------------|
 |R1		|G0/0/1			|e0/0			|
-|----|----|----
 |S1		|F0/1			|e0/1|
 |		|F0/5			|e0/3|
 |		|F0/6			|e1/3|
-|----|----|----
 |S2		|F0/1			|e0/1|
 |		|F0/18			|e1/3|
 
@@ -177,9 +175,13 @@ c.	Assign all unused ports on both switches to the ParkingLot VLAN, configure th
 |		|e1/1|
 |		|e1/2|
 
+***Note:*** The interface range command is helpful to accomplish this task with as few commands as necessary.  
+
+	S1 unused ports
 ![](/Labworks/Lab_01/img/pic06.jpg "S1 unused ports")
 
-***Note:*** The interface range command is helpful to accomplish this task with as few commands as necessary.  
+	S2 unused ports
+![](/Labworks/Lab_01/img/pic07.jpg "S2 unused ports")
 
 #### 2.2: Assign VLANs to the correct switch interfaces.
 a.	Assign used ports to the appropriate VLAN (specified in the VLAN table above) and configure them for static access mode. Be sure to do this on both switches
@@ -187,7 +189,7 @@ a.	Assign used ports to the appropriate VLAN (specified in the VLAN table above)
 ```
 S1(config)# interface f0/6
 S1(config-if)# switchport mode access
-S1(config-if)# switchport access vlan 10
+S1(config-if)# switchport access vlan 7
 ```
 b.	Issue the __show vlan brief__ command and verify that the VLANs are assigned to the correct interfaces.
 Close configuration window
@@ -212,9 +214,10 @@ a.	Configure the F0/5 on S1 with the same trunk parameters as F0/1. This is the 
 b.	Save the running configuration to the startup configuration file on S1 and S2.
 c.	Issue the show interfaces trunk command to verify trunking.
 
-	Question
+**Question**
 :	Why does F0/5 not appear in the list of trunks?
 Type your answers here.
+
 Close configuration window
 
 
@@ -234,7 +237,7 @@ c.	Ping from PC-A to S2
 #### 5.2: Complete the following test from PC-B.
 From the command prompt on PC-B, issue the tracert command to the address of PC-A.
 
-	Question
+**Question**
 :	What intermediate IP addresses are shown in the results?
 Type your answers here.
 
