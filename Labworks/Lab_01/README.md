@@ -145,6 +145,7 @@ In Part 2, you will create VLANs, as specified in the table above, on both switc
 Open configuration window  
 a.	Create and name the required VLANs on each switch from the table above.  
 ![](/Labworks/Lab_01/img/pic04.JPG "Creating and naming VLANs")
+
 b.	Configure the management interface and default gateway on each switch using the IP address information in the Addressing Table.   
 ```
 S1(config)# interface vlan 3
@@ -156,7 +157,32 @@ Default gateway
 S1(config)# ip default-gateway  192.168.3.1
 ```
 ![](/Labworks/Lab_01/img/pic05.JPG "IP address and default gateway")
+
 c.	Assign all unused ports on both switches to the ParkingLot VLAN, configure them for static access mode, and administratively deactivate them.  
+	
+	Unused ports
+
+|Device	|Interface	|
+|:------|:--------------|
+|S1		|e0/0|
+|		|e0/1|
+|		|e0/2|
+|		|e0/3|
+|		|e1/0|
+|		|e1/1|
+|		|e1/2|
+|		|e1/3|
+|------|--------------|
+|S2		|e0/0|
+|		|e0/1|
+|		|e0/2|
+|		|e0/3|
+|		|e1/0|
+|		|e1/1|
+|		|e1/2|
+|		|e1/3|
+
+
 ***Note:*** The interface range command is helpful to accomplish this task with as few commands as necessary.  
 
 #### 2.2: Assign VLANs to the correct switch interfaces.
