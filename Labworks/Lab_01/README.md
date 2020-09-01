@@ -193,11 +193,14 @@ S1(config-if)# switchport access vlan 7
 a.	Assign used ports to the appropriate VLAN (specified in the VLAN table above) and configure them for static access mode. Be sure to do this on both switches
 
 ```
-S1(config)# interface e1/3
-S1(config-if)# switchport mode access
-S1(config-if)# switchport access vlan 7
+S2(config)# interface e1/3
+S2(config-if)# switchport mode access
+S2(config-if)# switchport access vlan 3
 ```
 b.	Issue the __show vlan brief__ command and verify that the VLANs are assigned to the correct interfaces.
+![](/Labworks/Lab_01/img/pic08.jpg "S1 used ports")
+
+![](/Labworks/Lab_01/img/pic09.jpg "S2 used ports")
 Close configuration window
 
 ### 3: Configure an 802.1Q Trunk Between the Switches
