@@ -210,7 +210,7 @@ In Part 3, you will manually configure interface F0/1 as a trunk.
 
 
 #### 3.1: Manually configure trunk interface F0/1.
-Open configuration window
+__Open configuration window__
 a.	Change the switchport mode on interface F0/1 to force trunking. Make sure to do this on both switches.
 ```
 S1(config)# interface e0/1
@@ -226,7 +226,7 @@ c.	As another part of trunk configuration, specify that VLANs 3, 4, and 8 are on
 ```
 S1(config-if)# switchport trunk allowed vlan 3,4,8
 ```
-d.	Issue the __show interfaces trunk__ command to verify trunking ports, the Native VLAN and allowed VLANs across the trunk.
+d.	Issue the ___show interfaces trunk___ command to verify trunking ports, the Native VLAN and allowed VLANs across the trunk.
 
 ![](/Labworks/Lab_01/img/pic08_S1.jpg "S1 show interfaces trunk")
 
@@ -237,11 +237,13 @@ a.	Configure the F0/5 on S1 with the same trunk parameters as F0/1. This is the 
 b.	Save the running configuration to the startup configuration file on S1 and S2.
 c.	Issue the show interfaces trunk command to verify trunking.
 
-**Question**
-:	Why does F0/5 not appear in the list of trunks?
-Type your answers here.
+![](/Labworks/Lab_01/img/pic09_S1.jpg "S1 show interfaces trunk")
 
-Close configuration window
+
+**Question:** Why does F0/5 (e0/3) not appear in the list of trunks?  
+**Answer:** We dont see this interface because G0/0/1 (e0/0) on a router is administratively down.
+
+__Close configuration window__
 
 
 #### 4: Configure Inter-VLAN Routing on the Router
