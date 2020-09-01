@@ -155,7 +155,9 @@ Default gateway
 ```
 S1(config)# ip default-gateway  192.168.3.1
 ```
-![](/Labworks/Lab_01/img/pic05.JPG "IP address and default gateway")
+![](/Labworks/Lab_01/img/pic05_S1.jpg "S1: IP address and default gateway")
+
+![](/Labworks/Lab_01/img/pic05_S2.jpg "S2: IP address and default gateway")
 
 c.	Assign all unused ports on both switches to the ParkingLot VLAN, configure them for static access mode, and administratively deactivate them.  
 	
