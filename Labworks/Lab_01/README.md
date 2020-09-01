@@ -177,6 +177,12 @@ c.	Assign all unused ports on both switches to the ParkingLot VLAN, configure th
 
 ***Note:*** The interface range command is helpful to accomplish this task with as few commands as necessary.  
 
+```
+S1(config)# interface range {range}
+S1(config-if)# switchport mode access
+S1(config-if)# switchport access vlan 7
+```
+
 	S1 unused ports
 ![](/Labworks/Lab_01/img/pic06.jpg "S1 unused ports")
 
@@ -187,7 +193,7 @@ c.	Assign all unused ports on both switches to the ParkingLot VLAN, configure th
 a.	Assign used ports to the appropriate VLAN (specified in the VLAN table above) and configure them for static access mode. Be sure to do this on both switches
 
 ```
-S1(config)# interface f0/6
+S1(config)# interface e1/3
 S1(config-if)# switchport mode access
 S1(config-if)# switchport access vlan 7
 ```
