@@ -60,7 +60,8 @@ In Part 1, you will set up the network topology and configure basic settings on 
 Attach the devices as shown in the topology diagram, and cable as necessary.
 
 #### 1.2. Configure basic settings for the router.
-Open configuration window
+
+__Open configuration window__  
 a. 	Console into the router and enable privileged EXEC mode.  
 b.	Enter configuration mode.  
 c.	Assign a device name to the router.  
@@ -110,14 +111,12 @@ j.	Save the running configuration to the startup configuration file.
 ![](/Labworks/Lab_01/img/pic01.JPG "Basic settings")
 
 k.	Set the clock on the router.  
-![](/Labworks/Lab_01/img/pic02.JPG "Set clock")
-
-
-Note: Use the question mark (?) to help with the correct sequence of parameters needed to execute this command.
-	Close configuration window
+![](/Labworks/Lab_01/img/pic02.JPG "Set clock")  
+__Close configuration window__
 
 #### 1.3. Configure basic settings for each switch.
-Open configuration window
+
+__Open configuration window__  
 a.	Console into the switch and enable privileged EXEC mode.
 b.	Enter configuration mode.
 c.	Assign a device name to the switch.
@@ -129,8 +128,7 @@ h.	Encrypt the plaintext passwords.
 i.	Create a banner that warns anyone accessing the device that unauthorized access is prohibited.
 j.	Set the clock on the switch.
 k.	Copy the running configuration to the startup configuration.  
-
-Close configuration window
+__Close configuration window__
 
 ![](/Labworks/Lab_01/img/pic03.JPG "Basic settings for S2")
 
