@@ -186,10 +186,10 @@ S1(config-if)# switchport access vlan 7
 ```
 
 	S1 unused ports
-![](/Labworks/Lab_01/img/pic06.jpg "S1 unused ports")
+![](/Labworks/Lab_01/img/pic06_S1.jpg "S1 unused ports")
 
 	S2 unused ports
-![](/Labworks/Lab_01/img/pic07.jpg "S2 unused ports")
+![](/Labworks/Lab_01/img/pic06_S2.jpg "S2 unused ports")
 
 #### 2.2: Assign VLANs to the correct switch interfaces.
 a.	Assign used ports to the appropriate VLAN (specified in the VLAN table above) and configure them for static access mode. Be sure to do this on both switches
@@ -200,25 +200,37 @@ S2(config-if)# switchport mode access
 S2(config-if)# switchport access vlan 3
 ```
 b.	Issue the __show vlan brief__ command and verify that the VLANs are assigned to the correct interfaces.
-![](/Labworks/Lab_01/img/pic08.jpg "S1 used ports")
+![](/Labworks/Lab_01/img/pic07_S1.jpg "S1 used ports")
 
-![](/Labworks/Lab_01/img/pic09.jpg "S2 used ports")
+![](/Labworks/Lab_01/img/pic07_S2.jpg "S2 used ports")
 Close configuration window
 
 ### 3: Configure an 802.1Q Trunk Between the Switches
 In Part 3, you will manually configure interface F0/1 as a trunk.
-```
-S1(config)# interface f0/1
-S1(config-if)# switchport mode trunk
-S1(config-if)# switchport access vlan 3
-```
+
 
 #### 3.1: Manually configure trunk interface F0/1.
 Open configuration window
 a.	Change the switchport mode on interface F0/1 to force trunking. Make sure to do this on both switches.
+```
+S1(config)# interface e0/1
+S1(config-if)# switchport trunk encapsulation dot1q
+S1(config-if)# switchport mode trunk
+```
 b.	As a part of the trunk configuration, set the native VLAN to 8 on both switches. You may see error messages temporarily while the two interfaces are configured for different native VLANs.
+
+```
+S1(config-if)# switchport trunk native vlan 8
+```
 c.	As another part of trunk configuration, specify that VLANs 3, 4, and 8 are only allowed to cross the trunk.
-d.	Issue the show interfaces trunk command to verify trunking ports, the Native VLAN and allowed VLANs across the trunk.
+```
+S1(config-if)# switchport trunk allowed vlan 3,4,8
+```
+d.	Issue the __show interfaces trunk__ command to verify trunking ports, the Native VLAN and allowed VLANs across the trunk.
+
+![](/Labworks/Lab_01/img/pic08_S1.jpg "S1 show interfaces trunk")
+
+![](/Labworks/Lab_01/img/pic08_S2.jpg "S2 show interfaces trunk")
 
 #### 3.2: Manually configure S1’s trunk interface F0/5
 a.	Configure the F0/5 on S1 with the same trunk parameters as F0/1. This is the trunk to the router.
