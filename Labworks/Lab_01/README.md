@@ -118,16 +118,16 @@ __Close configuration window__
 
 __Open configuration window__  
 
-a.	Console into the switch and enable privileged EXEC mode.
-b.	Enter configuration mode.
-c.	Assign a device name to the switch.
-d.	Disable DNS lookup to prevent the router from attempting to translate incorrectly entered commands as though they were host names.
-e.	Assign class as the privileged EXEC encrypted password.
-f.	Assign cisco as the console password and enable login.
-g.	Assign cisco as the vty password and enable login.
-h.	Encrypt the plaintext passwords.
-i.	Create a banner that warns anyone accessing the device that unauthorized access is prohibited.
-j.	Set the clock on the switch.
+a.	Console into the switch and enable privileged EXEC mode.  
+b.	Enter configuration mode.  
+c.	Assign a device name to the switch.  
+d.	Disable DNS lookup to prevent the router from attempting to translate incorrectly entered commands as though they were host names.  
+e.	Assign class as the privileged EXEC encrypted password.  
+f.	Assign cisco as the console password and enable login.  
+g.	Assign cisco as the vty password and enable login.  
+h.	Encrypt the plaintext passwords.  
+i.	Create a banner that warns anyone accessing the device that unauthorized access is prohibited.  
+j.	Set the clock on the switch.  
 k.	Copy the running configuration to the startup configuration.  
 
 __Close configuration window__
