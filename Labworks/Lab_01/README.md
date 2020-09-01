@@ -199,7 +199,7 @@ S2(config)# interface e1/3
 S2(config-if)# switchport mode access
 S2(config-if)# switchport access vlan 3
 ```
-b.	Issue the __show vlan brief__ command and verify that the VLANs are assigned to the correct interfaces.
+b.	Issue the ___show vlan brief___ command and verify that the VLANs are assigned to the correct interfaces.
 ![](/Labworks/Lab_01/img/pic07_S1.jpg "S1 used ports")
 
 ![](/Labworks/Lab_01/img/pic07_S2.jpg "S2 used ports")
@@ -235,7 +235,7 @@ d.	Issue the ___show interfaces trunk___ command to verify trunking ports, the N
 #### 3.2: Manually configure S1’s trunk interface F0/5
 a.	Configure the F0/5 on S1 with the same trunk parameters as F0/1. This is the trunk to the router.
 b.	Save the running configuration to the startup configuration file on S1 and S2.
-c.	Issue the show interfaces trunk command to verify trunking.
+c.	Issue the ___show interfaces trunk___ command to verify trunking.
 
 ![](/Labworks/Lab_01/img/pic09_S1.jpg "S1 show interfaces trunk")
 
@@ -250,7 +250,7 @@ __Close configuration window__
 Open configuration window
 a.	Activate interface G0/0/1 on the router.
 b.	Configure sub-interfaces for each VLAN as specified in the IP addressing table. All sub-interfaces use 802.1Q encapsulation. Ensure the sub-interface for the native VLAN does not have an IP address assigned. Include a description for each sub-interface.
-c.	Use the show ip interface brief command to verify the sub-interfaces are operational.
+c.	Use the ___show ip interface brief___ command to verify the sub-interfaces are operational.
 Close configuration window
 
 ### 5: Verify Inter-VLAN Routing is Working
