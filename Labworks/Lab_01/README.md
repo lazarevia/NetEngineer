@@ -117,6 +117,7 @@ __Close configuration window__
 #### 1.3. Configure basic settings for each switch.
 
 __Open configuration window__  
+
 a.	Console into the switch and enable privileged EXEC mode.
 b.	Enter configuration mode.
 c.	Assign a device name to the switch.
@@ -128,6 +129,7 @@ h.	Encrypt the plaintext passwords.
 i.	Create a banner that warns anyone accessing the device that unauthorized access is prohibited.
 j.	Set the clock on the switch.
 k.	Copy the running configuration to the startup configuration.  
+
 __Close configuration window__
 
 ![](/Labworks/Lab_01/img/pic03.JPG "Basic settings for S2")
