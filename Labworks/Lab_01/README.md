@@ -203,14 +203,14 @@ b.	Issue the __show vlan brief__ command and verify that the VLANs are assigned 
 ![](/Labworks/Lab_01/img/pic07_S1.jpg "S1 used ports")
 
 ![](/Labworks/Lab_01/img/pic07_S2.jpg "S2 used ports")
-Close configuration window
+
+__Close configuration window__
 
 ### 3: Configure an 802.1Q Trunk Between the Switches
 In Part 3, you will manually configure interface F0/1 as a trunk.
 
-
 #### 3.1: Manually configure trunk interface F0/1.
-__Open configuration window__
+__Open configuration window__  
 a.	Change the switchport mode on interface F0/1 to force trunking. Make sure to do this on both switches.
 ```
 S1(config)# interface e0/1
