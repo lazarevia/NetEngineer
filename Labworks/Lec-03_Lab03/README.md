@@ -2,7 +2,7 @@
 	
 	Топология
 	
- ![](/Labworks/Lec-03_Lab03/img/scheme.png "Топология")
+ ![](/Labworks/Lec-03_Lab03/img/scheme.jpg "Топология")
 
 Таблица адресации
 	
