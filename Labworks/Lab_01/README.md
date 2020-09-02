@@ -292,20 +292,10 @@ c.	Ping from PC-A to S2
 #### 5.2: Complete the following test from PC-B.
 From the command prompt on PC-B, issue the tracert command to the address of PC-A.
 
-**Question**
-:	What intermediate IP addresses are shown in the results?
-Type your answers here.
+**Question:**  
+What intermediate IP addresses are shown in the results?
+**Answer:** Type your answers here.
 
-Router Interface Summary Table
-|Router Model	|Ethernet Interface #1		|Ethernet Interface #2		|Serial Interface #1	|Serial Interface #2
-|:				|:							|:							|:						|:
-|1800			|Fast Ethernet 0/0 (F0/0) 	|Fast Ethernet 0/1 (F0/1) 	|Serial 0/0/0 (S0/0/0)	|Serial 0/0/1 (S0/0/1)
-|1900			|Gigabit Ethernet 0/0 (G0/0)|Gigabit Ethernet 0/1 (G0/1)|Serial 0/0/0 (S0/0/0)	|Serial 0/0/1 (S0/0/1)
-|2801			|Fast Ethernet 0/0 (F0/0)	|Fast Ethernet 0/1 (F0/1)	|Serial 0/1/0 (S0/1/0)	|Serial 0/1/1 (S0/1/1)
-2811	Fast Ethernet 0/0 (F0/0)	Fast Ethernet 0/1 (F0/1)	Serial 0/0/0 (S0/0/0)	Serial 0/0/1 (S0/0/1)
-2900	Gigabit Ethernet 0/0 (G0/0)	Gigabit Ethernet 0/1 (G0/1)	Serial 0/0/0 (S0/0/0)	Serial 0/0/1 (S0/0/1)
-4221	Gigabit Ethernet 0/0/0 (G0/0/0)	Gigabit Ethernet 0/0/1 (G0/0/1)	Serial 0/1/0 (S0/1/0)	Serial 0/1/1 (S0/1/1)
-4300	Gigabit Ethernet 0/0/0 (G0/0/0)	Gigabit Ethernet 0/0/1 (G0/0/1)	Serial 0/1/0 (S0/1/0)	Serial 0/1/1 (S0/1/1)
 
 Note: To find out how the router is configured, look at the interfaces to identify the type of router and how many interfaces the router has. There is no way to effectively list all the combinations of configurations for each router class. This table includes identifiers for the possible combinations of Ethernet and Serial interfaces in the device. The table does not include any other type of interface, even though a specific router may contain one. An example of this might be an ISDN BRI interface. The string in parenthesis is the legal abbreviation that can be used in Cisco IOS commands to represent the interface.
 End of Document
