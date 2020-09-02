@@ -299,7 +299,8 @@ From the command prompt on PC-B, issue the tracert command to the address of PC-
 
 **Question:**  
 What intermediate IP addresses are shown in the results?  
-**Answer:** Type your answers here.
+**Answer:** 
+We can see R1 IP-address in first hop of trace command because PC-A is placed in a different VLAN then PC-B.
 
 
 End of Document
