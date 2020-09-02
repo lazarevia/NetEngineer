@@ -285,21 +285,21 @@ __Close configuration window__
 #### 5.1: Complete the following tests from PC-A. All should be successful.
 Note: You may have to disable the PC firewall for pings to be successful.  
 a.	Ping from PC-A to its default gateway.  
-![](/Labworks/Lab_01/img/pic12_PC-A_1.jpg "PC-A to gw")
+![](/Labworks/Lab_01/img/pic12_PCA_1.jpg "PC-A to gw")
 
 b.	Ping from PC-A to PC-B  
-![](/Labworks/Lab_01/img/pic12_PC-A_2.jpg "PC-A to PC-B")
+![](/Labworks/Lab_01/img/pic12_PCA_2.jpg "PC-A to PC-B")
 
 c.	Ping from PC-A to S2  
-![](/Labworks/Lab_01/img/pic12_PC-A_3.jpg "PC-A to S2") 
+![](/Labworks/Lab_01/img/pic12_PCA_3.jpg "PC-A to S2") 
 
 #### 5.2: Complete the following test from PC-B.
 From the command prompt on PC-B, issue the tracert command to the address of PC-A.
+![](/Labworks/Lab_01/img/pic13_PCB.jpg "PC-B trace to PC-A") 
 
 **Question:**  
 What intermediate IP addresses are shown in the results?
 **Answer:** Type your answers here.
 
 
-Note: To find out how the router is configured, look at the interfaces to identify the type of router and how many interfaces the router has. There is no way to effectively list all the combinations of configurations for each router class. This table includes identifiers for the possible combinations of Ethernet and Serial interfaces in the device. The table does not include any other type of interface, even though a specific router may contain one. An example of this might be an ISDN BRI interface. The string in parenthesis is the legal abbreviation that can be used in Cisco IOS commands to represent the interface.
 End of Document
