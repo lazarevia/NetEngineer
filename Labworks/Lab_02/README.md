@@ -2,7 +2,7 @@
 	
 	Топология
 	
- ![](/Labworks/Lec-03_Lab03/img/scheme.jpg "Топология")
+ ![](/Labworks/Lab_02/img/scheme.jpg "Топология")
 
 Таблица адресации
 	
@@ -80,7 +80,7 @@ S1(config)# banner motd #
 Enter Text message. End with the character ‘#’.
 Unauthorized access is strictly prohibited. #
 ```
-![](/Labworks/Lec-03_Lab03/img/pic1.jpg "Результат выполенения")
+![](/Labworks/Lab_02/img/pic1.jpg "Результат выполенения")
 
 g.	Задайте IP-адрес, указанный в таблице адресации для VLAN 1 на всех коммутаторах.
 ```
@@ -100,7 +100,7 @@ S1(config-if)#exit
 S1(config)#
 ```
 
-![](/Labworks/Lec-03_Lab03/img/pic4.jpg "")
+![](/Labworks/Lab_02/img/pic4.jpg "")
 
 h.	Скопируйте текущую конфигурацию в файл загрузочной конфигурации.
 Командами `write memory` или `copy running-config startup-config`
@@ -114,13 +114,13 @@ h.	Скопируйте текущую конфигурацию в файл за
 
 Ответ:
 Успешно
-![](/Labworks/Lec-03_Lab03/img/pic4_S1.jpg "")
+![](/Labworks/Lab_02/img/pic4_S1.jpg "")
 
 Успешно ли выполняется эхо-запрос от коммутатора S2 на коммутатор S3?
 
 Ответ:
 Успешно
-![](/Labworks/Lec-03_Lab03/img/pic4_S2.jpg "")
+![](/Labworks/Lab_02/img/pic4_S2.jpg "")
 
 Выполняйте отладку до тех пор, пока ответы на все вопросы не будут положительными.
 
@@ -138,11 +138,11 @@ S1(config-if-range)#shutdown
 S1(config-if-range)#end
 S1#
 ```
-![](/Labworks/Lec-03_Lab03/img/pic5_S1.jpg "выключение портов на S1")
+![](/Labworks/Lab_02/img/pic5_S1.jpg "выключение портов на S1")
 
-![](/Labworks/Lec-03_Lab03/img/pic5_S2.jpg "выключение портов на S2")
+![](/Labworks/Lab_02/img/pic5_S2.jpg "выключение портов на S2")
 
-![](/Labworks/Lec-03_Lab03/img/pic5_S3.jpg "выключение портов на S3")
+![](/Labworks/Lab_02/img/pic5_S3.jpg "выключение портов на S3")
 
 #### 2.2:	Настройте подключенные порты в качестве транковых.
 
@@ -173,7 +173,7 @@ S3(config)#
 
 В схему ниже запишите роль и состояние (Sts) активных портов на каждом коммутаторе в топологии.
 
-![](/Labworks/Lec-03_Lab03/img/pic6_Role_STS.jpg "Схема - роль и состояние портов")
+![](/Labworks/Lab_02/img/pic6_Role_STS.jpg "Схема - роль и состояние портов")
 
 __С учетом выходных данных, поступающих с коммутаторов, ответьте на следующие вопросы.__
 
@@ -231,7 +231,7 @@ Interface           Role Sts Cost      Prio.Nbr Type
 Et0/1               Root FWD 100       128.2    P2p
 Et0/3               Desg FWD 100       128.4    P2p
 ```
-![](/Labworks/Lec-03_Lab03/img/pic6_S2.jpg "S2#sh spanning-tree")
+![](/Labworks/Lab_02/img/pic6_S2.jpg "S2#sh spanning-tree")
 
 **коммутатор S3**
 ```
@@ -255,7 +255,7 @@ Interface           Role Sts Cost      Prio.Nbr Type
 Et0/1               Altn BLK 100       128.2    P2p
 Et0/3               Root FWD 100       128.4    P2p
 ```
-![](/Labworks/Lec-03_Lab03/img/pic6_S3.jpg "S3#sh spanning-tree")
+![](/Labworks/Lab_02/img/pic6_S3.jpg "S3#sh spanning-tree")
 
 #### 3.2:	Измените стоимость порта.
 Помимо заблокированного порта, единственным активным портом на этом коммутаторе является порт, 
@@ -292,7 +292,7 @@ Et0/1               Root FWD 100       128.2    P2p
 Et0/3               Altn BLK 100       128.4    P2p
 ```
 
-![](/Labworks/Lec-03_Lab03/img/pic7_S2.jpg "S2#sh spanning-tree")
+![](/Labworks/Lab_02/img/pic7_S2.jpg "S2#sh spanning-tree")
 
 **коммутатор S3**
 ```
@@ -317,7 +317,7 @@ Et0/1               Desg FWD 100       128.2    P2p
 Et0/3               Root FWD 18        128.4    P2p
 ```
 
-![](/Labworks/Lec-03_Lab03/img/pic7_S3.jpg "S3#sh spanning-tree")
+![](/Labworks/Lab_02/img/pic7_S3.jpg "S3#sh spanning-tree")
 
 **Вопрос:** Почему протокол spanning-tree заменяет ранее заблокированный порт на назначенный порт и блокирует порт, 
 который был назначенным портом на другом коммутаторе?  
@@ -368,7 +368,7 @@ Et0/2               Desg FWD 100       128.3    P2p
 Et0/3               Desg FWD 100       128.4    P2p
 ```
 
-![](/Labworks/Lec-03_Lab03/img/pic8_S2.jpg "S2#sh spanning-tree")
+![](/Labworks/Lab_02/img/pic8_S2.jpg "S2#sh spanning-tree")
 
 **На коммутаторе S3**
 ```
@@ -394,7 +394,7 @@ Et0/1               Altn BLK 100       128.2    P2p
 Et0/2               Root FWD 100       128.3    P2p
 Et0/3               Altn BLK 100       128.4    P2p
 ```
-![](/Labworks/Lec-03_Lab03/img/pic8_S3.jpg "S3#sh spanning-tree")
+![](/Labworks/Lab_02/img/pic8_S3.jpg "S3#sh spanning-tree")
 
 
 
