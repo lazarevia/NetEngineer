@@ -146,7 +146,8 @@ In Part 2, you will create VLANs, as specified in the table above, on both switc
 ### 2.1: Create VLANs on both switches.
 Open configuration window  
 a.	Create and name the required VLANs on each switch from the table above.  
-![](/Labworks/Lab_01/img/pic04.JPG "Creating and naming VLANs")
+![](/Labworks/Lab_01/img/pic04_S1.jpg "Creating and naming VLANs")  
+![](/Labworks/Lab_01/img/pic04_S2.jpg "Creating and naming VLANs")
 
 b.	Configure the management interface and default gateway on each switch using the IP address information in the Addressing Table.   
 ```
