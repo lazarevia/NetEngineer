@@ -146,8 +146,8 @@ In Part 2, you will create VLANs, as specified in the table above, on both switc
 ### 2.1: Create VLANs on both switches.
 Open configuration window  
 a.	Create and name the required VLANs on each switch from the table above.  
-![](/Labworks/Lab_01/img/pic04_S1.jpg "Creating and naming VLANs")  
-![](/Labworks/Lab_01/img/pic04_S2.jpg "Creating and naming VLANs")
+![](/Labworks/Lab_01/img/pic04_S1.jpg "S1 Creating and naming VLANs")  
+![](/Labworks/Lab_01/img/pic04_S2.jpg "S2 Creating and naming VLANs")
 
 b.	Configure the management interface and default gateway on each switch using the IP address information in the Addressing Table.   
 ```
@@ -285,8 +285,11 @@ __Close configuration window__
 #### 5.1: Complete the following tests from PC-A. All should be successful.
 Note: You may have to disable the PC firewall for pings to be successful.  
 a.	Ping from PC-A to its default gateway.  
-![](/Labworks/Lab_01/img/pic12_PC-A_1.jpg "PC-A to gw") 
+![](/Labworks/Lab_01/img/pic12_PC-A_1.jpg "PC-A to gw")
+
 b.	Ping from PC-A to PC-B  
+![](/Labworks/Lab_01/img/pic12_PC-A_2.jpg "PC-A to PC-B")
+
 c.	Ping from PC-A to S2  
 ![](/Labworks/Lab_01/img/pic12_PC-A_3.jpg "PC-A to S2") 
 
