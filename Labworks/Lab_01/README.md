@@ -298,7 +298,7 @@ From the command prompt on PC-B, issue the tracert command to the address of PC-
 ![](/Labworks/Lab_01/img/pic13_PCB.jpg "PC-B trace to PC-A") 
 
 **Question:**  
-What intermediate IP addresses are shown in the results?
+What intermediate IP addresses are shown in the results?  
 **Answer:** Type your answers here.
 
 
