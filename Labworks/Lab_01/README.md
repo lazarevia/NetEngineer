@@ -36,6 +36,9 @@
 |Device	|Task Interface	|Lab Interface	|
 |:------|:--------------|:--------------|
 |R1		|G0/0/1			|e0/0			|
+|		|G0/0/1.3		|e0/0.3			|
+|		|G0/0/1.4		|e0/0.4			|
+|		|G0/0/1.8		|e0/0.8			|
 |S1		|F0/1			|e0/1|
 |		|F0/5			|e0/3|
 |		|F0/6			|e1/3|
@@ -247,11 +250,35 @@ __Close configuration window__
 
 
 #### 4: Configure Inter-VLAN Routing on the Router
+https://youtu.be/PbeWe5Jaunk?t=1497
 Open configuration window
 a.	Activate interface G0/0/1 on the router.
-b.	Configure sub-interfaces for each VLAN as specified in the IP addressing table. All sub-interfaces use 802.1Q encapsulation. Ensure the sub-interface for the native VLAN does not have an IP address assigned. Include a description for each sub-interface.
+b.	Configure sub-interfaces for each VLAN as specified in the IP addressing table. All sub-interfaces use 802.1Q encapsulation. Ensure the sub-interface for the native VLAN does not have an IP address assigned. Include a description for each sub-interface.  
+```
+R1#conf term
+R1(config)#int e0/0.3
+R1(config-subif)#encapsulation dot1q 3
+R1(config-subif)#ip address 192.168.3.1 255.255.255.0
+R1(config-subif)#description Management
+R1(config-subif)#int e0/0.4
+R1(config-subif)#encapsulation dot1q 4
+R1(config-subif)#ip address 192.168.4.1 255.255.255.0
+R1(config-subif)#description Operations
+R1(config-subif)#int e0/0.8
+R1(config-subif)#encapsulation dot1q 8 native
+R1(config-subif)#description Native
+R1(config-subif)#int e0/0
+R1(config-if)#no shutdown
+R1(config-if)#end
+```
+
+![](/Labworks/Lab_01/img/pic10_R1.jpg "R1 Configure sub-interfaces"  
 c.	Use the ___show ip interface brief___ command to verify the sub-interfaces are operational.
+)  
+![](/Labworks/Lab_01/img/pic11_R1.jpg "R1 show ip interface brief_"  
 Close configuration window
+
+
 
 ### 5: Verify Inter-VLAN Routing is Working
 #### 5.1: Complete the following tests from PC-A. All should be successful.
