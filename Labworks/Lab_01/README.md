@@ -251,7 +251,7 @@ __Close configuration window__
 
 #### 4: Configure Inter-VLAN Routing on the Router
 
-Open configuration window  
+__Open configuration window__  
 a.	Activate interface G0/0/1 on the router.  
 b.	Configure sub-interfaces for each VLAN as specified in the IP addressing table. All sub-interfaces use 802.1Q encapsulation. Ensure the sub-interface for the native VLAN does not have an IP address assigned. Include a description for each sub-interface.  
 ```
@@ -273,21 +273,21 @@ R1(config-if)#end
 ```
 ![](/Labworks/Lab_01/img/pic10_R1.jpg "R1 Configure sub-interfaces")  
 
-c.	Use the ___show ip interface brief___ command to verify the sub-interfaces are operational.
-)  
+c.	Use the ___show ip interface brief___ command to verify the sub-interfaces are operational.  
 
 ![](/Labworks/Lab_01/img/pic11_R1.jpg "R1 show ip interface brief_")  
 
-Close configuration window
-
+__Close configuration window__
 
 
 ### 5: Verify Inter-VLAN Routing is Working
 #### 5.1: Complete the following tests from PC-A. All should be successful.
-Note: You may have to disable the PC firewall for pings to be successful.
+Note: You may have to disable the PC firewall for pings to be successful.  
 a.	Ping from PC-A to its default gateway.  
+![](/Labworks/Lab_01/img/pic12_PC-A_1.jpg "PC-A to gw") 
 b.	Ping from PC-A to PC-B  
 c.	Ping from PC-A to S2  
+![](/Labworks/Lab_01/img/pic12_PC-A_3.jpg "PC-A to S2") 
 
 #### 5.2: Complete the following test from PC-B.
 From the command prompt on PC-B, issue the tracert command to the address of PC-A.
