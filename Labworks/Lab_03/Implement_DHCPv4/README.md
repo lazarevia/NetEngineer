@@ -2,19 +2,16 @@
 	Топология
  ![](/Labworks/Lab_03/Implement_DHCPv4/pics/scheme.jpg "Топология")
 
-	Таблица адресации
-
-|Устройство		|Интерфейс		|IP-адрес		|Маска подсети		|Шлюз
+	Addressing Table
+|Device 		|Interface		|IP Address		|Subnet Mask 		|Default Gateway
 |:--------------|:--------------|:--------------|:------------------|:------------------|
 |R1				|G0/0/0			|10.0.0.1		|255.255.255.252	|N/A
 |				|G0/0/1			|N/A			|N/A				|N/A
 |				|G0/0/1			|N/A			|N/A				|N/A
 |				|G0/0/1.100		|blank			|blank				|N/A
 |				|G0/0/1.200		|blank			|blank				|N/A
-|:--------------|:--------------|:--------------|:------------------|:------------------|
 |R2				|G0/0/0			|10.0.0.2		|255.255.255.252	|N/A
 |				|G0/0/1			|blank			|blank				|N/A
-|:--------------|:--------------|:--------------|:------------------|:------------------|
 |S1				|VLAN 200		|blank			|blank				|N/A
 |S2				|VLAN 1			|blank			|blank				|N/A
 |PC-A			|NIC			|DHCP			|DHCP				|DHCP
@@ -23,7 +20,7 @@
 
 	Таблица VLAN
 
-|VLAN 			|Name			|Интерфейс
+|VLAN 			|Name			|Interface Assigned
 |:--------------|:--------------|:--------------|
 |1				|N/A			|S2: F0/18
 |100			|Клиенты		|S1: F0/6
@@ -32,10 +29,11 @@
 |1000			|Native 		|N/A
 
 
-## Задачи
-Часть 1: Построить Сеть и произвести базовую настроеку устройств
-Часть 2: Произвести конфигурацию и проверку двух серверов DHCPv4 на R1
-Часть 3: Произвести конфигурацию и проверку предачи DHCP на R2
+## Objectives
+Part 1: Build the Network and Configure Basic Device Settings
+Part 2: Configure and verify two DHCPv4 Servers on R1
+Part 3: Configure and verify a DHCP Relay on R2
+
 
 ----
 ### 1:	Построить Сеть и произвести базовую настроеку устройств
@@ -46,12 +44,14 @@
 а. Одна подсеть "Subnet A" поддерживает 58 хостов (клиентский VLAN на R1)
 Subnet A:
 
-Record the first IP address in the Addressing Table for R1 G0/0/1.100. Record the second IP address in the Address Table for S1 VLAN 200 and enter the associated default gateway.
+Record the first IP address in the Addressing Table for R1 G0/0/1.100. 
+Record the second IP address in the Address Table for S1 VLAN 200 and enter the associated default gateway.
 
 б. Одна подсеть "Subnet B" поддерживает 28 хостов.(VLAN управления на R1)
 Subnet B:
 
-Record the first IP address in the Addressing Table for R1 G0/0/1.200. Record the second IP address in the Address Table for S1 VLAN 1 and enter the associated default gateway.
+Record the first IP address in the Addressing Table for R1 G0/0/1.200. 
+Record the second IP address in the Address Table for S1 VLAN 1 and enter the associated default gateway.
 
 c.	Одна подсеть “Subnet C” поддерживает 12 хостов (клиентский VLAN на R2).
 Subnet C:
