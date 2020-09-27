@@ -1,6 +1,6 @@
 # Implement DHCPv4
 	Топология
- ![](/Labworks/Lab_03/Implement_DHCPv4/pics/scheme.jpg "Топология")
+ ![](/Labworks/Lab_04/Implement_DHCPv4/pics/scheme.jpg "Топология")
 
 	Addressing Table
 |Device 		|Interface		|IP Address		|Subnet Mask 		|Default Gateway
@@ -92,7 +92,7 @@ e.	Assign ___cisco___ as the VTY password and enable login.
 S1(config)# line vty 0 4
 S1(config-line)# password cisco
 S1(config-line)# login
-S1(config-line)# end
+S1(config-line)# exit
 ```
 f.	Encrypt the plaintext passwords.
 ```
@@ -110,66 +110,7 @@ i.	Set the clock on the router to today’s time and date.
 Note: Use the question mark (?) to help with the correct sequence of parameters needed to execute this command.
 
 -------------
-a.	Присвойте имена устройствам в соответствии с топологией.
 
-
-b.	Отключите поиск DNS.
-```
-Switch(config)# no ip domain-lookup
-Switch(config)#
-```
-
-c.	Назначьте ___class___ в качестве зашифрованного пароля доступа к привилегированному режиму.
-```
-R1(config)# service password-encryption
-R1(config)#
-R1(config)# enable secret class
-R1(config)#
-```
-
-d.	Назначьте ___cisco___ в качестве паролей консоли и VTY и активируйте вход для консоли и VTY каналов.
-
-
-e.	Настройте logging synchronous для консольного канала.
-```
-S1(config)# line con 0
-S1(config-line)# password cisco
-S1(config-line)# login
-S1(config-line)# logging synchronous
-S1(config-line)# exit
-S1(config)#
-```
-
-f.	Настройте баннерное сообщение дня (MOTD) для предупреждения пользователей о запрете несанкционированного доступа.
-```
-S1(config)# banner motd #
-Enter Text message. End with the character ‘#’.
-Unauthorized access is strictly prohibited. #
-```
-![](/Labworks/Lec-03_Lab03/img/pic1.jpg "Результат выполенения")
-
-g.	Задайте IP-адрес, указанный в таблице адресации для VLAN 1 на всех коммутаторах.
-```
-S1#conf t
-Enter configuration commands, one per line.  End with CNTL/Z.
-S1(config)#vlan 1
-S1(config-vlan)#exit
-S1(config)#int vlan 1
-S1(config-if)#ip
-*Apr 24 11:42:26.655: %LINEPROTO-5-UPDOWN: Line protocol on Interface Vlan1, changed state to down
-S1(config-if)#ip address 192.16.1.1 255.255.255.0
-S1(config-if)#no shutdown
-S1(config-if)#
-*Apr 24 11:43:00.022: %LINK-3-UPDOWN: Interface Vlan1, changed state to up
-*Apr 24 11:43:01.029: %LINEPROTO-5-UPDOWN: Line protocol on Interface Vlan1, changed state to up
-S1(config-if)#exit
-S1(config)#
-```
-
-![](/Labworks/Lec-03_Lab03/img/pic4.jpg "")
-
-h.	Скопируйте текущую конфигурацию в файл загрузочной конфигурации.
-Командами `write memory` или `copy running-config startup-config`
 
 #### 1.4:	Step 4: Configure Inter-VLAN Routing on R1
 a.	Activate interface G0/0/1 on the router.
