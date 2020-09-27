@@ -1,29 +1,26 @@
 # Implement DHCPv4
 	Топология
- ![](/Labworks/Z5/pics/scheme.jpg "Топология")
+ ![](/Labworks/Lab_03/Implement_DHCPv4/pics/scheme.jpg "Топология")
 
-Таблица адресации
-
-|Устройство		|Интерфейс		|IP-адрес		|Маска подсети		|Шлюз
+	Addressing Table
+|Device 		|Interface		|IP Address		|Subnet Mask 		|Default Gateway
 |:--------------|:--------------|:--------------|:------------------|:------------------|
 |R1				|G0/0/0			|10.0.0.1		|255.255.255.252	|N/A
 |				|G0/0/1			|N/A			|N/A				|N/A
 |				|G0/0/1			|N/A			|N/A				|N/A
 |				|G0/0/1.100		|blank			|blank				|N/A
 |				|G0/0/1.200		|blank			|blank				|N/A
-|:--------------|:--------------|:--------------|:------------------|:------------------|
 |R2				|G0/0/0			|10.0.0.2		|255.255.255.252	|N/A
 |				|G0/0/1			|blank			|blank				|N/A
-|:--------------|:--------------|:--------------|:------------------|:------------------|
 |S1				|VLAN 200		|blank			|blank				|N/A
 |S2				|VLAN 1			|blank			|blank				|N/A
 |PC-A			|NIC			|DHCP			|DHCP				|DHCP
 |PC-B 			|NIC			|DHCP			|DHCP				|DHCP
 
 
-Таблица VLAN
+	VLAN Table
 
-|VLAN 			|Name			|Интерфейс
+|VLAN 			|Name			|Interface Assigned
 |:--------------|:--------------|:--------------|
 |1				|N/A			|S2: F0/18
 |100			|Клиенты		|S1: F0/6
@@ -32,53 +29,89 @@
 |1000			|Native 		|N/A
 
 
-## Задачи
-Часть 1: Построить Сеть и произвести базовую настроеку устройств
-Часть 2: Произвести конфигурацию и проверку двух серверов DHCPv4 на R1
-Часть 3: Произвести конфигурацию и проверку предачи DHCP на R2
+## Objectives
+Part 1: Build the Network and Configure Basic Device Settings  
+Part 2: Configure and verify two DHCPv4 Servers on R1  
+Part 3: Configure and verify a DHCP Relay on R2  
+
 
 ----
-### 1:	Построить Сеть и произвести базовую настроеку устройств
-В части 1 вам предстоит настроить топологию сети и настроить основные параметры сетевых устройств.
+### Part 1:	Build the Network and Configure Basic Device Settings  
+In Part 1, you will set up the network topology and configure basic settings on the PC hosts and switches.
 
-#### 1.1: Establish an addressing scheme
-Разделить сеть 192.168.1.0/24 на подсети по следующим требованиям:
-а. Одна подсеть "Subnet A" поддерживает 58 хостов (клиентский VLAN на R1)
-Subnet A:
+#### 1.1: Step 1: Establish an addressing scheme
+Subnet the network 192.168.1.0/24 to meet the following requirements:
+a.	One subnet, “Subnet A”, supporting 58 hosts (the client VLAN at R1).  
+**Subnet A:**
 
 Record the first IP address in the Addressing Table for R1 G0/0/1.100. Record the second IP address in the Address Table for S1 VLAN 200 and enter the associated default gateway.
-
-б. Одна подсеть "Subnet B" поддерживает 28 хостов.(VLAN управления на R1)
-Subnet B:
+b.	One subnet, “Subnet B”, supporting 28 hosts (the management VLAN at R1).  
+**Subnet B:**
 
 Record the first IP address in the Addressing Table for R1 G0/0/1.200. Record the second IP address in the Address Table for S1 VLAN 1 and enter the associated default gateway.
+c.	One subnet, “Subnet C”, supporting 12 hosts (the client network at R2).  
+**Subnet C:**
 
-c.	Одна подсеть “Subnet C” поддерживает 12 хостов (клиентский VLAN на R2).
-Subnet C:
-
-Record the first IP address in the Addressing Table for R2 G0/0/1
-Запишите первый IP-адрес в таблицу адресации для R2 G0/0/1
+Record the first IP address in the Addressing Table for R2 G0/0/1.
 
 
-#### 1.2: Создайте сеть согласно топологии.
-Подключите устройства, как показано в топологии, и подсоедините необходимые кабели.
 
-#### 1.3: Произведите настройку базовых параметров для каждого маршрутизатора.
-a.	Присвойте имя устройства
-b.	Отключите поиск DNS.
-c.	Назначьте "class" в качестве зашифрованного пароля доступа к привилегированному режиму.
-d.	Назначьте "cisco" в качестве пароля консоли и активируйте логин.
-e.	Назначьте "cisco" в качестве пароля VTY и активируйте логин.
-f.	Encrypt the plaintext passwords.
-g.	Настройте баннерное сообщение дня (MOTD) для предупреждения пользователей о запрете несанкционированного доступа.
-h.	Сохраните текущую конфигурацию в файл загрузочной конфигурации.
-i.	Установите часы роутера на текущие дату и время.
+#### 1.2: Step 2: Cable the network as shown in the topology.
+Attach the devices as shown in the topology diagram, and cable as necessary.
 
-a.	Присвойте имена устройствам в соответствии с топологией.
+
+#### 1.3: Step 3: Configure basic settings for each router.
+a.	Assign a device name to the router.
 ```
 Switch(config)# hostname R1
 S1(config)#
 ```
+b.	Disable DNS lookup to prevent the router from attempting to translate incorrectly entered commands as though they were host names.
+```
+R1(config)# no ip domain-lookup
+R1(config)#
+```
+c.	Assign ___class___ as the privileged EXEC encrypted password.
+```
+R1(config)# service password-encryption
+R1(config)#
+R1(config)# enable secret class
+R1(config)#
+```
+d.	Assign ___cisco___ as the console password and enable login.
+```
+R1(config)# line con 0
+R1(config-line)# password cisco
+R1(config-line)# login
+R1(config-line)# logging synchronous
+R1(config-line)# exit
+R1(config)#
+```
+e.	Assign ___cisco___ as the VTY password and enable login.
+```
+S1(config)# line vty 0 4
+S1(config-line)# password cisco
+S1(config-line)# login
+S1(config-line)# end
+```
+f.	Encrypt the plaintext passwords.
+```
+R1(config)# service password-encryption
+```
+g.	Create a banner that warns anyone accessing the device that unauthorized access is prohibited.  
+```
+R1(config)# banner motd #
+Enter Text message. End with the character ‘#’.
+Unauthorized access is strictly prohibited. #
+```
+h.	Save the running configuration to the startup configuration file.
+i.	Set the clock on the router to today’s time and date.
+
+Note: Use the question mark (?) to help with the correct sequence of parameters needed to execute this command.
+
+-------------
+a.	Присвойте имена устройствам в соответствии с топологией.
+
 
 b.	Отключите поиск DNS.
 ```
@@ -95,12 +128,7 @@ R1(config)#
 ```
 
 d.	Назначьте ___cisco___ в качестве паролей консоли и VTY и активируйте вход для консоли и VTY каналов.
-```
-S1(config)# line vty 0 4
-S1(config-line)# password cisco
-S1(config-line)# login
-S1(config-line)# end
-```
+
 
 e.	Настройте logging synchronous для консольного канала.
 ```
