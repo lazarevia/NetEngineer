@@ -54,6 +54,12 @@ c.	One subnet, “Subnet C”, supporting 12 hosts (the client network at R2).
 
 Record the first IP address in the Addressing Table for R2 G0/0/1.
 
+|Subnet		|users		|net addr		|1st IP			|Last IP		|broadcast		|mask
+|:---		|:---		|:---			|:---			|:---			|:---			|:---
+|Subnet A	|58			|192.168.1.0	|192.168.1.1	|192.168.1.62	|192.168.1.63	|255.255.255.192
+
+Subnet B	28	192.168.1.64	192.168.1.65	192.168.1.94	192.168.1.95	255.255.255.224
+Subnet C	12	192.168.1.96	192.168.1.97	192.168.1.110	192.168.1.111	255.255.255.240
 
 
 #### 1.2: Step 2: Cable the network as shown in the topology.
