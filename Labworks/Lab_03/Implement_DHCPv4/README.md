@@ -142,12 +142,19 @@ R1#clock set 15:22:00 09 oct 2020
 
 Note: Use the question mark (?) to help with the correct sequence of parameters needed to execute this command.
 
+R1 basic settings  
 ![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic01_R1config.jpg "R1 config")
+
+R2 basic settings  
+![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic01_R2config.jpg "R1 config")
 
 
 #### 1.4:	Step 4: Configure Inter-VLAN Routing on R1
 a.	Activate interface G0/0/1 on the router.  
-R1(config)#interface 
+```
+R1(config)# interface g0/0/1
+R1(config)# no shutdown
+```
 
 b.	Configure sub-interfaces for each VLAN as required by the IP addressing table. All sub-interfaces use 802.1Q encapsulation and are assigned the first usable address from the IP address pool you have calculated. Ensure the sub-interface for the native VLAN does not have an IP address assigned. Include a description for each sub-interface.  
 
@@ -169,7 +176,7 @@ R1(config-subif)# end
 
 c.	Verify the sub-interfaces are operational.
 ```
-R1# show ip in brief
+R1# show ip interface brief
 ```
 
 
