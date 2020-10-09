@@ -1,6 +1,6 @@
 # Implement DHCPv4
 	Топология
- ![](/Labworks/Lab_04/Implement_DHCPv4/pics/scheme.jpg "Топология")
+ ![](/Labworks/Lab_03/Implement_DHCPv4/pics/scheme.jpg "Топология")
 
 	Addressing Table
 |Device 		|Interface		|IP Address		|Subnet Mask 		|Default Gateway
@@ -50,23 +50,40 @@ Subnet the network 192.168.1.0/24 to meet the following requirements:
 a.	One subnet, “Subnet A”, supporting 58 hosts (the client VLAN at R1).  
 **Subnet A:**
 
-Record the first IP address in the Addressing Table for R1 G0/0/1.100. Record the second IP address in the Address Table for S1 VLAN 200 and enter the associated default gateway.
+|Subnet		|hosts		|net addr		|1st IP			|Last IP		|broadcast		|mask
+|:---		|:---		|:---			|:---			|:---			|:---			|:---
+|Subnet A	|58			|192.168.1.0	|192.168.1.1	|192.168.1.62	|192.168.1.63	|255.255.255.192
+
+Record the first IP address in the Addressing Table for R1 G0/0/1.100. 
+192.168.1.1
+
+Record the second IP address in the Address Table for S1 VLAN 200 
+192.168.1.66	
+and enter the associated default gateway.
+192.168.1.65
+
 
 b.	One subnet, “Subnet B”, supporting 28 hosts (the management VLAN at R1).  
 **Subnet B:**
 
-Record the first IP address in the Addressing Table for R1 G0/0/1.200. Record the second IP address in the Address Table for S1 VLAN 1 and enter the associated default gateway.
+|Subnet		|hosts		|net addr		|1st IP			|Last IP		|broadcast		|mask
+|:---		|:---		|:---			|:---			|:---			|:---			|:---
+|Subnet B	|28			|192.168.1.64	|192.168.1.65	|192.168.1.94	|192.168.1.95	|255.255.255.224
+
+Record the first IP address in the Addressing Table for R1 G0/0/1.200. 
+192.168.1.65
+
+Record the second IP address in the Address Table for S1 VLAN 1 and enter the associated default gateway.
 
 c.	One subnet, “Subnet C”, supporting 12 hosts (the client network at R2).  
 **Subnet C:**
 
-Record the first IP address in the Addressing Table for R2 G0/0/1.
-
-|Subnet		|users		|net addr		|1st IP			|Last IP		|broadcast		|mask
+|Subnet		|hosts		|net addr		|1st IP			|Last IP		|broadcast		|mask
 |:---		|:---		|:---			|:---			|:---			|:---			|:---
-|Subnet A	|58			|192.168.1.0	|192.168.1.1	|192.168.1.62	|192.168.1.63	|255.255.255.192
-|Subnet B	|28			|1.168.1.64		|192.168.1.65	|192.168.1.94	|192.168.1.95	|255.255.255.224
 |Subnet C	|12			|192.168.1.96	|192.168.1.97	|192.168.1.110	|192.168.1.111	|255.255.255.240
+
+Record the first IP address in the Addressing Table for R2 G0/0/1.
+192.168.1.97
 
 
 #### 1.2: Step 2: Cable the network as shown in the topology.
@@ -76,7 +93,7 @@ Attach the devices as shown in the topology diagram, and cable as necessary.
 #### 1.3: Step 3: Configure basic settings for each router.
 a.	Assign a device name to the router.  
 ```
-Switch(config)# hostname R1
+Router(config)# hostname R1
 R1(config)#
 ```
 b.	Disable DNS lookup to prevent the router from attempting to translate incorrectly entered commands as though they were host names.
@@ -102,17 +119,10 @@ R1(config)#
 ```
 e.	Assign ___cisco___ as the VTY password and enable login.
 ```
-<<<<<<< Updated upstream
-S1(config)# line vty 0 4
-S1(config-line)# password cisco
-S1(config-line)# login
-S1(config-line)# exit
-=======
 R1(config)# line vty 0 4
 R1(config-line)# password cisco
 R1(config-line)# login
-R1(config-line)# end
->>>>>>> Stashed changes
+R1(config-line)# exit
 ```
 f.	Encrypt the plaintext passwords.
 ```
@@ -126,14 +136,14 @@ Unauthorized access is strictly prohibited. #
 ```
 h.	Save the running configuration to the startup configuration file.  
 i.	Set the clock on the router to today’s time and date.  
+```
+R1#clock set 15:22:00 09 oct 2020
+```
 
 Note: Use the question mark (?) to help with the correct sequence of parameters needed to execute this command.
 
-<<<<<<< Updated upstream
--------------
+![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic01_R1config.jpg "R1 config")
 
-=======
->>>>>>> Stashed changes
 
 #### 1.4:	Step 4: Configure Inter-VLAN Routing on R1
 a.	Activate interface G0/0/1 on the router.
