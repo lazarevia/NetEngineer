@@ -58,8 +58,8 @@ Record the first IP address in the Addressing Table for R1 G0/0/1.100.
 192.168.1.1
 
 Record the second IP address in the Address Table for S1 VLAN 200  
-192.168.1.66	
-and enter the associated default gateway. 
+192.168.1.66  
+and enter the associated default gateway.  
 192.168.1.65
 
 
