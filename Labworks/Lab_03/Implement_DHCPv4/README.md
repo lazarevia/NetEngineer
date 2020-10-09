@@ -23,11 +23,17 @@
 |VLAN 			|Name			|Interface Assigned
 |:--------------|:--------------|:--------------|
 |1				|N/A			|S2: F0/18
-|100			|Клиенты		|S1: F0/6
-|200			|Управление 	|S1: VLAN 200
+|100			|Clients		|S1: F0/6
+|200			|Management 	|S1: VLAN 200
 |999			|Parking_Lot	|S1: F0/1-4, F0/7-24, G0/1-2
 |1000			|Native 		|N/A
 
+	EVE-ng images
+
+|Device	|Image
+|:---	|:---
+|Roter	|L3-ADVENTERPRISEK9-M-15.4-2T
+|Switch	|i86bi_linux_l2-adveneterprisek9-ms.SSA.high_iron_20180510
 
 ## Objectives
 Part 1: Build the Network and Configure Basic Device Settings  
@@ -45,10 +51,12 @@ a.	One subnet, “Subnet A”, supporting 58 hosts (the client VLAN at R1).
 **Subnet A:**
 
 Record the first IP address in the Addressing Table for R1 G0/0/1.100. Record the second IP address in the Address Table for S1 VLAN 200 and enter the associated default gateway.
+
 b.	One subnet, “Subnet B”, supporting 28 hosts (the management VLAN at R1).  
 **Subnet B:**
 
 Record the first IP address in the Addressing Table for R1 G0/0/1.200. Record the second IP address in the Address Table for S1 VLAN 1 and enter the associated default gateway.
+
 c.	One subnet, “Subnet C”, supporting 12 hosts (the client network at R2).  
 **Subnet C:**
 
@@ -57,9 +65,8 @@ Record the first IP address in the Addressing Table for R2 G0/0/1.
 |Subnet		|users		|net addr		|1st IP			|Last IP		|broadcast		|mask
 |:---		|:---		|:---			|:---			|:---			|:---			|:---
 |Subnet A	|58			|192.168.1.0	|192.168.1.1	|192.168.1.62	|192.168.1.63	|255.255.255.192
-
-Subnet B	28	192.168.1.64	192.168.1.65	192.168.1.94	192.168.1.95	255.255.255.224
-Subnet C	12	192.168.1.96	192.168.1.97	192.168.1.110	192.168.1.111	255.255.255.240
+|Subnet B	|28			|1.168.1.64		|192.168.1.65	|192.168.1.94	|192.168.1.95	|255.255.255.224
+|Subnet C	|12			|192.168.1.96	|192.168.1.97	|192.168.1.110	|192.168.1.111	|255.255.255.240
 
 
 #### 1.2: Step 2: Cable the network as shown in the topology.
@@ -67,10 +74,10 @@ Attach the devices as shown in the topology diagram, and cable as necessary.
 
 
 #### 1.3: Step 3: Configure basic settings for each router.
-a.	Assign a device name to the router.
+a.	Assign a device name to the router.  
 ```
 Switch(config)# hostname R1
-S1(config)#
+R1(config)#
 ```
 b.	Disable DNS lookup to prevent the router from attempting to translate incorrectly entered commands as though they were host names.
 ```
@@ -95,10 +102,17 @@ R1(config)#
 ```
 e.	Assign ___cisco___ as the VTY password and enable login.
 ```
+<<<<<<< Updated upstream
 S1(config)# line vty 0 4
 S1(config-line)# password cisco
 S1(config-line)# login
 S1(config-line)# exit
+=======
+R1(config)# line vty 0 4
+R1(config-line)# password cisco
+R1(config-line)# login
+R1(config-line)# end
+>>>>>>> Stashed changes
 ```
 f.	Encrypt the plaintext passwords.
 ```
@@ -110,13 +124,16 @@ R1(config)# banner motd #
 Enter Text message. End with the character ‘#’.
 Unauthorized access is strictly prohibited. #
 ```
-h.	Save the running configuration to the startup configuration file.
-i.	Set the clock on the router to today’s time and date.
+h.	Save the running configuration to the startup configuration file.  
+i.	Set the clock on the router to today’s time and date.  
 
 Note: Use the question mark (?) to help with the correct sequence of parameters needed to execute this command.
 
+<<<<<<< Updated upstream
 -------------
 
+=======
+>>>>>>> Stashed changes
 
 #### 1.4:	Step 4: Configure Inter-VLAN Routing on R1
 a.	Activate interface G0/0/1 on the router.
