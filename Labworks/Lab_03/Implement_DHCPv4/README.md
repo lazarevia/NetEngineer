@@ -146,20 +146,46 @@ Note: Use the question mark (?) to help with the correct sequence of parameters 
 
 
 #### 1.4:	Step 4: Configure Inter-VLAN Routing on R1
-a.	Activate interface G0/0/1 on the router.
-b.	Configure sub-interfaces for each VLAN as required by the IP addressing table. All sub-interfaces use 802.1Q encapsulation and are assigned the first usable address from the IP address pool you have calculated. Ensure the sub-interface for the native VLAN does not have an IP address assigned. Include a description for each sub-interface.
+a.	Activate interface G0/0/1 on the router.  
+R1(config)#interface 
+
+b.	Configure sub-interfaces for each VLAN as required by the IP addressing table. All sub-interfaces use 802.1Q encapsulation and are assigned the first usable address from the IP address pool you have calculated. Ensure the sub-interface for the native VLAN does not have an IP address assigned. Include a description for each sub-interface.  
+
+```
+R1(config)# interface G0/0/1.100
+R1(config-subif)# description Client_Network
+R1(config-subif)# encapsulation dot1q 100
+R1(config-subif)# ip address 192.168.1.1 255.255.255.192
+R1(config)# interface G0/0/1.200
+R1(config-subif)# description Management
+R1(config-subif)# encapsulation dot1q 200
+R1(config-subif)# ip address 192.168.1.65 255.255.255.224
+R1(config-subif)# exit
+R1(config)# interface G0/0/1.1000
+R1(config-subif)# description Native
+R1(config-subif)# encapsulation dot1q 1000 native
+R1(config-subif)# end
+```
+
 c.	Verify the sub-interfaces are operational.
+```
+R1# show ip in brief
+```
+
 
 #### 1.5 Step 5: Configure G0/0/1 on R2, then G0/0/0 and static routing for both routers
 a.	Configure G0/0/1 on R2 with the first IP address of Subnet C you calculated earlier.
+
 b.	Configure interface G0/0/0 for each router based on the IP Addressing table above.
+
 c.	Configure a default route on each router pointed to the IP address of G0/0/0 on the other router.
+
 d.	Verify static routing is working by pinging R2’s G0/0/1 address from R1.
+
 e.	Save the running configuration to the startup configuration file
 
 #### 1.6 Step 6: Configure basic settings for each switch.
 a.	Assign a device name to the switch.
-Open configuration window
 b.	Disable DNS lookup to prevent the router from attempting to translate incorrectly entered commands as though they were host names.
 c.	Assign class as the privileged EXEC encrypted password.
 d.	Assign cisco as the console password and enable login.
