@@ -57,9 +57,9 @@ a.	One subnet, “Subnet A”, supporting 58 hosts (the client VLAN at R1).
 Record the first IP address in the Addressing Table for R1 G0/0/1.100. 
 192.168.1.1
 
-Record the second IP address in the Address Table for S1 VLAN 200 
+Record the second IP address in the Address Table for S1 VLAN 200  
 192.168.1.66	
-and enter the associated default gateway.
+and enter the associated default gateway. 
 192.168.1.65
 
 
@@ -70,7 +70,7 @@ b.	One subnet, “Subnet B”, supporting 28 hosts (the management VLAN at R1).
 |:---		|:---		|:---			|:---			|:---			|:---			|:---
 |Subnet B	|28			|192.168.1.64	|192.168.1.65	|192.168.1.94	|192.168.1.95	|255.255.255.224
 
-Record the first IP address in the Addressing Table for R1 G0/0/1.200. 
+Record the first IP address in the Addressing Table for R1 G0/0/1.200.  
 192.168.1.65
 
 Record the second IP address in the Address Table for S1 VLAN 1 and enter the associated default gateway.
@@ -82,7 +82,7 @@ c.	One subnet, “Subnet C”, supporting 12 hosts (the client network at R2).
 |:---		|:---		|:---			|:---			|:---			|:---			|:---
 |Subnet C	|12			|192.168.1.96	|192.168.1.97	|192.168.1.110	|192.168.1.111	|255.255.255.240
 
-Record the first IP address in the Addressing Table for R2 G0/0/1.
+Record the first IP address in the Addressing Table for R2 G0/0/1.  
 192.168.1.97
 
 
