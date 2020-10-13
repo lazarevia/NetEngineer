@@ -60,7 +60,7 @@ Part 3: Configure and verify a DHCP Relay on R2
 ### Part 1:	Build the Network and Configure Basic Device Settings  
 In Part 1, you will set up the network topology and configure basic settings on the PC hosts and switches.
 
-#### 1.1: Step 1: Establish an addressing scheme
+#### 1.1 Establish an addressing scheme
 Subnet the network 192.168.1.0/24 to meet the following requirements:
 a.	One subnet, “Subnet A”, supporting 58 hosts (the client VLAN at R1).  
 **Subnet A:**
@@ -159,7 +159,7 @@ R2 basic settings
 ![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic01_R2config.jpg "R1 config")
 
 
-#### 1.4:	Step 4: Configure Inter-VLAN Routing on R1
+#### 1.4 Configure Inter-VLAN Routing on R1
 a.	Activate interface G0/0/1 (e0/1) on the router.  
 ```
 R1(config)# interface e0/1
@@ -190,7 +190,7 @@ R1# show ip interface brief
 ```
 
 
-#### 1.5 Step 5: Configure G0/0/1 on R2, then G0/0/0 and static routing for both routers
+#### 1.5 Configure G0/0/1 on R2, then G0/0/0 and static routing for both routers
 a.	Configure G0/0/1 (e0/1) on R2 with the first IP address of Subnet C you calculated earlier.
 
 ```
@@ -235,7 +235,7 @@ R1#ping 192.168.1.97
 e.	Save the running configuration to the startup configuration file
 
 
-#### 1.6: Configure basic settings for each switch.
+#### 1.6 Configure basic settings for each switch.
 a.	Assign a device name to the switch.
 b.	Disable DNS lookup to prevent the router from attempting to translate incorrectly entered commands as though they were host names.
 c.	Assign class as the privileged EXEC encrypted password.
