@@ -94,19 +94,14 @@ Attach the devices as shown in the topology diagram, and cable as necessary.
 a.	Assign a device name to the router.  
 ```
 Router(config)# hostname R1
-R1(config)#
 ```
 b.	Disable DNS lookup to prevent the router from attempting to translate incorrectly entered commands as though they were host names.
 ```
 R1(config)# no ip domain-lookup
-R1(config)#
 ```
 c.	Assign ___class___ as the privileged EXEC encrypted password.
 ```
-R1(config)# service password-encryption
-R1(config)#
 R1(config)# enable secret class
-R1(config)#
 ```
 d.	Assign ___cisco___ as the console password and enable login.
 ```
@@ -159,7 +154,7 @@ R1(config)# no shutdown
 b.	Configure sub-interfaces for each VLAN as required by the IP addressing table. All sub-interfaces use 802.1Q encapsulation and are assigned the first usable address from the IP address pool you have calculated. Ensure the sub-interface for the native VLAN does not have an IP address assigned. Include a description for each sub-interface.  
 
 ```
-R1(config)# interface G0/0/1.100
+R1(config)# interface g0/0/1.100
 R1(config-subif)# description Client_Network
 R1(config-subif)# encapsulation dot1q 100
 R1(config-subif)# ip address 192.168.1.1 255.255.255.192
@@ -183,7 +178,32 @@ R1# show ip interface brief
 #### 1.5 Step 5: Configure G0/0/1 on R2, then G0/0/0 and static routing for both routers
 a.	Configure G0/0/1 on R2 with the first IP address of Subnet C you calculated earlier.
 
+```
+R2#(config)#interface g0/0/1
+R2#(config-if)#ip address 192.168.1.97 255.255.255.240
+R2#(config-if)#no shutdown
+R2#(config-if)#exit
+2
+```
+
+
 b.	Configure interface G0/0/0 for each router based on the IP Addressing table above.
+on R2 we continue with next commands
+```
+R2#(config)#interface g0/0/0
+R2#(config-if)#ip address 10.0.0.2 255.255.255.252
+R2#(config-if)#no shutdown
+```
+
+on R1 we will continue with
+```
+R1#conf t
+R1#(config)#interface g0/0/0
+R1#(config-if)ip address 10.0.0.1 255.255.255.252
+R2#(config-if)#no shutdown
+
+```
+
 
 c.	Configure a default route on each router pointed to the IP address of G0/0/0 on the other router.
 
