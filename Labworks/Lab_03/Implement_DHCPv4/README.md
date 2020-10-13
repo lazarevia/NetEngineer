@@ -368,32 +368,49 @@ At this point, what IP address would the PC’s have if they were connected to t
 
 ----
 ### Part 2: Configure and verify two DHCPv4 Servers on R1
-In Part 2, you will configure and verify a DHCPv4 Server on R1. The DHCPv4 server will service two subnets, Subnet A and Subnet C.
+Now we will configure and verify a DHCPv4 Server on R1. The DHCPv4 server will service two subnets, Subnet A and Subnet C.
 
 #### 2.1: Configure R1 with DHCPv4 pools for the two supported subnets. Only the DHCP Pool for subnet A is given below
 
-a.	Exclude the first five useable addresses from each address pool.
-Open configuration window
-b.	Create the DHCP pool (Use a unique name for each pool).
+a.	Exclude the first five useable addresses from each address pool.  
+```
+R1(config)#ip dhcp excluded-address 192.168.1.1 192.168.1.5
+R1(config)#ip dhcp excluded-address 192.168.1.97 192.168.1.101
+```
+b.	Create the DHCP pool (Use a unique name for each pool).  
+```
+R1(config)#ip dhcp pool VLAN100
+R1(dhcp-config)#network 192.168.1.0 255.255.255.192
+R1(dhcp-config)#default-router 192.168.1.1
+R1(dhcp-config)#domain-name ccna-lab.com
+R1(dhcp-config)#
+```
 c.	Specify the network that this DHCP server is supporting.
-d.	Configure the domain name as ccna-lab.com
+d.	Configure the domain name as ***ccna-lab.com***
 e.	Configure the appropriate default gateway for each DHCP pool.
 f.	Configure the lease time for 2 days 12 hours and 30 minutes.
 g.	Next, configure the second DHCPv4 Pool using the pool name R2_Client_LAN and the calculated network, default-router and use the same domain name and lease time from the previous DHCP pool.
 
+```
+R1(config)#ip dhcp pool R2_Client_LAN
+R1(dhcp-config)#network 192.168.1.96 255.255.255.240
+R1(dhcp-config)#default-router 192.168.1.97
+R1(dhcp-config)#domain-name ccna-lab.com
+```
+
+
 #### 2.2: Save your configuration
 Save the running configuration to the startup configuration file.
-Close configuration window
 
 
 
 #### 2.3: Verify the DHCPv4 Server configuration
-a.	Issue the command show ip dhcp pool to examine the pool details.
-b.	Issue the command show ip dhcp bindings to examine established DHCP address assignments.
-c.	Issue the command show ip dhcp server statistics to examine DHCP messages.
+a.	Issue the command **show ip dhcp pool** to examine the pool details.  
+b.	Issue the command **show ip dhcp bindings** to examine established DHCP address assignments.  
+c.	Issue the command **show ip dhcp server statistics** to examine DHCP messages.  
 
 #### 2.4: Attempt to acquire an IP address from DHCP on PC-A
-a.	Open a command prompt on PC-A and issue the command ipconfig /renew.
+a.	Open a command prompt on PC-A and issue the command ***ipconfig /renew.***
 b.	Once the renewal process is complete, issue the command ipconfig to view the new IP information.
 c.	Test connectivity by pinging R1’s G0/0/1 interface IP address.
 
@@ -401,17 +418,20 @@ c.	Test connectivity by pinging R1’s G0/0/1 interface IP address.
 -----
 ### 3: Configure and verify a DHCP Relay on R2
 
-In Part 3, you will configure R2 to relay DHCP requests from the local area network on interface G0/0/1 to the DHCP server (R1). 
+We will configure R2 to relay DHCP requests from the local area network on interface G0/0/1 to the DHCP server (R1). 
 
 #### 3.1: Configure R2 as a DHCP relay agent for the LAN on G0/0/1
-a.	Configure the ip helper-address command on G0/0/1 specifying R1’s G0/0/0 IP address.
-Open configuration window
+a.	Configure the **ip helper-address** command on G0/0/1 specifying R1’s G0/0/0 IP address.
+```
+R2(config)#int e0/1
+R2(config-if)#ip helper-address 10.0.0.1
+```
 b.	Save your configuration.
-Close configuration window
+
 
 #### 3.2: Attempt to acquire an IP address from DHCP on PC-B
-a.	Open a command prompt on PC-B and issue the command ipconfig /renew.
-b.	Once the renewal process is complete, issue the command ipconfig to view the new IP information.
+a.	Open a command prompt on PC-B and issue the command **ipconfig /renew.**
+b.	Once the renewal process is complete, issue the command **ipconfig** to view the new IP information.
 c.	Test connectivity by pinging R1’s G0/0/1 interface IP address.
 d.	Issue the show ip dhcp binding on R1 to verify DHCP bindings.
 e.	Issue the show ip dhcp server statistics on R1 and R2 to verify DHCP messages.
