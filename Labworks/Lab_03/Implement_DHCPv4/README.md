@@ -160,25 +160,25 @@ R2 basic settings
 
 
 #### 1.4:	Step 4: Configure Inter-VLAN Routing on R1
-a.	Activate interface G0/0/1 on the router.  
+a.	Activate interface G0/0/1 (e0/1) on the router.  
 ```
-R1(config)# interface g0/0/1
+R1(config)# interface e0/1
 R1(config)# no shutdown
 ```
 
 b.	Configure sub-interfaces for each VLAN as required by the IP addressing table. All sub-interfaces use 802.1Q encapsulation and are assigned the first usable address from the IP address pool you have calculated. Ensure the sub-interface for the native VLAN does not have an IP address assigned. Include a description for each sub-interface.  
 
 ```
-R1(config)# interface g0/0/1.100
+R1(config)# interface e0/1.100
 R1(config-subif)# description Client_Network
 R1(config-subif)# encapsulation dot1q 100
 R1(config-subif)# ip address 192.168.1.1 255.255.255.192
-R1(config)# interface G0/0/1.200
+R1(config)# interface e0/1.200
 R1(config-subif)# description Management
 R1(config-subif)# encapsulation dot1q 200
 R1(config-subif)# ip address 192.168.1.65 255.255.255.224
 R1(config-subif)# exit
-R1(config)# interface G0/0/1.1000
+R1(config)# interface e0/1.1000
 R1(config-subif)# description Native
 R1(config-subif)# encapsulation dot1q 1000 native
 R1(config-subif)# end
@@ -191,21 +191,19 @@ R1# show ip interface brief
 
 
 #### 1.5 Step 5: Configure G0/0/1 on R2, then G0/0/0 and static routing for both routers
-a.	Configure G0/0/1 on R2 with the first IP address of Subnet C you calculated earlier.
+a.	Configure G0/0/1 (e0/1) on R2 with the first IP address of Subnet C you calculated earlier.
 
 ```
-R2#(config)#interface g0/0/1
+R2#(config)#interface e0/1
 R2#(config-if)#ip address 192.168.1.97 255.255.255.240
 R2#(config-if)#no shutdown
 R2#(config-if)#exit
-2
 ```
 
-
-b.	Configure interface G0/0/0 for each router based on the IP Addressing table above.  
+b.	Configure interface G0/0/0 (e0/0) for each router based on the IP Addressing table above.  
 On R2 we continue with next commands
 ```
-R2#(config)#interface g0/0/0
+R2#(config)#interface e0/0
 R2#(config-if)#ip address 10.0.0.2 255.255.255.252
 R2#(config-if)#no shutdown
 ```
@@ -213,12 +211,12 @@ R2#(config-if)#no shutdown
 on R1 we will continue with
 ```
 R1#conf t
-R1#(config)#interface g0/0/0
+R1#(config)#interface e0/0
 R1#(config-if)ip address 10.0.0.1 255.255.255.252
 R2#(config-if)#no shutdown
 ```
 
-c.	Configure a default route on each router pointed to the IP address of G0/0/0 on the other router.
+c.	Configure a default route on each router pointed to the IP address of G0/0/0 (e0/0)on the other router.
 on R2 we will do
 ```
 R2#(config)#ip route 0.0.0.0 0.0.0.0 10.0.0.1
@@ -228,7 +226,7 @@ on R2 we will do
 R1#(config)#ip route 0.0.0.0 0.0.0.0 10.0.0.2
 ```
 
-d.	Verify static routing is working by pinging R2’s G0/0/1 address from R1.
+d.	Verify static routing is working by pinging R2’s G0/0/1 (e0/1)address from R1.
 ```
 R1#show ip route
 R1#ping 192.168.1.97
