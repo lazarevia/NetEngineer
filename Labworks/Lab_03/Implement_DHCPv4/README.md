@@ -206,6 +206,8 @@ R2#(config-if)#no shutdown
 R2#(config-if)#exit
 ```
 
+![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic03_R2_a.jpg "R2")
+
 b.	Configure interface G0/0/0 (e0/0) for each router based on the IP Addressing table above.  
 On R2 we continue with next commands
 ```
@@ -213,6 +215,7 @@ R2#(config)#interface e0/0
 R2#(config-if)#ip address 10.0.0.2 255.255.255.252
 R2#(config-if)#no shutdown
 ```
+![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic03_R2_b.jpg "R2")
 
 on R1 we will continue with
 ```
@@ -221,13 +224,17 @@ R1#(config)#interface e0/0
 R1#(config-if)ip address 10.0.0.1 255.255.255.252
 R2#(config-if)#no shutdown
 ```
+![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic03_R1_b.jpg "R1")
 
 c.	Configure a default route on each router pointed to the IP address of G0/0/0 (e0/0)on the other router.
 on R2 we will do
 ```
 R2#(config)#ip route 0.0.0.0 0.0.0.0 10.0.0.1
 ```
-on R2 we will do
+![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic03_R2_c.jpg "R2")
+
+
+on R1 we will do
 ```
 R1#(config)#ip route 0.0.0.0 0.0.0.0 10.0.0.2
 ```
@@ -238,6 +245,9 @@ R1#show ip route
 R1#ping 192.168.1.97
 
 ```
+![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic03_R1_c.jpg "R1 Verify static routing")
+
+
 e.	Save the running configuration to the startup configuration file
 
 
