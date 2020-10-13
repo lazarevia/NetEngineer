@@ -187,8 +187,8 @@ R2#(config-if)#exit
 ```
 
 
-b.	Configure interface G0/0/0 for each router based on the IP Addressing table above.
-on R2 we continue with next commands
+b.	Configure interface G0/0/0 for each router based on the IP Addressing table above.  
+On R2 we continue with next commands
 ```
 R2#(config)#interface g0/0/0
 R2#(config-if)#ip address 10.0.0.2 255.255.255.252
@@ -201,15 +201,26 @@ R1#conf t
 R1#(config)#interface g0/0/0
 R1#(config-if)ip address 10.0.0.1 255.255.255.252
 R2#(config-if)#no shutdown
-
 ```
 
-
 c.	Configure a default route on each router pointed to the IP address of G0/0/0 on the other router.
+on R2 we will do
+```
+R2#(config)#ip route 0.0.0.0 0.0.0.0 10.0.0.1
+```
+on R2 we will do
+```
+R1#(config)#ip route 0.0.0.0 0.0.0.0 10.0.0.2
+```
 
 d.	Verify static routing is working by pinging R2’s G0/0/1 address from R1.
+```
+R1#show ip route
+R1#ping 192.168.1.97
 
+```
 e.	Save the running configuration to the startup configuration file
+
 
 #### 1.6 Step 6: Configure basic settings for each switch.
 a.	Assign a device name to the switch.
