@@ -1,6 +1,6 @@
 # Implement DHCPv4
-	Топология
- ![](/Labworks/Lab_03/Implement_DHCPv4/pics/scheme.jpg "Топология")
+	Task topology
+ ![](/Labworks/Lab_03/Implement_DHCPv4/pics/scheme.jpg "Task topology")
 
 	Addressing Table
 |Device 		|Interface		|IP Address		|Subnet Mask 		|Default Gateway
@@ -48,6 +48,10 @@
 |		|F0/6			|e0/3|
 |S2		|F0/5			|e1/1|
 |		|F0/18			|e1/3|
+
+Solvation topology
+ ![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic0_scheme.jpg "Solvation topology")
+
 
 
 ## Objectives
