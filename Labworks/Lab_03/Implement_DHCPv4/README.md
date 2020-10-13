@@ -160,7 +160,7 @@ R1 basic settings
 ![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic01_R1config.jpg "R1 config")
 
 R2 basic settings  
-![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic01_R2config.jpg "R1 config")
+![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic01_R2config.jpg "R2 config")
 
 
 #### 1.4 Configure Inter-VLAN Routing on R1
@@ -174,18 +174,19 @@ b.	Configure sub-interfaces for each VLAN as required by the IP addressing table
 
 ```
 R1(config)# interface e0/1.100
-R1(config-subif)# description Client_Network
-R1(config-subif)# encapsulation dot1q 100
-R1(config-subif)# ip address 192.168.1.1 255.255.255.192
+R1(config-subif)#description Client_Network
+R1(config-subif)#encapsulation dot1q 100
+R1(config-subif)#ip address 192.168.1.1 255.255.255.192
+R1(config-subif)#exit
 R1(config)# interface e0/1.200
-R1(config-subif)# description Management
-R1(config-subif)# encapsulation dot1q 200
-R1(config-subif)# ip address 192.168.1.65 255.255.255.224
-R1(config-subif)# exit
+R1(config-subif)#description Management
+R1(config-subif)#encapsulation dot1q 200
+R1(config-subif)#ip address 192.168.1.65 255.255.255.224
+R1(config-subif)#exit
 R1(config)# interface e0/1.1000
-R1(config-subif)# description Native
-R1(config-subif)# encapsulation dot1q 1000 native
-R1(config-subif)# end
+R1(config-subif)#description Native
+R1(config-subif)#encapsulation dot1q 1000 native
+R1(config-subif)#end
 ```
 
 c.	Verify the sub-interfaces are operational.
@@ -193,6 +194,7 @@ c.	Verify the sub-interfaces are operational.
 R1# show ip interface brief
 ```
 
+![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic02_R1.jpg "R1 Verify the sub-interfaces")
 
 #### 1.5 Configure G0/0/1 on R2, then G0/0/0 and static routing for both routers
 a.	Configure G0/0/1 (e0/1) on R2 with the first IP address of Subnet C you calculated earlier.
