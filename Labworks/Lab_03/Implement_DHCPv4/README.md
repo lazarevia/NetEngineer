@@ -35,6 +35,24 @@
 |Roter	|L3-ADVENTERPRISEK9-M-15.4-2T
 |Switch	|i86bi_linux_l2-adveneterprisek9-ms.SSA.high_iron_20180510
 
+
+	Table of compliance of ports of the task and virtual environment
+
+|Device	|Task Interface	|Lab Interface	|
+|:------|:--------------|:--------------|
+|R1		|G0/0/0			|e0/0			|
+|		|G0/0/1			|e0/1			|
+|----|----|----
+|R2		|G0/0/0			|e0/0			|
+|		|G0/0/1			|e0/1			|
+|----|----|----
+|S1		|F0/5			|e0/1|
+|		|F0/6			|e0/3|
+|----|----|----
+|S2		|F0/5			|e1/1|
+|		|F0/18			|e1/3|
+
+
 ## Objectives
 Part 1: Build the Network and Configure Basic Device Settings  
 Part 2: Configure and verify two DHCPv4 Servers on R1  
@@ -86,11 +104,11 @@ Record the first IP address in the Addressing Table for R2 G0/0/1.
 192.168.1.97
 
 
-#### 1.2: Step 2: Cable the network as shown in the topology.
+#### 1.2 Cable the network as shown in the topology.
 Attach the devices as shown in the topology diagram, and cable as necessary.
 
 
-#### 1.3: Step 3: Configure basic settings for each router.
+#### 1.3 Configure basic settings for each router.
 a.	Assign a device name to the router.  
 ```
 Router(config)# hostname R1
@@ -222,7 +240,7 @@ R1#ping 192.168.1.97
 e.	Save the running configuration to the startup configuration file
 
 
-#### 1.6 Step 6: Configure basic settings for each switch.
+#### 1.6: Configure basic settings for each switch.
 a.	Assign a device name to the switch.
 b.	Disable DNS lookup to prevent the router from attempting to translate incorrectly entered commands as though they were host names.
 c.	Assign class as the privileged EXEC encrypted password.
@@ -236,307 +254,35 @@ Note: Use the question mark (?) to help with the correct sequence of parameters 
 j.	Copy the running configuration to the startup configuration.
 
 
+Step 7: Create VLANs on S1.
+Note: S2 is only configured with basic settings.
+a.	Create and name the required VLANs on switch 1 from the table above.
+b.	Configure and activate the management interface on S1 (VLAN 200) using the second IP address from the subnet calculated earlier. Additionally, set the default gateway on S1.
+c.	Configure and activate the management interface on S2 (VLAN 1) using the second IP address from the subnet calculated earlier. Additionally, set the default gateway on S2
+d.	Assign all unused ports on S1 to the Parking_Lot VLAN, configure them for static access mode, and administratively deactivate them. On S2, administratively deactivate all the unused ports.
+Note: The interface range command is helpful to accomplish this task with as few commands as necessary.
+Close configuration window
+Open configuration window
+Close configuration window
+
+Step 8: Assign VLANs to the correct switch interfaces.
+a.	Assign used ports to the appropriate VLAN (specified in the VLAN table above) and configure them for static access mode.
+Open configuration window
+b.	Verify that the VLANs are assigned to the correct interfaces.
+Question:
+Why is interface F0/5 listed under VLAN 1?
+Type your answers here.
+
+Step 9: Manually configure S1’s interface F0/5 as an 802.1Q trunk.
+a.	Change the switchport mode on the interface to force trunking.
+b.	As a part of the trunk configuration, set the native VLAN to 1000.
+c.	As another part of trunk configuration, specify that VLANs 100, 200, and 1000 are allowed to cross the trunk.
+d.	Save the running configuration to the startup configuration file.
+e.	Verify trunking status.
+Question:
+At this point, what IP address would the PC’s have if they were connected to the network using DHCP?
 
 
-
-----
-
-### 2. Выбор корневого моста
-
-#### 2.1:	Отключите все порты на коммутаторах.
-
-```
-S1#conf t
-Enter configuration commands, one per line.  End with CNTL/Z.
-S1(config)#int range e0/0-3
-S1(config-if-range)#shutdown
-S1(config-if-range)#end
-S1#
-```
-![](/Labworks/Lec-03_Lab03/img/pic5_S1.jpg "выключение портов на S1")
-
-![](/Labworks/Lec-03_Lab03/img/pic5_S2.jpg "выключение портов на S2")
-
-![](/Labworks/Lec-03_Lab03/img/pic5_S3.jpg "выключение портов на S3")
-
-#### 2.2:	Настройте подключенные порты в качестве транковых.
-
-```
-S1#conf t
-Enter configuration commands, one per line.  End with CNTL/Z.
-S1(config)#int range e0/0-3
-S1(config-if-range)#switchport trunk encapsulation dot1q
-S1(config-if-range)#switchport mode trunk
-S1(config-if-range)#end
-S1#
-
-```
-
-#### 2.3:	Включите порты F0/2 и F0/4(e0/1 и e0/3) на всех коммутаторах.
-
-```
-S3(config)#int e0/1
-S3(config-if)#no shutdown
-S3(config-if)#
-*Apr 27 16:05:18.045: %LINK-3-UPDOWN: Interface Ethernet0/1, changed state to up
-*Apr 27 16:05:19.048: %LINEPROTO-5-UPDOWN: Line protocol on Interface Ethernet0/1, changed state to up
-S3(config-if)#exit
-S3(config)#
-```
-
-#### 2.4:	Отобразите данные протокола spanning-tree.
-
-В схему ниже запишите роль и состояние (Sts) активных портов на каждом коммутаторе в топологии.
-
-![](/Labworks/Lec-03_Lab03/img/pic6_Role_STS.jpg "Схема - роль и состояние портов")
-
-__С учетом выходных данных, поступающих с коммутаторов, ответьте на следующие вопросы.__
-
-**Вопрос:** Какой коммутатор является корневым мостом?  
-**Ответ:** S1
-
-
-**Вопрос:** Почему этот коммутатор был выбран протоколом spanning-tree в качестве корневого моста?  
-**Ответ:** Как имеющий наименьший MAC-адрес.
-
-
-**Вопрос:** Какие порты на коммутаторе являются корневыми портами?  
-**Ответ:**  На корневом коммутатор нет корневых (Root) портов, они все являются назначенными (DSG).
-Корневыми портами являются порты имеющие наименьшую стоимость пути до корневого коммутатора.
-
-
-**Вопрос:** Какие порты на коммутаторе являются назначенными портами?  
-**Ответ:**  Назначенным портом выбирается тот, который имеет лучшую стоимость в данном сегменте.
-У корневого коммутатора все порты назначенные.
-
-**Вопрос:** Какой порт отображается в качестве альтернативного и в настоящее время заблокирован?  
-**Ответ:** Порт e0/1 на коммутаторе S3.
-
-**Вопрос:** Почему протокол spanning-tree выбрал этот порт в качестве невыделенного (заблокированного) порта?  
-**Ответ:** Потому что стоимость маршрута до корневого коммутатора через этот порт в этом сегменте сети выше. Данный порт назначен альтернативным - через него проходит запасной маршрут.
-
-
-----
-### 3: Наблюдение за процессом выбора протоколом STP порта, исходя из стоимости портов
-
-#### 3.1:	Определите коммутатор с заблокированным портом
-
-Выполните команду ```show spanning-tree``` на обоих коммутаторах *некорневого* моста.
-В нашем случае это коммутаторы S2 и S3.
-
-**коммутатор S2**
-```
-S2#sh spanning-tree
-
-VLAN0001
-  Spanning tree enabled protocol ieee
-  Root ID    Priority    32769
-             Address     aabb.cc00.1000
-             Cost        100
-             Port        2 (Ethernet0/1)
-             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
-
-  Bridge ID  Priority    32769  (priority 32768 sys-id-ext 1)
-             Address     aabb.cc00.2000
-             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
-             Aging Time  15  sec
-
-Interface           Role Sts Cost      Prio.Nbr Type
-------------------- ---- --- --------- -------- --------------------------------
-Et0/1               Root FWD 100       128.2    P2p
-Et0/3               Desg FWD 100       128.4    P2p
-```
-![](/Labworks/Lec-03_Lab03/img/pic6_S2.jpg "S2#sh spanning-tree")
-
-**коммутатор S3**
-```
-S3#sh spanning-tree
-
-VLAN0001
-  Spanning tree enabled protocol ieee
-  Root ID    Priority    32769
-             Address     aabb.cc00.1000
-             Cost        100
-             Port        4 (Ethernet0/3)
-             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
-
-  Bridge ID  Priority    32769  (priority 32768 sys-id-ext 1)
-             Address     aabb.cc00.3000
-             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
-             Aging Time  300 sec
-
-Interface           Role Sts Cost      Prio.Nbr Type
-------------------- ---- --- --------- -------- --------------------------------
-Et0/1               Altn BLK 100       128.2    P2p
-Et0/3               Root FWD 100       128.4    P2p
-```
-![](/Labworks/Lec-03_Lab03/img/pic6_S3.jpg "S3#sh spanning-tree")
-
-#### 3.2:	Измените стоимость порта.
-Помимо заблокированного порта, единственным активным портом на этом коммутаторе является порт, 
-выделенный в качестве порта корневого моста. Уменьшите стоимость этого порта корневого моста до 18, 
-выполнив команду spanning-tree cost 18 режима конфигурации интерфейса.
-```
-S3(config)#int e0/3
-S3(config-if)#spanning-tree cost 18
-```
-
-#### 3.3:	Просмотрите изменения протокола spanning-tree.
-
-**коммутатор S2**
-```
-
-S2#sh spanning-tree
-
-VLAN0001
-  Spanning tree enabled protocol ieee
-  Root ID    Priority    32769
-             Address     aabb.cc00.1000
-             Cost        100
-             Port        2 (Ethernet0/1)
-             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
-
-  Bridge ID  Priority    32769  (priority 32768 sys-id-ext 1)
-             Address     aabb.cc00.2000
-             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
-             Aging Time  300 sec
-
-Interface           Role Sts Cost      Prio.Nbr Type
-------------------- ---- --- --------- -------- --------------------------------
-Et0/1               Root FWD 100       128.2    P2p
-Et0/3               Altn BLK 100       128.4    P2p
-```
-
-![](/Labworks/Lec-03_Lab03/img/pic7_S2.jpg "S2#sh spanning-tree")
-
-**коммутатор S3**
-```
-S3#sh spanning-tree
-
-VLAN0001
-  Spanning tree enabled protocol ieee
-  Root ID    Priority    32769
-             Address     aabb.cc00.1000
-             Cost        18
-             Port        4 (Ethernet0/3)
-             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
-
-  Bridge ID  Priority    32769  (priority 32768 sys-id-ext 1)
-             Address     aabb.cc00.3000
-             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
-             Aging Time  300 sec
-
-Interface           Role Sts Cost      Prio.Nbr Type
-------------------- ---- --- --------- -------- --------------------------------
-Et0/1               Desg FWD 100       128.2    P2p
-Et0/3               Root FWD 18        128.4    P2p
-```
-
-![](/Labworks/Lec-03_Lab03/img/pic7_S3.jpg "S3#sh spanning-tree")
-
-**Вопрос:** Почему протокол spanning-tree заменяет ранее заблокированный порт на назначенный порт и блокирует порт, 
-который был назначенным портом на другом коммутаторе?  
-**Ответ:** Потому что изменилась стоимость порта (стоимость линков) к корневому коммутатору. Стоимость обратно пропорциональна пропускной способности. У ранее заблокированного порта стоимость стала ниже.
-Соттветсвенно цена маршрута до корневого через ранее заблокированный порт стала ниже.
-
-#### 3.4:	Удалите изменения стоимости порта.
-a.	Выполните команду ```no spanning-tree cost 18``` режима конфигурации интерфейса, чтобы удалить запись стоимости, созданную ранее.
-
-b.	Повторно выполните команду ```show spanning-tree```, чтобы подтвердить, что протокол STP сбросил порт на коммутаторе некорневого моста, 
-вернув исходные настройки порта. 
-
-
-### 4:	Наблюдение за процессом выбора протоколом STP порта, исходя из приоритета портов
-Необходимо активировать избыточные пути до каждого из коммутаторов, чтобы просмотреть, каким образом протокол STP выбирает порт с учетом приоритета портов.
-
-a.	Включите порты e0/0 и e0/2 на всех коммутаторах.
-```
-S1#(config)#int e0/0
-S1#(config-if)#no shutdown
-S1#(config-if)#
-```
-b.	Подождите 30 секунд, чтобы протокол STP завершил процесс перевода порта, после чего выполните команду show spanning-tree на коммутаторах некорневого моста. 
-Обратите внимание, что порт корневого моста переместился на порт с меньшим номером, связанный с коммутатором корневого моста, и заблокировал предыдущий порт корневого моста.
-
-**На коммутаторе S2**
-```
-S2#sh spanning-tree
-
-VLAN0001
-  Spanning tree enabled protocol ieee
-  Root ID    Priority    32769
-             Address     aabb.cc00.1000
-             Cost        100
-             Port        1 (Ethernet0/0)
-             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
-
-  Bridge ID  Priority    32769  (priority 32768 sys-id-ext 1)
-             Address     aabb.cc00.2000
-             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
-             Aging Time  300 sec
-
-Interface           Role Sts Cost      Prio.Nbr Type
-------------------- ---- --- --------- -------- --------------------------------
-Et0/0               Root FWD 100       128.1    P2p
-Et0/1               Altn BLK 100       128.2    P2p
-Et0/2               Desg FWD 100       128.3    P2p
-Et0/3               Desg FWD 100       128.4    P2p
-```
-
-![](/Labworks/Lec-03_Lab03/img/pic8_S2.jpg "S2#sh spanning-tree")
-
-**На коммутаторе S3**
-```
-S3#sh spanning-tree
-
-VLAN0001
-  Spanning tree enabled protocol ieee
-  Root ID    Priority    32769
-             Address     aabb.cc00.1000
-             Cost        100
-             Port        3 (Ethernet0/2)
-             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
-
-  Bridge ID  Priority    32769  (priority 32768 sys-id-ext 1)
-             Address     aabb.cc00.3000
-             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
-             Aging Time  300 sec
-
-Interface           Role Sts Cost      Prio.Nbr Type
-------------------- ---- --- --------- -------- --------------------------------
-Et0/0               Altn BLK 100       128.1    P2p
-Et0/1               Altn BLK 100       128.2    P2p
-Et0/2               Root FWD 100       128.3    P2p
-Et0/3               Altn BLK 100       128.4    P2p
-```
-![](/Labworks/Lec-03_Lab03/img/pic8_S3.jpg "S3#sh spanning-tree")
-
-
-
-
-**Вопрос:** Какой порт выбран протоколом STP в качестве порта корневого моста на каждом коммутаторе некорневого моста?  
-**Ответ:** S2 - Et0/0; S3 - Et0/2
-
-**Вопрос:** Почему протокол STP выбрал эти порты в качестве портов корневого моста на этих коммутаторах?  
-**Ответ:** Эти порты выбраны потому что их приоритет выше. При равных значения стоимости маршрута коорневым выбирается порт (интерфейс) с большим приоритетом. Наивысший приоритет имеет интерфейс с меньшим числом Prio.Nbr
-
-|Коммутатор|Порт|Prio.Nbr|
-|----------|-----------|----------|
-|S2|e0/0|128.1|
-|S2|e0/1|128.2|
-|S3|e0/2|128.3|
-|S3|e0/3|128.4|
-
-----
-### Вопросы для повторения
-1.	Какое значение протокол STP использует первым после выбора корневого моста, чтобы определить выбор порта?  
-	**О:** Первым используется значение стоимости маршрута от каждого своего порта до корневого коммутатора основанное на скорости своего порта.
-
-2.	Если первое значение на двух портах одинаково, какое следующее значение будет использовать протокол STP при выборе порта?  
-	**О:** Вторым будет использоваться наименьшее значение  BID (```Bridge ID Priority```) отправителя.
-
-3.	Если оба значения на двух портах равны, каким будет следующее значение, которое использует протокол STP при выборе порта?  
-	**О:** Третьим  значением при выборе порта является занчение приоритета (```Prio.Nbr```) своего порта
 
 
 
