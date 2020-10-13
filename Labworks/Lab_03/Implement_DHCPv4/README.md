@@ -35,7 +35,6 @@
 |Roter	|L3-ADVENTERPRISEK9-M-15.4-2T
 |Switch	|i86bi_linux_l2-adveneterprisek9-ms.SSA.high_iron_20180510
 
-
 	Table of compliance of ports of the task and virtual environment
 
 |Device	|Task Interface	|Lab Interface	|
@@ -49,7 +48,7 @@
 |S2		|F0/5			|e1/1|
 |		|F0/18			|e1/3|
 
-EVE Solvation topology  
+	EVE Solvation topology  
  ![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic0_scheme.jpg "Solvation topology")
 
 
@@ -269,37 +268,110 @@ j.	Copy the running configuration to the startup configuration.
 
 #### 1.7: Create VLANs on S1.
 ___Note: S2 is only configured with basic settings.___
-a.	Create and name the required VLANs on switch 1 from the table above.
-b.	Configure and activate the management interface on S1 (VLAN 200) using the second IP address from the subnet calculated earlier. Additionally, set the default gateway on S1.
-c.	Configure and activate the management interface on S2 (VLAN 1) using the second IP address from the subnet calculated earlier. Additionally, set the default gateway on S2
-d.	Assign all unused ports on S1 to the Parking_Lot VLAN, configure them for static access mode, and administratively deactivate them. On S2, administratively deactivate all the unused ports.
-Note: The interface range command is helpful to accomplish this task with as few commands as necessary.
-Close configuration window
-Open configuration window
-Close configuration window
+a.	Create and name the required VLANs on switch 1 from the table above.  
+```
+S1(config)#vlan 100
+S1(config-vlan)#name Clients
+S1(config-vlan)#vlan 200
+S1(config-vlan)#name Management
+S1(config-vlan)#vlan 999
+S1(config-vlan)#name Parking_Lot
+S1(config-vlan)#vlan 999
+S1(config-vlan)#name Native
+```
+b.	Configure and activate the management interface on S1 (VLAN 200) using the second IP address from the subnet calculated earlier. Additionally, set the default gateway on S1.  
+```
+S1(config)#interface vlan 200
+S1(config-if)#ip address 192.168.1.66 255.255.255.224
+S1(config-if)#exit
+S1(config)#ip default-gateway 192.168.1.65
+```
+
+c.	Configure and activate the management interface on S2 (VLAN 1) using the second IP address from the subnet calculated earlier. Additionally, set the default gateway on S2  
+```
+S2(config)#vlan 1
+S2(config-if)#ip address 192.1638.1.98 255.255.255.240
+S2(config-if)#no shutdown
+S2(config-if)#exit
+S2(config)#ip default-gateway 192.168.1.97
+```
+
+d.	Assign all unused ports on S1 to the Parking_Lot VLAN, configure them for static access mode, and administratively deactivate them. On S2, administratively deactivate all the unused ports.  
+
+|Device	|Unused ports|
+|:------|:--------------|
+|S1		|e0/0, e0/2, e1/1-4 |
+|S2		|e0/0-3, e1/0, e1/2|
+
+for S1 we use next commands
+```
+S1(config)#interface range e0/0, e0/2, e1/1-4
+S1(config-if-range)#switchport mode access
+S1(config-if-range)#switchport access vlan 999
+S1(config-if-range)#shutdown
+```
+
+for S2 we use next commands
+```
+S1(config)#interface range e0/0-3, e1/0, e1/2
+S1(config-if-range)#switchport mode access
+S1(config-if-range)#switchport access vlan 999
+S1(config-if-range)#shutdown
+```
+
 
 #### 1.8: Assign VLANs to the correct switch interfaces.
-a.	Assign used ports to the appropriate VLAN (specified in the VLAN table above) and configure them for static access mode.
-Open configuration window
-b.	Verify that the VLANs are assigned to the correct interfaces.
-Question:
-Why is interface F0/5 listed under VLAN 1?
-Type your answers here.
+a.	Assign used ports to the appropriate VLAN (specified in the VLAN table above) and configure them for static access mode.  
+```
+S1(config)#interface e0/3
+S1(config-if)#switchport mode access
+S1(config-if)#switchport access vlan 100
+
+```
+
+b.	Verify that the VLANs are assigned to the correct interfaces.  
+```
+S1#sh vlan brief
+```
+
+**Question:**  
+Why is interface F0/5 listed under VLAN 1?  
+**Answer:**  
+
+
+
 
 #### 1.9: Manually configure S1’s interface F0/5 as an 802.1Q trunk.
-a.	Change the switchport mode on the interface to force trunking.
-b.	As a part of the trunk configuration, set the native VLAN to 1000.
-c.	As another part of trunk configuration, specify that VLANs 100, 200, and 1000 are allowed to cross the trunk.
-d.	Save the running configuration to the startup configuration file.
+a.	Change the switchport mode on the interface to force trunking.  
+```
+S1(config)#interface e0/1
+S1(config-if)#switchport mode trunk
+```
+b.	As a part of the trunk configuration, set the native VLAN to 1000.  
+```
+S1(config-if)#switchport trunk native vlan 1000
+```
+c.	As another part of trunk configuration, specify that VLANs 100, 200, and 1000 are allowed to cross the trunk.  
+```
+S1(config-if)#switchport trunk allowed vlan 100,200,1000
+```
+d.	Save the running configuration to the startup configuration file.  
+
 e.	Verify trunking status.
+```
+S1# show interfaces trunk
+```
+
+
 Question:
 At this point, what IP address would the PC’s have if they were connected to the network using DHCP?
 
-
-
+----
 ### Part 2: Configure and verify two DHCPv4 Servers on R1
 In Part 2, you will configure and verify a DHCPv4 Server on R1. The DHCPv4 server will service two subnets, Subnet A and Subnet C.
-Step 1: Configure R1 with DHCPv4 pools for the two supported subnets. Only the DHCP Pool for subnet A is given below
+
+#### 2.1: Configure R1 with DHCPv4 pools for the two supported subnets. Only the DHCP Pool for subnet A is given below
+
 a.	Exclude the first five useable addresses from each address pool.
 Open configuration window
 b.	Create the DHCP pool (Use a unique name for each pool).
@@ -308,25 +380,36 @@ d.	Configure the domain name as ccna-lab.com
 e.	Configure the appropriate default gateway for each DHCP pool.
 f.	Configure the lease time for 2 days 12 hours and 30 minutes.
 g.	Next, configure the second DHCPv4 Pool using the pool name R2_Client_LAN and the calculated network, default-router and use the same domain name and lease time from the previous DHCP pool.
-Step 2: Save your configuration
+
+#### 2.2: Save your configuration
 Save the running configuration to the startup configuration file.
 Close configuration window
-Step 3: Verify the DHCPv4 Server configuration
+
+
+
+#### 2.3: Verify the DHCPv4 Server configuration
 a.	Issue the command show ip dhcp pool to examine the pool details.
 b.	Issue the command show ip dhcp bindings to examine established DHCP address assignments.
 c.	Issue the command show ip dhcp server statistics to examine DHCP messages.
-Step 4: Attempt to acquire an IP address from DHCP on PC-A
+
+#### 2.4: Attempt to acquire an IP address from DHCP on PC-A
 a.	Open a command prompt on PC-A and issue the command ipconfig /renew.
 b.	Once the renewal process is complete, issue the command ipconfig to view the new IP information.
 c.	Test connectivity by pinging R1’s G0/0/1 interface IP address.
-Part 3: Configure and verify a DHCP Relay on R2
+
+
+-----
+### 3: Configure and verify a DHCP Relay on R2
+
 In Part 3, you will configure R2 to relay DHCP requests from the local area network on interface G0/0/1 to the DHCP server (R1). 
-Step 1: Configure R2 as a DHCP relay agent for the LAN on G0/0/1
+
+#### 3.1: Configure R2 as a DHCP relay agent for the LAN on G0/0/1
 a.	Configure the ip helper-address command on G0/0/1 specifying R1’s G0/0/0 IP address.
 Open configuration window
 b.	Save your configuration.
 Close configuration window
-Step 2: Attempt to acquire an IP address from DHCP on PC-B
+
+#### 3.2: Attempt to acquire an IP address from DHCP on PC-B
 a.	Open a command prompt on PC-B and issue the command ipconfig /renew.
 b.	Once the renewal process is complete, issue the command ipconfig to view the new IP information.
 c.	Test connectivity by pinging R1’s G0/0/1 interface IP address.
