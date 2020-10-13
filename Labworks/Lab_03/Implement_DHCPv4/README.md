@@ -49,7 +49,7 @@
 |S2		|F0/5			|e1/1|
 |		|F0/18			|e1/3|
 
-Solvation topology  
+EVE Solvation topology  
  ![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic0_scheme.jpg "Solvation topology")
 
 
@@ -62,7 +62,7 @@ Part 3: Configure and verify a DHCP Relay on R2
 
 ----
 ### Part 1:	Build the Network and Configure Basic Device Settings  
-In Part 1, you will set up the network topology and configure basic settings on the PC hosts and switches.
+In Part 1, we will set up the network topology and configure basic settings on the PC hosts and switches.
 
 #### 1.1 Establish an addressing scheme
 Subnet the network 192.168.1.0/24 to meet the following requirements:
@@ -74,12 +74,12 @@ a.	One subnet, “Subnet A”, supporting 58 hosts (the client VLAN at R1).
 |Subnet A	|58			|192.168.1.0	|192.168.1.1	|192.168.1.62	|192.168.1.63	|255.255.255.192
 
 Record the first IP address in the Addressing Table for R1 G0/0/1.100. 
-192.168.1.1
+___192.168.1.1___
 
 Record the second IP address in the Address Table for S1 VLAN 200  
-192.168.1.66  
+___192.168.1.66 ___
 and enter the associated default gateway.  
-192.168.1.65
+____192.168.1.65___
 
 
 b.	One subnet, “Subnet B”, supporting 28 hosts (the management VLAN at R1).  
