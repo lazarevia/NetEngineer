@@ -54,8 +54,8 @@
 
 
 ## Objectives
-[Part 1: Build the Network and Configure Basic Device Settings](#part-1build-the-network-and-configure-basic-device-settings) 
-	[1.1 Establish an addressing scheme](#11-Establish-an-addressing-scheme)
+[Part 1: Build the Network and Configure Basic Device Settings](#part-1build-the-network-and-configure-basic-device-settings)  
+	[1.1 Establish an addressing scheme](#11-Establish-an-addressing-scheme)  
 [Part 2: Configure and verify two DHCPv4 Servers on R1](#part-2-configure-and-verify-two-dhcpv4-servers-on-r1)  
 [Part 3: Configure and verify a DHCP Relay on R2](#3-configure-and-verify-a-dhcp-relay-on-r2)
 
