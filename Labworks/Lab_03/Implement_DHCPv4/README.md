@@ -54,7 +54,7 @@
 
 
 ## Objectives
-Part 1: Build the Network and Configure Basic Device Settings  
+[Part 1: Build the Network and Configure Basic Device Settings] (Lab_03/Implement_DHCPv4#part-2-configure-and-verify-two-dhcpv4-servers-on-r1)
 Part 2: Configure and verify two DHCPv4 Servers on R1  
 Part 3: Configure and verify a DHCP Relay on R2  
 
