@@ -461,8 +461,6 @@ b.	Once the renewal process is complete, issue the command ***ipconfig*** to vie
 c.	Test connectivity by pinging R1’s G0/0/1 (e0/1) interface IP address (192.168.1.1)  
 ![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic_24_PCA_c.jpg "")
 
-
-
 -----
 ### 3: Configure and verify a DHCP Relay on R2
 
@@ -475,7 +473,7 @@ R2(config)#int e0/1
 R2(config-if)#ip helper-address 10.0.0.1
 ```
 b.	Save your configuration.
-
+![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic_31_R2_ab.jpg "")
 
 #### 3.2: Attempt to acquire an IP address from DHCP on PC-B
 a.	Open a command prompt on PC-B and issue the command **ipconfig /renew.**
