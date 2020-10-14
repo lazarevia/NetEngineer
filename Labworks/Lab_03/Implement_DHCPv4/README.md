@@ -353,7 +353,7 @@ S1#sh vlan brief
 **Question:**  
 Why is interface F0/5 listed under VLAN 1?  
 **Answer:**  
-
+We dont add this interface to any VLAN and its use default VLAN/
 
 
 
