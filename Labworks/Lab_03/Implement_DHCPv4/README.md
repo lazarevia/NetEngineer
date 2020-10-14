@@ -472,14 +472,14 @@ a.	Configure the **ip helper-address** command on G0/0/1 specifying R1’s G0/0/
 R2(config)#int e0/1
 R2(config-if)#ip helper-address 10.0.0.1
 ```
-b.	Save your configuration.
+b.	Save your configuration.  
 ![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic_31_R2_ab.jpg "")
 
 #### 3.2: Attempt to acquire an IP address from DHCP on PC-B
-a.	Open a command prompt on PC-B and issue the command **ipconfig /renew.**
-b.	Once the renewal process is complete, issue the command **ipconfig** to view the new IP information.
-c.	Test connectivity by pinging R1’s G0/0/1 interface IP address.
-d.	Issue the show ip dhcp binding on R1 to verify DHCP bindings.
-e.	Issue the show ip dhcp server statistics on R1 and R2 to verify DHCP messages.
+a.	Open a command prompt on PC-B and issue the command **ipconfig /renew.**  
+b.	Once the renewal process is complete, issue the command **ipconfig** to view the new IP information.  
+c.	Test connectivity by pinging R1’s G0/0/1 interface IP address.  
+d.	Issue the show ip dhcp binding on R1 to verify DHCP bindings.  
+e.	Issue the show ip dhcp server statistics on R1 and R2 to verify DHCP messages.  
 
 
