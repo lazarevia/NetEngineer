@@ -270,32 +270,33 @@ j.	Copy the running configuration to the startup configuration.
 ___Note: S2 is only configured with basic settings.___  
 
 a.	Create and name the required VLANs on switch 1 from the table above.  
-	```
-	S1(config)#vlan 100
-	S1(config-vlan)#name Clients
-	S1(config-vlan)#vlan 200
-	S1(config-vlan)#name Management
-	S1(config-vlan)#vlan 999
-	S1(config-vlan)#name Parking_Lot
-	S1(config-vlan)#vlan 1000
-	S1(config-vlan)#name Native
-	```
+```
+S1(config)#vlan 100
+S1(config-vlan)#name Clients
+S1(config-vlan)#vlan 200
+S1(config-vlan)#name Management
+S1(config-vlan)#vlan 999
+S1(config-vlan)#name Parking_Lot
+S1(config-vlan)#vlan 1000
+S1(config-vlan)#name Native
+```
+
 b.	Configure and activate the management interface on S1 (VLAN 200) using the second IP address from the subnet calculated earlier. Additionally, set the default gateway on S1.  
-	```
-	S1(config)#interface vlan 200
-	S1(config-if)#ip address 192.168.1.66 255.255.255.224
-	S1(config-if)#exit
-	S1(config)#ip default-gateway 192.168.1.65
-	```
+```
+S1(config)#interface vlan 200
+S1(config-if)#ip address 192.168.1.66 255.255.255.224
+S1(config-if)#exit
+S1(config)#ip default-gateway 192.168.1.65
+```
 
 c.	Configure and activate the management interface on S2 (VLAN 1) using the second IP address from the subnet calculated earlier. Additionally, set the default gateway on S2  
-	```
-	S2(config)#vlan 1
-	S2(config-if)#ip address 192.1638.1.98 255.255.255.240
-	S2(config-if)#no shutdown
-	S2(config-if)#exit
-	S2(config)#ip default-gateway 192.168.1.97
-	```
+```
+S2(config)#interface vlan 1
+S2(config-if)#ip address 192.1638.1.98 255.255.255.240
+S2(config-if)#no shutdown
+S2(config-if)#exit
+S2(config)#ip default-gateway 192.168.1.97
+```
 
 d.	Assign all unused ports on S1 to the Parking_Lot VLAN, configure them for static access mode, and administratively deactivate them. On S2, administratively deactivate all the unused ports.  
 
