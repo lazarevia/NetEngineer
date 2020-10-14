@@ -456,9 +456,12 @@ c.	Issue the command **show ip dhcp server statistics** to examine DHCP messages
 ![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic_23_R1_c.jpg "")
 
 #### 2.4: Attempt to acquire an IP address from DHCP on PC-A
-a.	Open a command prompt on PC-A and issue the command ***ipconfig /renew.***
-b.	Once the renewal process is complete, issue the command ipconfig to view the new IP information.
-c.	Test connectivity by pinging R1’s G0/0/1 interface IP address.
+a.	Open a command prompt on PC-A and issue the command ***ipconfig /renew.***  
+
+b.	Once the renewal process is complete, issue the command ***ipconfig*** to view the new IP information.  
+
+c.	Test connectivity by pinging R1’s G0/0/1 (e0/1) interface IP address (192.168.1.1)  
+
 
 
 -----
