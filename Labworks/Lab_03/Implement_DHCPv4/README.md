@@ -57,8 +57,6 @@
 [Part 1: Build the Network and Configure Basic Device Settings](#part-1build-the-network-and-configure-basic-device-settings)  
 
 [1.1 Establish an addressing scheme](#11-Establish-an-addressing-scheme)  
-
-
 [1.2 Cable the network as shown in the topology](#12-Cable-the-network-as-shown-in-the-topology)  
 [1.3 Configure basic settings for each router](#13-Configure-basic-settings-for-each-router)  
 [1.4 Configure Inter-VLAN Routing on R1](#14-Configure-Inter-VLAN-Routing-on-R1)  
