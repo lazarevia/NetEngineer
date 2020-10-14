@@ -353,7 +353,7 @@ S1#sh vlan brief
 **Question:**  
 Why is interface F0/5 listed under VLAN 1?  
 **Answer:**  
-We dont add this interface to any VLAN and its use default VLAN/
+We dont add this interface to any VLAN and as default its using VLAN1.
 
 
 
@@ -383,8 +383,9 @@ S1# show interfaces trunk
 ![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic_19_S1_e.jpg "")
 
 
-Question:
+**Question:**  
 At this point, what IP address would the PC’s have if they were connected to the network using DHCP?
+**Answer:**  
 
 ----
 ### Part 2: Configure and verify two DHCPv4 Servers on R1
