@@ -485,6 +485,9 @@ d.	Issue the **show ip dhcp binding** on R1 to verify DHCP bindings.
 ![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic_32_R1_d.jpg "") 
 
 e.	Issue the **show ip dhcp server statistics** on R1 and R2 to verify DHCP messages.  
-![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic_32_R2_d.jpg "") 
+on R1
+![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic_32_R1_e.jpg "") 
 
+on R2
+![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic_32_R2_e.jpg "") 
 
