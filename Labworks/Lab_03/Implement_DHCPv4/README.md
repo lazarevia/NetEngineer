@@ -384,7 +384,7 @@ S1# show interfaces trunk
 
 
 **Question:**  
-At this point, what IP address would the PC’s have if they were connected to the network using DHCP?
+At this point, what IP address would the PC’s have if they were connected to the network using DHCP?  
 **Answer:**  
 
 ----
