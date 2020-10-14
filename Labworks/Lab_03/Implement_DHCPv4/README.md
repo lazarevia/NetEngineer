@@ -269,7 +269,7 @@ j.	Copy the running configuration to the startup configuration.
 #### 1.7: Create VLANs on S1.
 ___Note: S2 is only configured with basic settings.___  
 
-a.	Create and name the required VLANs on switch 1 from the table above.  
+#####a.	Create and name the required VLANs on switch 1 from the table above.  
 ```
 S1(config)#vlan 100
 S1(config-vlan)#name Clients
@@ -281,7 +281,7 @@ S1(config-vlan)#vlan 1000
 S1(config-vlan)#name Native
 ```
 
-b.	Configure and activate the management interface on S1 (VLAN 200) using the second IP address from the subnet calculated earlier. Additionally, set the default gateway on S1.  
+##### b.	Configure and activate the management interface on S1 (VLAN 200) using the second IP address from the subnet calculated earlier. Additionally, set the default gateway on S1.  
 ```
 S1(config)#interface vlan 200
 S1(config-if)#ip address 192.168.1.66 255.255.255.224
@@ -315,10 +315,8 @@ S1(config-if-range)#shutdown
 
 for S2 we use next commands
 ```
-S1(config)#interface range e0/0-3, e1/0, e1/2
-S1(config-if-range)#switchport mode access
-S1(config-if-range)#switchport access vlan 999
-S1(config-if-range)#shutdown
+S2(config)#interface range e0/0-3, e1/0, e1/2
+S2(config-if-range)#shutdown
 ```
 
 
