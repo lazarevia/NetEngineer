@@ -70,10 +70,12 @@
 
 [2.1 Configure R1 with DHCPv4 pools for the two supported subnets. Only the DHCP Pool for subnet A is given below](#21-configure-r1-with-dhcpv4-pools-for-the-two-supported-subnets-only-the-dhcp-pool-for-subnet-a-is-given-below)  
 [2.2 Save your configuration](#22-save-your-configuration)  
-[2.3: Verify the DHCPv4 Server configuration](#23-verify-the-dhcpv4-server-configuration)
-[2.4: Attempt to acquire an IP address from DHCP on PC-A](#24-attempt-to-acquire-an-ip-address-from-dhcp-on-pc-a)  
+[2.3 Verify the DHCPv4 Server configuration](#23-verify-the-dhcpv4-server-configuration)
+[2.4 Attempt to acquire an IP address from DHCP on PC-A](#24-attempt-to-acquire-an-ip-address-from-dhcp-on-pc-a)  
 
-[Part 3: Configure and verify a DHCP Relay on R2](#3-configure-and-verify-a-dhcp-relay-on-r2)
+[Part 3: Configure and verify a DHCP Relay on R2](#3-configure-and-verify-a-dhcp-relay-on-r2)  
+[3.1 Configure R2 as a DHCP relay agent for the LAN on G0/0/1](#31-configure-r2-as-a-dhcp-relay-agent-for-the-lan-on-g001)  
+[3.2 Attempt to acquire an IP address from DHCP on PC-B](#32-attempt-to-acquire-an-ip-address-from-dhcp-on-pc-b)
 
 ----
 ### Part 1:	Build the Network and Configure Basic Device Settings  
@@ -282,7 +284,7 @@ j.	Copy the running configuration to the startup configuration.
 
 ![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic_16_S2_basic.jpg "S2 basic settings")
 
-#### 1.7: Create VLANs on S1.
+#### 1.7 Create VLANs on S1.
 ___Note: S2 is only configured with basic settings.___  
 
 a.	Create and name the required VLANs on switch 1 from the table above.  
@@ -341,7 +343,7 @@ S2(config-if-range)#shutdown
 ![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic_17_S2_d.jpg "")
 
 
-#### 1.8: Assign VLANs to the correct switch interfaces.
+#### 1.8 Assign VLANs to the correct switch interfaces.
 a.	Assign used ports to the appropriate VLAN (specified in the VLAN table above) and configure them for static access mode.  
 ```
 S1(config)#interface e0/3
@@ -363,7 +365,7 @@ We dont add this interface to any VLAN and as default its using VLAN1.
 
 
 
-#### 1.9: Manually configure S1’s interface F0/5 as an 802.1Q trunk.
+#### 1.9 Manually configure S1’s interface F0/5 as an 802.1Q trunk.
 a.	Change the switchport mode on the interface to force trunking.  
 ```
 S1(config)#interface e0/1
@@ -393,10 +395,10 @@ S1# show interfaces trunk
 **Answer:**  
 
 ----
-### Part 2: Configure and verify two DHCPv4 Servers on R1
+### Part 2 Configure and verify two DHCPv4 Servers on R1
 Now we will configure and verify a DHCPv4 Server on R1. The DHCPv4 server will service two subnets, Subnet A and Subnet C.
 
-#### 2.1: Configure R1 with DHCPv4 pools for the two supported subnets. Only the DHCP Pool for subnet A is given below
+#### 2.1 Configure R1 with DHCPv4 pools for the two supported subnets. Only the DHCP Pool for subnet A is given below
 
 a.	Exclude the first five useable addresses from each address pool.  
 ```
@@ -440,12 +442,12 @@ R1(dhcp-config)#lease 2 12 30
 ```
 ![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic_21_R1_abcdefg.jpg "")
 
-#### 2.2: Save your configuration
+#### 2.2 Save your configuration
 Save the running configuration to the startup configuration file.
 
 
 
-#### 2.3: Verify the DHCPv4 Server configuration
+#### 2.3 Verify the DHCPv4 Server configuration
 a.	Issue the command **show ip dhcp pool** to examine the pool details.  
 ![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic_23_R1_a.jpg "")
 
@@ -455,18 +457,18 @@ b.	Issue the command **show ip dhcp binding** to examine established DHCP addres
 c.	Issue the command **show ip dhcp server statistics** to examine DHCP messages.  
 ![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic_23_R1_c.jpg "")
 
-#### 2.4: Attempt to acquire an IP address from DHCP on PC-A
+#### 2.4 Attempt to acquire an IP address from DHCP on PC-A
 a.	Open a command prompt on PC-A and issue the command ***ipconfig /renew.***  
 b.	Once the renewal process is complete, issue the command ***ipconfig*** to view the new IP information.  
 c.	Test connectivity by pinging R1’s G0/0/1 (e0/1) interface IP address (192.168.1.1)  
 ![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic_24_PCA_c.jpg "")
 
 -----
-### 3: Configure and verify a DHCP Relay on R2
+### 3 Configure and verify a DHCP Relay on R2
 
 We will configure R2 to relay DHCP requests from the local area network on interface G0/0/1 to the DHCP server (R1). 
 
-#### 3.1: Configure R2 as a DHCP relay agent for the LAN on G0/0/1
+#### 3.1 Configure R2 as a DHCP relay agent for the LAN on G0/0/1
 a.	Configure the **ip helper-address** command on G0/0/1 specifying R1’s G0/0/0 IP address.
 ```
 R2(config)#int e0/1
@@ -475,7 +477,7 @@ R2(config-if)#ip helper-address 10.0.0.1
 b.	Save your configuration.  
 ![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic_31_R2_ab.jpg "")
 
-#### 3.2: Attempt to acquire an IP address from DHCP on PC-B
+#### 3.2 Attempt to acquire an IP address from DHCP on PC-B
 a.	Open a command prompt on PC-B and issue the command **ipconfig /renew.**  
 b.	Once the renewal process is complete, issue the command **ipconfig** to view the new IP information.  
 c.	Test connectivity by pinging R1’s G0/0/1 interface IP address.  
