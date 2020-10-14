@@ -415,13 +415,19 @@ R1(dhcp-config)#network 192.168.1.0 255.255.255.192
 ```
 
 d.	Configure the domain name as ***ccna-lab.com***
-```R1(dhcp-config)#domain-name ccna-lab.com```
+```
+R1(dhcp-config)#domain-name ccna-lab.com
+```
 
 e.	Configure the appropriate default gateway for each DHCP pool.
-```R1(dhcp-config)#default-router 192.168.1.1```
+```
+R1(dhcp-config)#default-router 192.168.1.1
+```
 
 f.	Configure the lease time for 2 days 12 hours and 30 minutes.
-``` R1(dhcp-config)#lease 2 12 30 ```
+```
+R1(dhcp-config)#lease 2 12 30
+```
 
 g.	Next, configure the second DHCPv4 Pool using the pool name R2_Client_LAN and the calculated network, default-router and use the same domain name and lease time from the previous DHCP pool.
 
@@ -432,7 +438,7 @@ R1(dhcp-config)#default-router 192.168.1.97
 R1(dhcp-config)#domain-name ccna-lab.com
 R1(dhcp-config)#lease 2 12 30
 ```
-
+![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic_21_R1_abcdefg.jpg "")
 
 #### 2.2: Save your configuration
 Save the running configuration to the startup configuration file.
