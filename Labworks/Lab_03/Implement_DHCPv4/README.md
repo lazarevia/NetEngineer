@@ -479,7 +479,12 @@ b.	Save your configuration.
 a.	Open a command prompt on PC-B and issue the command **ipconfig /renew.**  
 b.	Once the renewal process is complete, issue the command **ipconfig** to view the new IP information.  
 c.	Test connectivity by pinging R1’s G0/0/1 interface IP address.  
-d.	Issue the show ip dhcp binding on R1 to verify DHCP bindings.  
-e.	Issue the show ip dhcp server statistics on R1 and R2 to verify DHCP messages.  
+![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic_32_PCB_abc.jpg "")
+
+d.	Issue the **show ip dhcp binding** on R1 to verify DHCP bindings. 
+![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic_32_R1_d.jpg "") 
+
+e.	Issue the **show ip dhcp server statistics** on R1 and R2 to verify DHCP messages.  
+![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic_32_R2_d.jpg "") 
 
 
