@@ -56,6 +56,10 @@
 ## Objectives
 [Part 1: Build the Network and Configure Basic Device Settings](#part-1build-the-network-and-configure-basic-device-settings)  
 	[1.1 Establish an addressing scheme](#11-Establish-an-addressing-scheme)  
+	[1.2 Cable the network as shown in the topology.](#12-Cable-the-network-as-shown-in-the-topology)  
+	1.3 Configure basic settings for each router.  
+	1.4 Configure Inter-VLAN Routing on R1  
+	
 [Part 2: Configure and verify two DHCPv4 Servers on R1](#part-2-configure-and-verify-two-dhcpv4-servers-on-r1)  
 [Part 3: Configure and verify a DHCP Relay on R2](#3-configure-and-verify-a-dhcp-relay-on-r2)
 
@@ -157,10 +161,10 @@ R1#clock set 15:22:00 09 oct 2020
 Note: Use the question mark (?) to help with the correct sequence of parameters needed to execute this command.
 
 R1 basic settings  
-![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic01_R1config.jpg "R1 config")
+![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic_13_R1.jpg "R1 config")
 
 R2 basic settings  
-![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic01_R2config.jpg "R2 config")
+![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic_13_R2.jpg "R2 config")
 
 
 #### 1.4 Configure Inter-VLAN Routing on R1
@@ -194,7 +198,7 @@ c.	Verify the sub-interfaces are operational.
 R1# show ip interface brief
 ```
 
-![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic02_R1.jpg "R1 Verify the sub-interfaces")
+![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic_14_R1_c.jpg "R1 Verify the sub-interfaces")
 
 #### 1.5 Configure G0/0/1 on R2, then G0/0/0 and static routing for both routers
 a.	Configure G0/0/1 (e0/1) on R2 with the first IP address of Subnet C you calculated earlier.
