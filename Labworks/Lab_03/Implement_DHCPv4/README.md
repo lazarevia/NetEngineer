@@ -221,7 +221,7 @@ R2#(config-if)#no shutdown
 R2#(config-if)#exit
 ```
 
-![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic03_R2_a.jpg "R2")
+![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic_15_R2_a.jpg "R2")
 
 b.	Configure interface G0/0/0 (e0/0) for each router based on the IP Addressing table above.  
 On R2 we continue with next commands
@@ -230,7 +230,7 @@ R2#(config)#interface e0/0
 R2#(config-if)#ip address 10.0.0.2 255.255.255.252
 R2#(config-if)#no shutdown
 ```
-![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic03_R2_b.jpg "R2")
+![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic_15_R2_b.jpg "R2")
 
 on R1 we will continue with
 ```
@@ -239,14 +239,14 @@ R1#(config)#interface e0/0
 R1#(config-if)ip address 10.0.0.1 255.255.255.252
 R2#(config-if)#no shutdown
 ```
-![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic03_R1_b.jpg "R1")
+![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic_15_R1_b.jpg "R1")
 
 c.	Configure a default route on each router pointed to the IP address of G0/0/0 (e0/0)on the other router.  
 on R2 we will do
 ```
 R2#(config)#ip route 0.0.0.0 0.0.0.0 10.0.0.1
 ```
-![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic03_R2_c.jpg "R2")
+![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic_15_R2_c.jpg "R2")
 
 on R1 we will do
 ```
@@ -259,7 +259,7 @@ R1#show ip route
 R1#ping 192.168.1.97
 
 ```
-![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic03_R1_c.jpg "R1 Verify static routing")
+![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic_15_R1_c.jpg "R1 Verify static routing")
 
 
 e.	Save the running configuration to the startup configuration file
@@ -278,9 +278,9 @@ i.	Set the clock on the switch to today’s time and date.
 Note: Use the question mark (?) to help with the correct sequence of parameters needed to execute this command.  
 j.	Copy the running configuration to the startup configuration.  
 
-![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic04_S1_basic.jpg "S1 basic settings")
+![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic_16_S1_basic.jpg "S1 basic settings")
 
-![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic04_S2_basic.jpg "S2 basic settings")
+![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic_16_S2_basic.jpg "S2 basic settings")
 
 #### 1.7: Create VLANs on S1.
 ___Note: S2 is only configured with basic settings.___  
@@ -447,8 +447,10 @@ Save the running configuration to the startup configuration file.
 
 #### 2.3: Verify the DHCPv4 Server configuration
 a.	Issue the command **show ip dhcp pool** to examine the pool details.  
-b.	Issue the command **show ip dhcp bindings** to examine established DHCP address assignments.  
+![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic_23_R1_a.jpg "")
+b.	Issue the command **show ip dhcp binding** to examine established DHCP address assignments.  
 c.	Issue the command **show ip dhcp server statistics** to examine DHCP messages.  
+![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic_23_R1_c.jpg "")
 
 #### 2.4: Attempt to acquire an IP address from DHCP on PC-A
 a.	Open a command prompt on PC-A and issue the command ***ipconfig /renew.***
