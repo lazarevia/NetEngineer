@@ -448,7 +448,10 @@ Save the running configuration to the startup configuration file.
 #### 2.3: Verify the DHCPv4 Server configuration
 a.	Issue the command **show ip dhcp pool** to examine the pool details.  
 ![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic_23_R1_a.jpg "")
+
 b.	Issue the command **show ip dhcp binding** to examine established DHCP address assignments.  
+![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic_23_R1_b.jpg "")
+
 c.	Issue the command **show ip dhcp server statistics** to examine DHCP messages.  
 ![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic_23_R1_c.jpg "")
 
