@@ -184,7 +184,7 @@ Ethernet adapter Ethernet0:
 f.	Test connectivity by pinging R2’s G0/0/1 interface IP address.
 
 ----
-### 4: Configure a stateful DHCPv6 server on R1
+### Part 4: Configure a stateful DHCPv6 server on R1
 In Part 4, you will configure R1 to respond to DHCPv6 requests from the LAN on R2.
 
 a.	Create a DHCPv6 pool on R1 for the 2001:db8:acad:3:aaaa::/80 network. This will provide addresses to the LAN connected to interface G0/0/1 on R2. As a part of the pool, set the DNS server to 2001:db8:acad::254, and set the domain name to STATEFUL.com.
@@ -202,7 +202,7 @@ R1(config-if)# ipv6 dhcp server R2-STATEFUL
 ```
 
 ----
-### 5: Configure and verify DHCPv6 relay on R2.
+### Part 5: Configure and verify DHCPv6 relay on R2.
 In Part 5, you will configure and verify DHCPv6 relay on R2, allowing PC-B to receive an IPv6 Address.
 
 #### 5.1: Power on PC-B and examine the SLAAC address that it generates.
