@@ -64,6 +64,7 @@
 [1.6 Configure basic settings for each switch.](#16-configure-basic-settings-for-each-switch)  
 [1.7 Create VLANs on S1](#17-create-vlans-on-s1)  
 [1.8 Assign VLANs to the correct switch interfaces](#18-assign-vlans-to-the-correct-switch-interfaces)  
+[1.9: Manually configure S1’s interface F0/5 as an 802.1Q trunk](#19-manually-configure-s1s-interface-f05-as-an-8021q-trunk)  
 
 [Part 2: Configure and verify two DHCPv4 Servers on R1](#part-2-configure-and-verify-two-dhcpv4-servers-on-r1)  
 [Part 3: Configure and verify a DHCP Relay on R2](#3-configure-and-verify-a-dhcp-relay-on-r2)
@@ -347,6 +348,7 @@ b.	Verify that the VLANs are assigned to the correct interfaces.
 ```
 S1#sh vlan brief
 ```
+![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic_18_S1_b.jpg "")
 
 **Question:**  
 Why is interface F0/5 listed under VLAN 1?  
