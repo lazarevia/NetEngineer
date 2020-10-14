@@ -361,6 +361,7 @@ We dont add this interface to any VLAN and its use default VLAN/
 a.	Change the switchport mode on the interface to force trunking.  
 ```
 S1(config)#interface e0/1
+S1(config-if)#switchport trunk encapsulation dot1q
 S1(config-if)#switchport mode trunk
 ```
 b.	As a part of the trunk configuration, set the native VLAN to 1000.  
@@ -373,10 +374,13 @@ S1(config-if)#switchport trunk allowed vlan 100,200,1000
 ```
 d.	Save the running configuration to the startup configuration file.  
 
+![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic_19_S1_abcd.jpg "")
+
 e.	Verify trunking status.
 ```
 S1# show interfaces trunk
 ```
+![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic_19_S1_e.jpg "")
 
 
 Question:
