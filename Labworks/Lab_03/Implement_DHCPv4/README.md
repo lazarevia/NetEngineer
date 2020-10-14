@@ -67,6 +67,12 @@
 [1.9: Manually configure S1’s interface F0/5 as an 802.1Q trunk](#19-manually-configure-s1s-interface-f05-as-an-8021q-trunk)  
 
 [Part 2: Configure and verify two DHCPv4 Servers on R1](#part-2-configure-and-verify-two-dhcpv4-servers-on-r1)  
+
+[2.1 Configure R1 with DHCPv4 pools for the two supported subnets. Only the DHCP Pool for subnet A is given below](#21-configure-r1-with-dhcpv4-pools-for-the-two-supported-subnets-only-the-dhcp-pool-for-subnet-a-is-given-below)  
+[2.2 Save your configuration](#22-save-your-configuration)  
+[2.3: Verify the DHCPv4 Server configuration](#23-verify-the-dhcpv4-server-configuration)
+[2.4: Attempt to acquire an IP address from DHCP on PC-A](#24-attempt-to-acquire-an-ip-address-from-dhcp-on-pc-a)  
+
 [Part 3: Configure and verify a DHCP Relay on R2](#3-configure-and-verify-a-dhcp-relay-on-r2)
 
 ----
@@ -383,8 +389,7 @@ S1# show interfaces trunk
 ![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic_19_S1_e.jpg "")
 
 
-**Question:**  
-At this point, what IP address would the PC’s have if they were connected to the network using DHCP?  
+**Question:**  At this point, what IP address would the PC’s have if they were connected to the network using DHCP?  
 **Answer:**  
 
 ----
