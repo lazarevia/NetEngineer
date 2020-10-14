@@ -269,7 +269,7 @@ j.	Copy the running configuration to the startup configuration.
 #### 1.7: Create VLANs on S1.
 ___Note: S2 is only configured with basic settings.___  
 
-#####a.	Create and name the required VLANs on switch 1 from the table above.  
+a.	Create and name the required VLANs on switch 1 from the table above.  
 ```
 S1(config)#vlan 100
 S1(config-vlan)#name Clients
@@ -281,13 +281,15 @@ S1(config-vlan)#vlan 1000
 S1(config-vlan)#name Native
 ```
 
-##### b.	Configure and activate the management interface on S1 (VLAN 200) using the second IP address from the subnet calculated earlier. Additionally, set the default gateway on S1.  
+b.	Configure and activate the management interface on S1 (VLAN 200) using the second IP address from the subnet calculated earlier. Additionally, set the default gateway on S1.  
 ```
 S1(config)#interface vlan 200
 S1(config-if)#ip address 192.168.1.66 255.255.255.224
 S1(config-if)#exit
 S1(config)#ip default-gateway 192.168.1.65
 ```
+![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic_17_S1_ab.jpg "")
+
 
 c.	Configure and activate the management interface on S2 (VLAN 1) using the second IP address from the subnet calculated earlier. Additionally, set the default gateway on S2  
 ```
@@ -297,6 +299,7 @@ S2(config-if)#no shutdown
 S2(config-if)#exit
 S2(config)#ip default-gateway 192.168.1.97
 ```
+![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic_17_S2_c.jpg "")
 
 d.	Assign all unused ports on S1 to the Parking_Lot VLAN, configure them for static access mode, and administratively deactivate them. On S2, administratively deactivate all the unused ports.  
 
@@ -312,12 +315,14 @@ S1(config-if-range)#switchport mode access
 S1(config-if-range)#switchport access vlan 999
 S1(config-if-range)#shutdown
 ```
+![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic_17_S1_d.jpg "")
 
 for S2 we use next commands
 ```
 S2(config)#interface range e0/0-3, e1/0, e1/2
 S2(config-if-range)#shutdown
 ```
+![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic_17_S2_d.jpg "")
 
 
 #### 1.8: Assign VLANs to the correct switch interfaces.
