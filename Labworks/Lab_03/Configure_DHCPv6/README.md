@@ -43,15 +43,15 @@
 
 
 ## Objectives
-[Part 1: Build the Network and Configure Basic Device Settings](#1build-the-network-and-configure-basic-device-settings)  
-[Part 2: Verify SLAAC address assignment from R1](#2-verify-slaac-address-assignment-from-r1)  
-[Part 3: Configure and verify a Stateless DHCPv6 Server on R1](#3-configure-and-verify-a-dhcpv6-server-on-r1)  
-[Part 4: Configure and verify a Stateful DHCPv6 Server on R1](#4-configure-a-stateful-dhcpv6-server-on-r1)  
-[Part 5: Configure and verify a DHCPv6 Relay on R2](#5-configure-and-verify-dhcpv6-relay-on-r2)  
+[Part 1: Build the Network and Configure Basic Device Settings](#part-1-build-the-network-and-configure-basic-device-settings)  
+[Part 2: Verify SLAAC address assignment from R1](#part-2-verify-slaac-address-assignment-from-r1)  
+[Part 3: Configure and verify a Stateless DHCPv6 Server on R1](#part-3-configure-and-verify-a-dhcpv6-server-on-r1)  
+[Part 4: Configure and verify a Stateful DHCPv6 Server on R1](#part-4-configure-a-stateful-dhcpv6-server-on-r1)  
+[Part 5: Configure and verify a DHCPv6 Relay on R2](#part-5-configure-and-verify-dhcpv6-relay-on-r2)  
 
 
 ----
-### 1:	Build the Network and Configure Basic Device Settings  
+### Part 1:	Build the Network and Configure Basic Device Settings  
 In Part 1, we will set up the network topology and configure basic settings on the PC hosts and switches.
 
 #### 1.1: Cable the network as shown in the topology.
