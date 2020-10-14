@@ -59,15 +59,15 @@ Attach the devices as shown in the topology diagram, and cable as necessary.
 
 
 #### 1.2: Configure basic settings for each switch. (Optional)
-a.	Assign a device name to the switch.
-b.	Disable DNS lookup to prevent the router from attempting to translate incorrectly entered commands as though they were host names.
-c.	Assign class as the privileged EXEC encrypted password.
-d.	Assign cisco as the console password and enable login.
-e.	Assign cisco as the VTY password and enable login.
-f.	Encrypt the plaintext passwords.
-g.	Create a banner that warns anyone accessing the device that unauthorized access is prohibited.
-h.	Shutdown all unused ports
-i.	Save the running configuration to the startup configuration file.
+a.	Assign a device name to the switch.  
+b.	Disable DNS lookup to prevent the router from attempting to translate incorrectly entered commands as though they were host names.  
+c.	Assign class as the privileged EXEC encrypted password.  
+d.	Assign cisco as the console password and enable login.  
+e.	Assign cisco as the VTY password and enable login.  
+f.	Encrypt the plaintext passwords.  
+g.	Create a banner that warns anyone accessing the device that unauthorized access is prohibited.  
+h.	Shutdown all unused ports  
+i.	Save the running configuration to the startup configuration file.  
 
 ----
 
