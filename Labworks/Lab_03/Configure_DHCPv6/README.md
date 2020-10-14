@@ -75,6 +75,7 @@ i.	Save the running configuration to the startup configuration file.
 In Part 2, you will verify that Host PC-A receives an IPv6 address using the SLAAC method.
 Power PC-A up and ensure that the NIC is configured for IPv6 automatic configuration.
 After a few moments, the results of the command ipconfig should show that PC-A has assigned itself an address from the 2001:db8:1::/64 network.
+```
 C:\Users\Student> ipconfig
 Windows IP Configuration
 
@@ -87,8 +88,11 @@ Ethernet adapter Ethernet 2:
    IPv4 Address. . . . . . . . . . . : 169.254.218.104
    Subnet Mask . . . . . . . . . . . : 255.255.0.0
    Default Gateway . . . . . . . . . : fe80::1%6
-Question:
+```
+**Question:**  
 Where did the host-id portion of the address come from?
+
+**Answer:**
 
 ----
 ### Part 3: Configure and Verify a DHCPv6 server on R1
@@ -133,7 +137,10 @@ Open configuration window
 R1(config)# ipv6 dhcp pool R1-STATELESS
 R1(config-dhcp)# dns-server 2001:db8:acad::254
 R1(config-dhcp)# domain-name STATELESS.com
+```
+
 b.	Configure the G0/0/1 interface on R1 to provide the OTHER config flag to the R1 LAN, and specify the DHCP pool you just created as the DHCP resource for this interface.
+```
 R1(config)# interface g0/0/1
 R1(config-if)# ipv6 nd other-config-flag
 R1(config-if)# ipv6 dhcp server R1-STATELESS
@@ -187,7 +194,9 @@ R1(config)# ipv6 dhcp pool R2-STATEFUL
 R1(config-dhcp)# address prefix 2001:db8:acad:3:aaa::/80
 R1(config-dhcp)# dns-server 2001:db8:acad::254
 R1(config-dhcp)# domain-name STATEFUL.com
+```
 b.	Assign the DHCPv6 pool you just created to interface g0/0/0 on R1.
+```
 R1(config)# interface g0/0/0
 R1(config-if)# ipv6 dhcp server R2-STATEFUL
 ```
