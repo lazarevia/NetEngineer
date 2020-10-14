@@ -51,7 +51,7 @@
 
 
 ----
-### Part 1:	Build the Network and Configure Basic Device Settings  
+### Part 1: Build the Network and Configure Basic Device Settings  
 In Part 1, we will set up the network topology and configure basic settings on the PC hosts and switches.
 
 #### 1.1: Cable the network as shown in the topology.
