@@ -74,6 +74,7 @@
 [2.4 Attempt to acquire an IP address from DHCP on PC-A](#24-attempt-to-acquire-an-ip-address-from-dhcp-on-pc-a)  
 
 [Part 3: Configure and verify a DHCP Relay on R2](#3-configure-and-verify-a-dhcp-relay-on-r2)  
+
 [3.1 Configure R2 as a DHCP relay agent for the LAN on G0/0/1](#31-configure-r2-as-a-dhcp-relay-agent-for-the-lan-on-g001)  
 [3.2 Attempt to acquire an IP address from DHCP on PC-B](#32-attempt-to-acquire-an-ip-address-from-dhcp-on-pc-b)
 
