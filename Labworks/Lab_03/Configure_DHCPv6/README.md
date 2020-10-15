@@ -113,8 +113,8 @@ R1 default route
 R2 default route
 ![](/Labworks/Lab_03/Configure_DHCPv6/pics/pic_14_R2_b.jpg "R2 ipv6 default route")
 
-
 c.	Verify routing is working by pinging R2’s G0/0/1 address from R1.  
+![](/Labworks/Lab_03/Configure_DHCPv6/pics/pic_14_R1_c.jpg "ping R2 from R1")
 
 d.	Save the running configuration to the startup configuration file.  
 
