@@ -5,13 +5,13 @@
 	Addressing Table
 |Device 		|Interface		|IPv6 Address		|
 |:--------------|:--------------|:--------------|
-|R1				|G0/0/0			|2001:db8:acad:2::1 /64	|
+|R1				|G0/0/0			|2001:db8:acad:2::1/64|
 |				|				|fe80::1		|
-|				|G0/0/1			|2001:db8:acad:1::1/64		|
+|				|G0/0/1			|2001:db8:acad:1::1/64|
 |				|				|fe80::1			|
-|R2				|G0/0/0			|2001:db8:acad:2::2/64		|
+|R2				|G0/0/0			|2001:db8:acad:2::2/64|
 |				|				|fe80::2		|
-|				|G0/0/1			|2001:db8:acad:3::1 /64			|
+|				|G0/0/1			|2001:db8:acad:3::1/64|
 |				|				|fe80::1			|
 |PC-A			|NIC			|DHCP			|
 |PC-B 			|NIC			|DHCP			|
@@ -91,10 +91,24 @@ h.	Enable IPv6 Routing
 i.	Save the running configuration to the startup configuration file.  
 
 #### 1.4: Configure interfaces and routing for both routers.
-a.	Configure the G0/0/0 and G0/0/1 interfaces on R1 and R2 with the IPv6 addresses specified in the table above.  
+a.	Configure the G0/0/0 (e0/0) and G0/0/1 (e0/1) interfaces on R1 and R2 with the IPv6 addresses specified in the table above.  
+```
+R1(config)#int e0/0
+R1(config-if)#ipv6 address 2001:db8:acad:2::1/64
+R1(config-if)#ipv6 address fe80::1 link-local
+R1(config-if)#no shutdown
+R1(config)#int e0/1
+R1(config-if)#ipv6 address 2001:db8:acad:1::1/64
+R1(config-if)#ipv6 address fe80::1 link-local
+R1(config-if)#no shutdown
+```
+
 b.	Configure a default route on each router pointed to the IP address of G0/0/0 on the other router.  
+
 c.	Verify routing is working by pinging R2’s G0/0/1 address from R1.  
+
 d.	Save the running configuration to the startup configuration file.  
+
 
 
 ----
