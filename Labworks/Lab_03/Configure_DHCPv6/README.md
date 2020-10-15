@@ -104,6 +104,15 @@ R1(config-if)#no shutdown
 ```
 
 b.	Configure a default route on each router pointed to the IP address of G0/0/0 on the other router.  
+```
+R1(config)#ipv6 route ::/0 2001:db8:acad:2::2
+```
+R1 default route
+![](/Labworks/Lab_03/Configure_DHCPv6/pics/pic_14_R1_b.jpg "R1 ipv6 default route")
+
+R2 default route
+![](/Labworks/Lab_03/Configure_DHCPv6/pics/pic_14_R2_b.jpg "R2 ipv6 default route")
+
 
 c.	Verify routing is working by pinging R2’s G0/0/1 address from R1.  
 
