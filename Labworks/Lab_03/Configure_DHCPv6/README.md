@@ -61,13 +61,35 @@ Attach the devices as shown in the topology diagram, and cable as necessary.
 #### 1.2: Configure basic settings for each switch. (Optional)
 a.	Assign a device name to the switch.  
 b.	Disable DNS lookup to prevent the router from attempting to translate incorrectly entered commands as though they were host names.  
-c.	Assign class as the privileged EXEC encrypted password.  
-d.	Assign cisco as the console password and enable login.  
-e.	Assign cisco as the VTY password and enable login.  
+c.	Assign ***class*** as the privileged EXEC encrypted password.  
+d.	Assign ***cisco*** as the console password and enable login.  
+e.	Assign ***cisco*** as the VTY password and enable login.  
 f.	Encrypt the plaintext passwords.  
 g.	Create a banner that warns anyone accessing the device that unauthorized access is prohibited.  
 h.	Shutdown all unused ports  
 i.	Save the running configuration to the startup configuration file.  
+
+S1 basic settings
+![](/Labworks/Lab_03/Configure_DHCPv6/pics/pic_12_S1.jpg "S1 basic settings config")
+
+#### 1.3: Configure basic settings for each router.
+Open configuration window
+a.	Assign a device name to the router.
+b.	Disable DNS lookup to prevent the router from attempting to translate incorrectly entered commands as though they were host names.
+c.	Assign class as the privileged EXEC encrypted password.
+d.	Assign cisco as the console password and enable login.
+e.	Assign cisco as the VTY password and enable login.
+f.	Encrypt the plaintext passwords.
+g.	Create a banner that warns anyone accessing the device that unauthorized access is prohibited.
+h.	Enable IPv6 Routing
+i.	Save the running configuration to the startup configuration file.
+
+#### 1.4: Configure interfaces and routing for both routers.
+a.	Configure the G0/0/0 and G0/0/1 interfaces on R1 and R2 with the IPv6 addresses specified in the table above.
+b.	Configure a default route on each router pointed to the IP address of G0/0/0 on the other router.
+c.	Verify routing is working by pinging R2’s G0/0/1 address from R1
+d.	Save the running configuration to the startup configuration file.
+
 
 ----
 
