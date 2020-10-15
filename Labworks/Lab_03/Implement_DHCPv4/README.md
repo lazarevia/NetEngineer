@@ -198,8 +198,7 @@ R1# show ip interface brief
 ![](/Labworks/Lab_03/Implement_DHCPv4/pics/pic_14_R1_c.jpg "R1 Verify the sub-interfaces")
 
 #### 1.5 Configure G0/0/1 on R2, then G0/0/0 and static routing for both routers
-a.	Configure G0/0/1 (e0/1) on R2 with the first IP address of Subnet C you calculated earlier.
-
+a.	Configure G0/0/1 (e0/1) on R2 with the first IP address of Subnet C you calculated earlier.  
 ```
 R2#(config)#interface e0/1
 R2#(config-if)#ip address 192.168.1.97 255.255.255.240
