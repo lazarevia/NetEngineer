@@ -56,27 +56,10 @@
 ## Objectives
 [Part 1: Build the Network and Configure Basic Device Settings](#part-1build-the-network-and-configure-basic-device-settings)  
 
-[1.1 Establish an addressing scheme](#11-Establish-an-addressing-scheme)  
-[1.2 Cable the network as shown in the topology](#12-Cable-the-network-as-shown-in-the-topology)  
-[1.3 Configure basic settings for each router](#13-Configure-basic-settings-for-each-router)  
-[1.4 Configure Inter-VLAN Routing on R1](#14-Configure-Inter-VLAN-Routing-on-R1)  
-[1.5 Configure G0/0/1 on R2, then G0/0/0 and static routing for both routers](#15-configure-g001-on-r2-then-g000-and-static-routing-for-both-routers)  
-[1.6 Configure basic settings for each switch.](#16-configure-basic-settings-for-each-switch)  
-[1.7 Create VLANs on S1](#17-create-vlans-on-s1)  
-[1.8 Assign VLANs to the correct switch interfaces](#18-assign-vlans-to-the-correct-switch-interfaces)  
-[1.9: Manually configure S1’s interface F0/5 as an 802.1Q trunk](#19-manually-configure-s1s-interface-f05-as-an-8021q-trunk)  
-
 [Part 2: Configure and verify two DHCPv4 Servers on R1](#part-2-configure-and-verify-two-dhcpv4-servers-on-r1)  
-
-[2.1 Configure R1 with DHCPv4 pools for the two supported subnets. Only the DHCP Pool for subnet A is given below](#21-configure-r1-with-dhcpv4-pools-for-the-two-supported-subnets-only-the-dhcp-pool-for-subnet-a-is-given-below)  
-[2.2 Save your configuration](#22-save-your-configuration)  
-[2.3 Verify the DHCPv4 Server configuration](#23-verify-the-dhcpv4-server-configuration)
-[2.4 Attempt to acquire an IP address from DHCP on PC-A](#24-attempt-to-acquire-an-ip-address-from-dhcp-on-pc-a)  
 
 [Part 3: Configure and verify a DHCP Relay on R2](#3-configure-and-verify-a-dhcp-relay-on-r2)  
 
-[3.1 Configure R2 as a DHCP relay agent for the LAN on G0/0/1](#31-configure-r2-as-a-dhcp-relay-agent-for-the-lan-on-g001)  
-[3.2 Attempt to acquire an IP address from DHCP on PC-B](#32-attempt-to-acquire-an-ip-address-from-dhcp-on-pc-b)
 
 ----
 ### Part 1:	Build the Network and Configure Basic Device Settings  
