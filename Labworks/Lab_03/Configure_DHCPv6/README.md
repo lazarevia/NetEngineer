@@ -85,6 +85,9 @@ e.	Assign cisco as the VTY password and enable login.
 f.	Encrypt the plaintext passwords.  
 g.	Create a banner that warns anyone accessing the device that unauthorized access is prohibited.  
 h.	Enable IPv6 Routing  
+```
+#ipv6 unicast-routing
+```
 i.	Save the running configuration to the startup configuration file.  
 
 #### 1.4: Configure interfaces and routing for both routers.
