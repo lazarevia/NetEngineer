@@ -72,6 +72,9 @@ i.	Save the running configuration to the startup configuration file.
 S1 basic settings
 ![](/Labworks/Lab_03/Configure_DHCPv6/pics/pic_12_S1.jpg "S1 basic settings config")
 
+S2 basic settings
+![](/Labworks/Lab_03/Configure_DHCPv6/pics/pic_12_S2.jpg "S2 basic settings config")
+
 #### 1.3: Configure basic settings for each router.
 Open configuration window
 a.	Assign a device name to the router.
