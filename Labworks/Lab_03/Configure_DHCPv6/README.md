@@ -125,7 +125,7 @@ d.	Save the running configuration to the startup configuration file.
 ### Part 2: Verify SLAAC Address Assignment from R1
 In Part 2, you will verify that Host PC-A receives an IPv6 address using the SLAAC method.
 Power PC-A up and ensure that the NIC is configured for IPv6 automatic configuration.
-After a few moments, the results of the command ipconfig should show that PC-A has assigned itself an address from the 2001:db8:1::/64 network.
+After a few moments, the results of the command *ipconfig* should show that PC-A has assigned itself an address from the *2001:db8:1::/64* network.
 ```
 C:\Users\Student> ipconfig
 Windows IP Configuration
@@ -141,9 +141,9 @@ Ethernet adapter Ethernet 2:
    Default Gateway . . . . . . . . . : fe80::1%6
 ```
 **Question:**  
-Where did the host-id portion of the address come from?
-
+Where did the host-id portion of the address come from?  
 **Answer:**
+Host-id portion came from phisical interface MAC address.
 
 ----
 ### Part 3: Configure and Verify a DHCPv6 server on R1
