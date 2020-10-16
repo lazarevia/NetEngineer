@@ -233,6 +233,8 @@ Ethernet adapter Ethernet0:
 ```									   
 f.	Test connectivity by pinging R2’s G0/0/1 (e0/1) interface IP address.
 
+![](/Labworks/Lab_03/Configure_DHCPv6/pics/pic_32_PCA.jpg "ipconfig on PC-A and ping R2")
+
 ----
 ### Part 4: Configure a stateful DHCPv6 server on R1
 In Part 4, you will configure R1 to respond to DHCPv6 requests from the LAN on R2.
