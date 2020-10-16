@@ -341,5 +341,5 @@ Ethernet adapter Ethernet0:
 ```									   
 c.	Test connectivity by pinging R1’s G0/0/1 (e0/1) interface IP address (**2001:db8:acad:1::1/64**).
 
-![](/Labworks/Lab_03/Configure_DHCPv6/pics/pic_52_R2.jpg "R2 ipv6 dhcp relay")
+![](/Labworks/Lab_03/Configure_DHCPv6/pics/pic_53_PCB.jpg "R2 ipv6 dhcp relay")
 
