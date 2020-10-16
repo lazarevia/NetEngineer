@@ -231,7 +231,7 @@ Ethernet adapter Ethernet0:
    Connection-specific DNS Suffix Search List :
                                        STATELESS.com
 ```									   
-f.	Test connectivity by pinging R2’s G0/0/1 (e0/1) interface IP address.
+f.	Test connectivity by pinging R2’s G0/0/1 (e0/1) interface IP address (**2001:db8:acad:3::1/64**).
 
 ![](/Labworks/Lab_03/Configure_DHCPv6/pics/pic_32_PCA.jpg "ipconfig on PC-A and ping R2")
 
@@ -288,20 +288,20 @@ Ethernet adapter Ethernet0:
                                        fec0:0:0:ffff::3%1
    NetBIOS over Tcpip. . . . . . . . : Enabled
 ```
-Notice in the output that the prefix used is 2001:db8:acad:3::
+Notice in the output that the prefix used is **2001:db8:acad:3::**
 
 ![](/Labworks/Lab_03/Configure_DHCPv6/pics/pic_51_PCB.jpg "ipconfig /all on PC-B")
 
 #### 5.2: Configure R2 as a DHCP relay agent for the LAN on G0/0/1.
 
 a.	Configure the ipv6 dhcp relay command on R2 interface G0/0/1 (e0/1), specifying the destination address of the G0/0/0 (e0/0)interface on R1. Also configure the managed-config-flag command.
-Open configuration window
 ```
-R2(config)# interface g0/0/1
+R2(config)# interface e0/1
 R2(config-if)# ipv6 nd managed-config-flag
-R2(config-if)# ipv6 dhcp relay destination 2001:db8:acad:2::1 g0/0/0
+R2(config-if)# ipv6 dhcp relay destination 2001:db8:acad:2::1 e0/0
 ```
 b.	Save your configuration.
+![](/Labworks/Lab_03/Configure_DHCPv6/pics/pic_52_R2.jpg "R2 ipv6 dhcp relay")
 
 
 #### 5.3: Attempt to acquire an IPv6 address from DHCPv6 on PC-B.
@@ -339,6 +339,7 @@ Ethernet adapter Ethernet0:
    Connection-specific DNS Suffix Search List  :
                                        STATEFUL.com
 ```									   
-c.	Test connectivity by pinging R1’s G0/0/1 interface IP address.
+c.	Test connectivity by pinging R1’s G0/0/1 (e0/1) interface IP address (**2001:db8:acad:1::1/64**).
 
+![](/Labworks/Lab_03/Configure_DHCPv6/pics/pic_52_R2.jpg "R2 ipv6 dhcp relay")
 
