@@ -182,7 +182,7 @@ Ethernet adapter Ethernet0:
 b.	Notice that there is no Primary DNS suffix. Also note that the DNS server addresses provided are “site local anycast” addresses, and not unicast addresses, as would be expected.
 
 #### 3.2: Configure R1 to provide stateless DHCPv6 for PC-A.
-a.	Create an IPv6 DHCP pool on R1 named R1-STATELESS. As a part of that pool, assign the DNS server address as 2001:db8:acad::1 and the domain name as stateless.com.
+a.	Create an IPv6 DHCP pool on R1 named ***R1-STATELESS***. As a part of that pool, assign the DNS server address as ***2001:db8:acad::1*** and the domain name as ***stateless.com.***
 Open configuration window
 ```
 R1(config)# ipv6 dhcp pool R1-STATELESS
@@ -190,16 +190,15 @@ R1(config-dhcp)# dns-server 2001:db8:acad::254
 R1(config-dhcp)# domain-name STATELESS.com
 ```
 
-b.	Configure the G0/0/1 interface on R1 to provide the OTHER config flag to the R1 LAN, and specify the DHCP pool you just created as the DHCP resource for this interface.
+b.	Configure the G0/0/1 (e0/1)interface on R1 to provide the OTHER config flag to the R1 LAN, and specify the DHCP pool you just created as the DHCP resource for this interface.
 ```
-R1(config)# interface g0/0/1
+R1(config)# interface e0/1
 R1(config-if)# ipv6 nd other-config-flag
 R1(config-if)# ipv6 dhcp server R1-STATELESS
 ```
 
-c.	Save the running configuration to the startup configuration file.
-Close configuration window
-d.	Restart PC-A.
+c.	Save the running configuration to the startup configuration file.  
+d.	Restart PC-A.  
 e.	Examine the output of ipconfig /all and notice the changes.
 ```
 C:\Users\Student> ipconfig /all
@@ -232,13 +231,13 @@ Ethernet adapter Ethernet0:
    Connection-specific DNS Suffix Search List :
                                        STATELESS.com
 ```									   
-f.	Test connectivity by pinging R2’s G0/0/1 interface IP address.
+f.	Test connectivity by pinging R2’s G0/0/1 (e0/1) interface IP address.
 
 ----
 ### Part 4: Configure a stateful DHCPv6 server on R1
 In Part 4, you will configure R1 to respond to DHCPv6 requests from the LAN on R2.
 
-a.	Create a DHCPv6 pool on R1 for the 2001:db8:acad:3:aaaa::/80 network. This will provide addresses to the LAN connected to interface G0/0/1 on R2. As a part of the pool, set the DNS server to 2001:db8:acad::254, and set the domain name to STATEFUL.com.
+a.	Create a DHCPv6 pool on R1 for the ***2001:db8:acad:3:aaaa::/80*** network. This will provide addresses to the LAN connected to interface G0/0/1 on R2. As a part of the pool, set the DNS server to ***2001:db8:acad::254***, and set the domain name to ***STATEFUL.com***.
 Open configuration window
 ```
 R1(config)# ipv6 dhcp pool R2-STATEFUL
@@ -246,9 +245,9 @@ R1(config-dhcp)# address prefix 2001:db8:acad:3:aaa::/80
 R1(config-dhcp)# dns-server 2001:db8:acad::254
 R1(config-dhcp)# domain-name STATEFUL.com
 ```
-b.	Assign the DHCPv6 pool you just created to interface g0/0/0 on R1.
+b.	Assign the DHCPv6 pool you just created to interface G0/0/0 (e0/0) on R1.
 ```
-R1(config)# interface g0/0/0
+R1(config)# interface e0/0
 R1(config-if)# ipv6 dhcp server R2-STATEFUL
 ```
 
@@ -289,9 +288,11 @@ Ethernet adapter Ethernet0:
 ```
 Notice in the output that the prefix used is 2001:db8:acad:3::
 
+![](/Labworks/Lab_03/Configure_DHCPv6/pics/pic_51_PCB.jpg "ipconfig /all on PC-B")
+
 #### 5.2: Configure R2 as a DHCP relay agent for the LAN on G0/0/1.
 
-a.	Configure the ipv6 dhcp relay command on R2 interface G0/0/1, specifying the destination address of the G0/0/0 interface on R1. Also configure the managed-config-flag command.
+a.	Configure the ipv6 dhcp relay command on R2 interface G0/0/1 (e0/1), specifying the destination address of the G0/0/0 (e0/0)interface on R1. Also configure the managed-config-flag command.
 Open configuration window
 ```
 R2(config)# interface g0/0/1
@@ -299,7 +300,7 @@ R2(config-if)# ipv6 nd managed-config-flag
 R2(config-if)# ipv6 dhcp relay destination 2001:db8:acad:2::1 g0/0/0
 ```
 b.	Save your configuration.
-Close configuration window
+
 
 #### 5.3: Attempt to acquire an IPv6 address from DHCPv6 on PC-B.
 a.	Restart PC-B.
