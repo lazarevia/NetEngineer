@@ -153,6 +153,7 @@ h.	Save the running configuration to the startup configuration file.
 i.	Set the clock on the router to today’s time and date.  
 ```
 R1#clock set 15:22:00 09 oct 2020
+R1#clock update-calendar
 ```
 
 Note: Use the question mark (?) to help with the correct sequence of parameters needed to execute this command.

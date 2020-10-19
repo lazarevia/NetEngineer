@@ -21,8 +21,8 @@
 
 |Device	|Image
 |:---	|:---
-|Roter	|L3-ADVENTERPRISEK9-M-15.4-2T
-|Switch	|i86bi_linux_l2-adveneterprisek9-ms.SSA.high_iron_20180510
+|Roter	|L3-ADVENTERPRISEK9-M-15.2-M5.3
+|Switch	|L2-ADVENTERPRISEK9-M-15.2-20150703
 
 	Table of compliance of ports of the task and virtual environment
 
